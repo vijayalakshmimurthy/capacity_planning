@@ -1,0 +1,62 @@
+<div class="sidebar_dashboard">
+    <p-sidebar [(visible)]="display" blockScroll="true" [dismissible]="false" (onHide)="hideSideBar()">
+        <div class="dashboard_left">
+            <div class="row">
+                <div class="col-md-12 no-padding-left">
+                    <h4 class="heading">CUF</h4>
+                </div>
+            </div>
+            <form [formGroup]="cufForm">
+                <div class="row fields">
+
+                    <div class="col-md-12" style="margin-bottom: 10px;">
+                        <p>Capacity Usage Flag*</p>
+                        <p-dropdown id="float-input" [autoDisplayFirst]="false" [options]="usageFlag"
+                            formControlName="capacityUsage" autoWidth="false" [disabled]="disableWholesne"  [style]="{'width':'100%'}"></p-dropdown>
+                    </div>
+                    <div class="col-md-12">
+                        <p>Notes*</p>
+                        <textarea class="form-control dashboard_input" maxlength="250" formControlName='notesN'
+                            rows="10">
+              </textarea>
+                    </div>
+                    <div class="col-md-12"  style="visibility: hidden; height: 0;">
+                        <p>Email Id*</p>
+                        <input type="text" class="form-control dashboard_input" formControlName='emailIds'
+                            pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter Email Id" disabled>
+                    </div>
+                    <div class="col-md-12" *ngIf="userType === 'ADMIN'">
+                        <input type="checkbox" class="checkboxnEntire" (click)='entirecuf($event)'
+                            formControlName='entireSnes'/>
+                        <span> Mark whole SNE as "Blocked"</span>
+                    </div>
+                </div>
+                <div class="row bottom">
+                    <div class="col-md-12 button-set">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <button type="info-button" class="btn btn-modal"
+                                    (click)="cancelForm()">Cancel</button>
+                            </li>
+                            <li class="list-inline-item">
+                                <button class="btn btn-icon-custom" type="button" (click)="onSubmit()"
+                                    [disabled]="!cufForm.valid">Submit </button>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </p-sidebar>
+</div>
+
+<app-modal-popup [display]="displaySuccessPopup" [commonModelProperties]='commonModelProperties'
+    (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayErrorPopup" [commonModelProperties]='commonModelProperties'
+    (submitData)="onSubmit()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayTimeoutPopup" [commonModelProperties]='commonModelProperties'
+    (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>

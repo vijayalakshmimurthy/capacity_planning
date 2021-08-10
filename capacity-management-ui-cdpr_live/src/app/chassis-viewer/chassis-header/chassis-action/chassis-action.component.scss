@@ -1,0 +1,110 @@
+.btn-action {
+  background: #6400aa !important;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  padding: 8.5px 22px;
+  border: 1px solid #460375;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-action:hover {
+  background: #6400aa;
+  text-decoration: none;
+}
+
+.glyphicon {
+  position: relative;
+  top: 3px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: 200;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 3px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.d-inline-block .dropdown-menu {
+  min-width: 135px;
+  padding: 5px 5px;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button[disabled]:hover {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: #fff !important;
+}
+
+.btn-icon-custom {
+  margin-top: -3px;
+  background: #fff !important;
+  color: #6400aa !important;
+  text-align: left;
+  padding: 8px 20px;
+  box-shadow: none;
+}
+
+.disableaction {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.submenu-dropdown {
+  position: absolute;
+  font-size: 18px;
+  background: #eeeeee;
+  top: 75%;
+  left: 134px;
+  outline: 0px;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+  border-radius: .25rem;
+  text-decoration: none;
+  list-style-type: none;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+}
+
+.submenu-plan {
+  list-style-type: none;
+}
+
+.d-inline-block .submenu-dropdown {
+  min-width: 140px;
+  padding: 5px 5px;
+}
+
+.pull-right-header {
+  float: right!important;
+  top: 10px;
+  position: relative;
+  font-size: 16px !important;
+}
+.plan-header:hover .plan-submenu {
+  visibility: visible;
+  display:block !important;
+  color: red !important;
+}
+.plan-submenu {
+  visibility: hidden;
+}
+.disabledropdownaction{
+  display:none !important;
+}
+@media only screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .btn-action, #dropdownBasic1, .userdropdown-toggle  {
+    top:-15px !important;
+    position: relative !important;
+  }
+}

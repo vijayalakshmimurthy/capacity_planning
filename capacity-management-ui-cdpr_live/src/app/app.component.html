@@ -1,0 +1,5 @@
+<app-header *ngIf="no_user !== 'Y'"></app-header>
+<app-no-header *ngIf="no_user === 'Y'"></app-no-header>
+<p-toast position="top-right" [style] = " {'word-wrap': 'break-word', 'width' :'21%' } " [baseZIndex]="100000" preventOpenDuplicates="true"></p-toast>
+<router-outlet></router-outlet>
+<!-- <lib-chatbot *ngIf='showask'></lib-chatbot> -->

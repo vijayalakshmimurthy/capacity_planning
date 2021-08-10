@@ -1,0 +1,37 @@
+<div class='row bt-header'>
+    <ul class="nav nav-pills nav-fill">
+        <li>
+            <img src='assets/images/logo.png' class='bt-logo' alt='bt-logo' />
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">WS SRIMS</a>
+        </li>
+        <li ngbDropdown class="nav-item dropdown">
+            <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Network Optimization
+                <img src='assets/images/angle-down-white.png' alt='angle-down' />
+            </a>
+            <ul ngbDropdownMenu aria-labelledby="dropdownBasic" class="dropdown-menu">
+                <li *ngFor="let content of contents" [ngClass]="{'dropdown-submenu': content?.child?.length >0 }">
+                    <a class='dropdown-item' (click)="navigateToUrl(content.routeValue)"
+                    [ngClass]="{'dropdown-toggle':content?.child?.length > 0}" data-toggle="dropdown">{{content?.title}}</a>
+                    <ul class="dropdown-menu bt-dropdown" [ngClass]="{'top-space' : content?.title === 'Inventory Recovery'}">
+                        <li *ngFor=" let subMenu of content?.child">
+                            <a class="dropdown-item" (click)="navigateToUrl(subMenu.routeValue)">{{subMenu?.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-fill user-li">
+        <li>
+            <img src='assets/images/help.svg' class='help-icon' alt='help-icon' (click)='goToHelp()'/>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link font-18">
+                <span> Hello, <span class='user-name'>{{name}} &nbsp;&nbsp;</span> </span>
+            </a>
+        </li>
+    </ul>
+</div>

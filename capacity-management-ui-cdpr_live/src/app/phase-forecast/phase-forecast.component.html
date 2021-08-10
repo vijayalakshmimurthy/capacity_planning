@@ -1,0 +1,209 @@
+<div class="container-fluid">
+    <div class="phase-header-wrapper clearfix">
+        <div class="row">
+            <div class="col-md-12 col-sm-5">
+                <h1>{{phaseHeader}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="Tabswitch">
+        <p-tabView (onChange)="tabChange($event)">
+            <p-tabPanel header="Phase Forecast Upload">
+                <div class="row text-right">
+                    <div class="col-md-12">
+                        <ul class="list-inline pull-right">
+                            <li class="list-inline-item">
+                                <span *ngIf='successSiteName' class="successResult" (click)="showSucessresult()">
+                                    Processed Site Name </span>
+                                <span *ngIf='failedSiteName' class="failedResult" (click)="showFailedresult()">Failed
+                                    Site Name </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 marginleft15">
+                        <app-file-upload [fileCancel]="fileCancel" [upload]="fileHeading"
+                            (sendFileToParent)="submitfile($event)"></app-file-upload>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4">
+                            <app-alert></app-alert>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 margintp margleft">
+                        <ul class="list-action pull-right action-btn" *ngIf='failedSiteName'>
+                            <li class="li-margin uploadButton">
+                                <button type="button" class="btn btn-custom sub" (click)="submitUploadFile()">Submit
+                                </button>
+                            </li>
+                            <li class="marginright20">
+                                <button type="button" class="btn btn-modal" (click)="fileUploadCancel()">Cancel
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Manage Phase Forecast">
+                <p class="alert-danger error-msg" *ngIf='errorMsg'>{{errorMsgText}}</p>
+                <div class="row site">
+                    <div class="col-md-8 col-sm-8 marginph">
+                        <app-auto-suggestions [type]="type" [placeHolder]="searchBoxPlaceHolder" *ngIf="searchSite"
+                            [filterData]="filterData" (searchStr)="onKeyPressSearchBox($event)"
+                            (selectStr)="onSelectSearch($event)" (dataKeyEnter)="onManageSearchData($event)"
+                            (resetSearchClear)="OnResetSearchInput($event)">
+                        </app-auto-suggestions>
+                    </div>
+                    <div class="col-md-4 col-sm-1 text-right">
+                        <ul
+                            class="nav navbar navbar-left d-flex d-inline-flex list-action pull-right action-btn-search ad-class">
+                            <li class="nav-item d-inline-flex">
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-custom addbtn adcal aad" *ngIf="addMode"
+                                    (click)="addData()"> Add </button>
+                            </li>
+                            <li class="li-margin">
+                                <button type="button" class="btn btn-custom-empty paddingbtn" *ngIf="updateBoolean"
+                                    (click)="updateRecord()">Update </button>
+                            </li>
+                            <li class="li-margin">
+                                <button type="button" class="btn btn-modal" *ngIf="cancelBoolean"
+                                    (click)="cancelRecord()">Cancel
+                                </button>
+                            </li>
+                            <li class="buttonPaddingLeft">
+                                <button class="btn btn-custom addan" *ngIf="showbutnRows" (click)="addData()">
+                                    <span> Add another row </span>
+                                </button>
+                            </li>
+                            <li class="btnbackground buttonPaddingLeft">
+                                <button type="button" *ngIf="showbutnRows" class="btn btn-icon-custom"
+                                    [disabled]="submitValue" (click)="submitRecord()">Submit</button>
+                            </li>
+                            <li class="btnbackground buttonPaddingLeft ">
+                                <button type="button" *ngIf="showbutnRows" class="btn btn-icon-custom"
+                                    (click)="cancelRows()">Cancel</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <div class="row marginleftright">
+                <div class="col-md-12 col-sm-12 phase-table left-table">
+                    <app-table *ngIf="rows.length > 0 || selectedTab === 'Manage Phase Forecast'"
+                        [settings]="tableSettings" [rowUpdatedSuccessfully]="rowUpdatedSuccessfully"
+                        [noRecordError]="noRecordError" (enableSubmitButton)="addRows($event)"
+                        (updatedRow)="updateRow($event)" (deleteRow)="deleteRow($event)"
+                        [successsfullysubmitted]="successsfullysubmitted" [allCheck]="allcheck">
+                    </app-table>
+                    <div class="">
+                        <div *ngIf="showbutnRows !==true && selectedTab==='Manage Phase Forecast' && rows.length===0">
+                            <p class="noRecordFound">
+                                No records found
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-tabView>
+    </div>
+</div>
+<p-dialog header="Added Result" [(visible)]="displayAddreport" [style]="{width:'30vw' }" class="addcancelpopup"
+    [baseZIndex]="10000">
+    <div>
+        <p *ngIf="addsuccessRecords !== 0 && addsuccessRecords != 1"> {{addsuccessRecords}} Records has been added
+            successfully
+        </p>
+        <p *ngIf="addsuccessRecords === 1"> {{addsuccessRecords}} Record has been added successfully
+        </p>
+        <p *ngIf="addErrorRecords !== 0 && addErrorRecords != 1"> {{addErrorRecords}} Records has been failed to add
+        </p>
+        <p *ngIf="addErrorRecords === 1"> {{addErrorRecords}} Record has been failed to add
+        </p>
+        <p class="text"></p>
+        <span class="padding10">
+            <button type="button" class="btn btn-success okcss pull-right" (click)="closepopup()"> Okay
+            </button>
+        </span>
+    </div>
+</p-dialog>
+<p-dialog header="Added Result" dismissableMask="true" [(visible)]="alertCancel" [style]="{width:'30vw' }"
+    class="addcancelpopup" [baseZIndex]="10000">
+    <div>
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to cancel the add </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-success" (click)="modelOk()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-danger" (click)="modelCancel()">Cancel</button>
+            </span>
+        </p>
+    </div>
+</p-dialog>
+<p-dialog header="Delete Result" dismissableMask="true" [(visible)]="deletePopup" [style]="{width:'30vw' }"
+    class="addcancelpopup" [baseZIndex]="10000">
+    <div>
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to delete the data </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-success" (click)="deleteOk()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-danger" (click)="deleteCancel()">Cancel</button>
+            </span>
+        </p>
+    </div>
+</p-dialog>
+<p-dialog header="Upload Result" [(visible)]="displayBasic" [style]="{width: popupType}"
+    [ngClass]="popupType === '50vw' ? 'info upload' : 'deleteDialog'" [baseZIndex]="10000">
+    <div class="modal-body deleteDialog" *ngIf="popupType == '30vw'">
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to delete the data </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-Okay" (click)="deleteRow($event)"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-modal" (click)="modelCancel()">Cancel</button>
+            </span>
+        </p>
+    </div>
+    <div *ngIf="popupType == '50vw'">
+        <p *ngIf="successRecord !== 0"> {{successRecord}} Site name has been uploaded successfully,
+            <span *ngIf="successRecord !== 0" class="siteResult" (click)="showSucessresult()">
+                See the Result </span>
+        </p>
+        <p *ngIf="errorRecord !== 0"> {{errorRecord}} Site name has been failed to upload,
+            <span *ngIf="errorRecord !== 0" class="siteResult" (click)="showFailedresult()">
+                See the Result </span>
+        </p>
+        <ng-template [ngIf]="fileMessage == 'File format is not expected'">
+            <span> Invalid File format is uploaded. Please upload XLS in the below format with header:
+                <br> SAU, Code1141, Exchange, MSE SNEID, Phase Forecast Date,Phase Planned Date, Phase Status;
+            </span>
+        </ng-template>
+        <ng-template [ngIf]="fileMessage == 'File contain only headers and no data in the file to read'">
+            <span> {{fileMessage}}
+            </span>
+        </ng-template>
+        <ng-template [ngIf]="exceptionboolean == true">
+            <span> {{exceptionmsg}}
+            </span>
+        </ng-template>
+        <ng-template [ngIf]="fileMessage == 'Upload file is not having data'">
+            <span> {{fileMessage}}
+            </span>
+        </ng-template>
+    </div>
+    <p-footer *ngIf="popupType == '50vw'">
+        <button type="button" class="btn  btn-modal" (click)="uploadCancelModel()">Cancel</button>
+    </p-footer>
+</p-dialog>

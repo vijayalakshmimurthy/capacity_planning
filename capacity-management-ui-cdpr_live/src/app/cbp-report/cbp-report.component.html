@@ -1,0 +1,77 @@
+<div class="container-fluid tableInputWidth">
+    <div class="cbp-report cbp-table">
+        <p-tabView [activeIndex]="index" (onChange)="tabChange($event)">
+            <p-tabPanel header="Capacity Build Plan- Card">
+                <app-cbp-header [header]="cbpCardheader" (loadTabledatBySearch)="loadTabledatBySearch($event)"
+                    (clearFilterData)="clearFilterData()" [clearValue]="clearEnabled" [value]="submitvalue"
+                    [sitename]="headerSitename" (exportData)="exportData()" [exportDisable]="cardExportDisable"
+                    (submitButton)="submitButton()" [index]='index'>
+                </app-cbp-header>
+                <p class="alert-danger error-msg" *ngIf='errorMsg'>{{errorMsgText}}</p>
+                <div class="cbp-table">
+                    <app-table [settings]="tableSettings" [clearData]="clearTable"
+                        (selectedPageNo)="getSelectedPageNo($event)" (listRowSelect)="getlistRowSelect($event)"
+                        (enableSubmitButton)="enableSubmitButton($event)" (deleteRow)="deleteRow($event)"
+                        (updatedRow)="updatedRow($event)" (exportParam)="exportParam($event)"
+                        (filterTableRecords)="exportDisableFilter($event)" [siteNameFlag]="siteNameFlag">
+                    </app-table>
+                </div>
+                <div *ngIf="showCardErrorMsg" class="no-record-found ">
+                    <p>No records found</p>
+                </div>
+                <app-modal-popup [display]="displayCard" [commonModelProperties]='commonModelProperties'
+                    (submitData)="deleteRecord()" (cancelData)="onDialogClose()">
+                </app-modal-popup>
+            </p-tabPanel>
+            <p-tabPanel header="Capacity Build Plan - Cable">
+                <app-cbp-header [header]="cbpCableheader" (loadTabledatBySearch)="loadCabledatBySearch($event)"
+                    [index]='index' [exportDisable]="cableExportDisable" (exportData)="exportCableData()"
+                    [clearValue]="clearEnabledCable" (clearFilterData)="clearCableAll()">
+                </app-cbp-header>
+                <div class='cbp-table'>
+                    <app-table [settings]="cableTableSettings" (filterTableRecords)="exportDisableCable($event)"
+                        [clearAllCable]="clearCableTable">
+                    </app-table>
+                </div>
+                <div *ngIf="showCardErrorMsgCable" class="no-record-found ">
+                    <p>No records found</p>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Capacity Build Plan- Rack">
+                <app-cbp-header [header]="rackHeader" (loadTabledatBySearch)="loadRackTableBySearch($event)"
+                    (clearFilterData)="rackclearAll()" (exportData)="rackexportData()" [clearValue]="rackClearEnable"
+                    [index]='index' [exportDisable]="rackExportDisable" (planRackButton)="showRackButton()"
+                    [sitename]="rackSiteName">
+                </app-cbp-header>
+                <div class='cbp-table'>
+                    <app-table [settings]="rackTableSetting" [clearAllRack]="rackClearTable"
+                        (filterTableRecords)="exportFilterdRecord($event)"
+                        (enableSubmitButton)="enableSubmitButton($event)"></app-table>
+                </div>
+                <div *ngIf="showErrorMsg" class="no-record-found">
+                    <p>No records found</p>
+                </div>
+
+            </p-tabPanel>
+          <!--  <p-tabPanel header="Capacity Optimization Plan">
+                <button type="button" class="card-move btn-icon-custom" (click)='redirectto360()'>New Card Move</button>
+                <app-cbp-header [header]="optimizationHeader" [value]="disableSubmit" [clearValue]="optClearEnable"
+                    (loadTabledatBySearch)="optTableLoadSrch($event)" (clearFilterData)="optClearAll()"
+                    (exportData)="exportOptTableRecord()" [exportDisable]="disableExportOpt"
+                    (submitButton)="optSubmit()" [index]='index' [sitename]="optimizationSiteName">
+                </app-cbp-header>
+                <div class='cbp-table'>
+                    <app-optimization [optBodyRecords]="optBodyRecords" *ngIf="optBodyRecords?.length > 0"
+                        (statusChange)="statusChange($event)" [confirmStatusValue]='confirmStatusValue'
+                        [cancelStatusValue]='cancelStatusValue' (deleteEachRow)="deleteEachRow($event)"
+                        [confirmDeleteRow]="confirmDeleteRow" (submitBtnEnable)="optimizationSubmit($event)"
+                        [optClearAll]="optClearAllTable" (optFilterTable)=exportOptTableData($event)
+                        (editrowevent)='editrowevent($event)'>
+                    </app-optimization>
+                </div>
+                <app-modal-popup [display]="display" [commonModelProperties]='commonModelProperties'
+                    (submitData)="confirmStatus()" (cancelData)="cancelStatus($event)"></app-modal-popup>
+            </p-tabPanel> -->
+        </p-tabView>
+    </div>
+</div>

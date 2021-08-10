@@ -1,0 +1,100 @@
+{
+    "filters": [
+        {	
+			"id": 1,
+            "filterName": "Card Model",
+            "filterKey": "card_Model",
+            "type": "checkbox",
+            "values": [
+                {	"id": 1,
+                    "label": "IMM 1 x 100G",
+                    "value": "IMM 1 x 100G",
+					"selected":false
+                },
+                {	"id": 2,
+                    "label": "IMM12",
+                    "value": "IMM12",
+					"selected":false
+                },
+                {
+					"id": 3,
+                    "label": "IMM2 x 100G",
+                    "value": "IMM2 x 100G",
+					"selected":false
+                },
+				{	
+					"id": 4,
+                    "label": "IMM20",
+                    "value": "IMM20",
+					"selected":false
+                },
+				{
+					"id": 5,
+                    "label": "IMM12(5)",
+                    "value": "IMM12(5)",
+					"selected":false
+                }
+            ]
+        } ,
+		{	
+			"id": 2,
+            "filterName": "Node Type",
+            "filterKey": "node_Type",
+            "type": "checkbox",
+            "values": [
+                {
+					"id": 6,
+                    "label": "Data Centre",
+                    "value": "Data Centre",
+					"selected":false
+                },
+                {
+					"id": 7,
+                    "label": "Metro",
+                    "value": "Metro",
+					"selected":false
+                }
+                
+            ]
+        },
+		{	
+			"id": 3,
+            "filterName": "Product Type",
+            "filterKey": "product_Type",
+            "type": "radio",
+            "values": [
+                {
+					"id": 8,
+                    "label": "Backhaul",
+                    "value": "Backhaul",
+					"selected":false
+                },
+                {
+					"id": 10,
+                    "label": "Blocked",
+                    "value": "Blocked",
+					"selected":false
+                },
+				{
+					"id": 11,
+                    "label": "Broadband",
+                    "value": "Broadband",
+					"selected":false
+                },
+				{
+					"id": 12,
+                    "label": "Ethernet",
+                    "value": "Ethernet",
+					"selected":true
+                },
+				{
+					"id": 13,
+                    "label": "P2PE",
+                    "value": "P2PE",
+					"selected":false
+                }
+                
+            ]
+        }
+    ]
+}

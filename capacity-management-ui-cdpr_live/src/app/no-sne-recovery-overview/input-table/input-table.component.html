@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-12 rowtop inputTable">
+        <p-table [columns]="inputTableProperties?.headers" [value]="inputTableProperties?.data"
+            scrollHeight="{{inputTableProperties?.scrollHeight}}" [customSort]="inputTableProperties?.customSort"
+            [scrollable]="true" [paginator]="true" [totalRecords]="inputTableProperties?.data?.length"
+            [paginatorPosition]='paginatorPosition' [rows]="10" [rowsPerPageOptions]="[10,20]" dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-template ngFor let-col [ngForOf]="columns">
+                        <th [ngClass]="col?.properties?.sort? 'cursoradd':'cursorremove'" [attr.ngvalue]="col.field"
+                            *ngIf="col?.visible" pResizableColumn
+                            [pSortableColumn]="col?.properties?.sort && col.field !== 'actions' ? col.field : null"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align': 'center' }">
+                            {{col.header}}
+                            <p-sortIcon *ngIf="col?.properties?.sort && col.field !== 'actions'" [field]="col.field"
+                                ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                        </th>
+                    </ng-template>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+                <tr>
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.properties?.link && !(col?.properties?.fieldType === 'checkbox')  && !(col.header === 'Action')"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour} ">
+                            <input [ngClass]="disableTable? 'disableTableData':''" class='inputWidth' *ngIf="col?.type === 'text' && col.field !== 'holder'" pInputText type="text"
+                                [(ngModel)]="rowData[col.field]" (keyup)="checkValidation()"
+                                (focus)="isEmpty(i, col.field,findIndexByKeyValue(columns,col.field))"
+                                (blur)='isEmptyblur()'>
+                            <input [ngClass]="disableTable? 'disableTableData':''" class='inputWidth holder' *ngIf="col?.type === 'text' && col.field === 'holder'" pInputText type="text"
+                                [(ngModel)]="rowData[col.field]" (keyup)="checkValidation()"
+                                (focus)="isEmpty(i, col.field,findIndexByKeyValue(columns,col.field))"
+                                (blur)='isEmptyblur()'>
+                            <p-calendar [ngClass]="disableTable? 'disableTableData':''" *ngIf="col?.type === null" [inline]="false" readonlyInput="true"
+                                [(ngModel)]="rowData[col.field]" dateFormat="dd-mm-yy" dataType="string"
+                                showButtonBar="true" placeholder="dd-mm-yyyy" [showIcon]="true" [minDate]="minimumDate"
+                                class="ng-tns-c13-9 p-calender-editior checke1" appendTo="body" (onSelect)="checkValidation()"
+                                (onFocus)="isEmpty(i,col.field, findIndexByKeyValue(columns,col.field))">
+                            </p-calendar>
+                            <p-dropdown [ngClass]="disableTable? 'disableTableData':''"  *ngIf="col.type === 'select'" [style]="{'min-width':'98%', 'width': '100%'}"
+                                appendTo="body" [(ngModel)]="rowData[col.field]" [options]="col.options"
+                                optionValue="col.options.value" styleClass="cbp-filter-dropdown" placeholder="Select"
+                                (onFocus)="isEmpty(i,col.field, findIndexByKeyValue(columns,col.field))" (onChange)="checkValidation()">
+                            </p-dropdown>
+                            <span class="linkDetails" [ngClass]="{'linkClass':col?.colour}"
+                                (click)="onClickNavigation(rowData)" *ngIf="col?.link === true">Details</span>
+                            <small *ngIf="!rowData[col?.field] && col?.field == currentKey && enablerrormessage &&
+                            currentIndex === i"
+                                class="error-info">{{col?.header}} is required.</small>
+                        </td>
+                        <td
+                            *ngIf="col?.properties?.pageName === 'inputTablePage' && col?.properties?.fieldTypeCalenderbodyType !== 'calendar'">
+                        </td>
+                        <td style="text-align: center;" [ngClass]="disableTable? 'disableTableData':''"
+                            *ngIf="col.field === 'actions' && col?.visible || col.header === 'Action'"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight, 'color':col?.properties?.color}">
+                            <input type="image" (click)="onRowAddJourney()" src="assets/images/add.png"
+                                *ngIf="inputTableProperties?.data.length -1 === i">
+                            <input *ngIf="col?.properties.action" type="image" (click)="onDelete(rowData)"
+                                class="delete-icon" src="assets/images/delete_icon.png">
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<div class="switch-popup">
+    <p-dialog [(visible)]="switchPopup" [baseZIndex]="1000000" [modal]="true" [responsive]="true"
+        [style]="{width: '400px', minWidth: '200px'}" [blockScroll]="true">
+        <p-header>
+            Selecting Planning Mode
+        </p-header>
+        <p-radioButton name="groupname" value="360View" label=" 360 Site Viewer" labelStyleClass="labelStyle"
+            styleClass="radio-btn-style2 radio-btn-style" [(ngModel)]="selectedValue">
+        </p-radioButton>
+        <p-radioButton name="groupname" value="manualInput" label="Add Inputs Manually" labelStyleClass="labelStyle"
+            styleClass="radio-btn-style1 radio-btn-style" [(ngModel)]="selectedValue">
+        </p-radioButton>
+        <p-footer>
+            <button class="btn btn-modal" type="button" (click)="closePopup()">Cancel</button>
+            <button class="btn btn-custom2 submit-padd" type="button" (click)="navigateToPage()">Submit</button>
+        </p-footer>
+    </p-dialog>
+</div>
+
+<app-modal-popup [display]="displaySaveConfirmationPopup" [commonModelProperties]='commonModalProperties'
+    (submitData)="showPlanningModal()" (cancelData)="closeConfirmationpopup()">
+</app-modal-popup>

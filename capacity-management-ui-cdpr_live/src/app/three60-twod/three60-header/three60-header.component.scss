@@ -1,0 +1,156 @@
+.heading-main {
+  padding: 0px;
+  padding-left: 15px;
+
+  h1 {
+    margin-right: 20px;
+    top: -16px;
+    font-size: 26px;
+  }
+}
+
+.filterheading1 {
+  font-size: 28px;
+  margin: 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    margin: 8px 0;
+  }
+}
+
+.errorzindex {
+  z-index: 999;
+}
+
+@media screen and (min-width: 760px) and (max-width: 1640px) {
+  .heading-main {
+    font-size: 26px;
+  }
+}
+
+.search-tab_chassis {
+  position: relative;
+  padding-right: 0px;
+
+  input {
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 15px;
+    display: inline-block;
+  }
+}
+
+.margin10 {
+  margin-top: 10px;
+}
+
+.list-inline li {
+  display: inline-block;
+}
+
+.list-inline {
+  text-align: end;
+}
+
+.searchbox .ui-autocomplete .ui-autocomplete-input {
+  width: 150px;
+}
+
+.text-align-end {
+  text-align: right;
+}
+#setheight {
+  display: table;
+  margin-left: -22%;
+  
+}
+#delatval {
+  height: 60px;
+  border-left: 1px solid #c1c1c1;
+}
+.inline-block-class{
+  display:inline-block;
+}
+.vertivlealign {
+  vertical-align: middle;
+}
+#delatval{
+  display: inline-block;
+  vertical-align: middle;
+}
+.heading-main{
+  padding: 0px;
+  h1{margin-right: 20px;
+   top: -16px;}
+   h5{
+     font-size: 14px;
+     color: #6400aa;
+     margin-right: 10px;
+    
+   }
+   .vertivlealign {
+     vertical-align: middle;
+   }
+   #delatval{
+    display: inline-block;
+    vertical-align: middle;
+   }
+   ul{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   width: 300px;
+   height: 68px;
+   vertical-align: middle;
+   li{
+    width: 50%;
+     font-size:14px;
+     float:left;
+     padding-right: 13px;
+     height: 19px;
+
+     span:first-child{
+      padding-left: 7px;
+      display: inline-block;
+     }
+     span:last-child{
+      padding-left: 0px;
+      float: right;
+      display: inline-block;
+      border-right: 1px solid #c1c1c1;
+      width: 35%;     
+     }
+   }
+   }
+}
+.negative {
+  color:red
+}
+.positive {
+  color: blue;
+}
+.totalcount{
+  font-size: 20px;
+  padding: 8px 0px;
+  color: #6400aa;
+}
+
+.home-icon {
+  vertical-align: baseline;
+  margin-right: 10px;
+  border-right: 1px solid #6400aa;
+  padding: 0 10px 0 10px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.padding10 {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}

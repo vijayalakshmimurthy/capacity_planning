@@ -1,0 +1,172 @@
+.filterheading {
+    font-size: 28px;
+    .sitenamefont {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+}
+
+.hrclass {
+    border-bottom: 1px solid #e2dddd;
+    width: 98%;
+    right: 20px;
+    margin-top: 0rem;
+}
+
+.margin10 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.padding0 {
+    padding: 0px;
+}
+
+.datamsgs {
+    font-size: 17px;
+    color: red;
+    vertical-align: sub;
+    float: right;
+    margin-top: 15px;
+}
+
+.chooseMsg {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 150px;
+}
+
+.detail-site-table {
+    padding: 20px;
+    padding-bottom: 20px;
+}
+
+.margintop5 {
+    margin-top: -5px;
+}
+
+.card-dashboard {
+    padding: 20px;
+    background: #fff;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        color: #6400aa;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 9px;
+        margin-bottom: 10px;
+    }
+}
+
+.listpadding {
+    margin-left: 30px;
+
+    li {
+        padding: 6px 16px;
+        cursor: pointer;
+        display: inline-block;
+    }
+}
+
+.td-color {
+    color: #6400aa;
+}
+
+.activeClass {
+    color: #fff !important;
+    background: #6400aa;
+    border-radius: 5px;
+}
+
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.linecharts {
+    position: relative;
+    padding-top: 20px;
+
+    .icon-line {
+        position: absolute;
+        top: -18px;
+        right: 10px;
+        left: 25px;
+    }
+
+    ul {
+        position: absolute;
+        right: 75px;
+        top: -50px;
+
+        .circle-dot {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        .port-speed {
+            margin-left: 20px;
+        }
+
+        li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    }
+
+    .dropdown-menu {
+        top: 3px !important;
+        left: 31px !important;
+    }
+
+    a {
+        cursor: pointer;
+    }
+}
+
+.card-dashboard .list-inline  {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}
+
+.port-speed {
+    right: 55px;
+    top: 23px;
+
+    select {
+        border: 0px;
+        color: #6400aa;
+        font-weight: 600;
+    }
+}
+.min-width-added {
+    min-width: 53%;
+}
+@media screen and (max-width: 1366px) and (min-width:768px) {
+    .min-width-added {
+        min-width: 53%;
+    }
+}
+@media screen and (max-width: 1600px) and (min-width:1367px) {
+    .min-width-added {
+        min-width: 50%;
+    }
+}
+@media screen and (max-width: 1920px) and (min-width:1601px) {
+    .min-width-added {
+        min-width: 38%;
+    }
+}

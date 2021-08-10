@@ -1,0 +1,99 @@
+<div class="container-fluid containerwidth">
+    <div class="row filterheading">
+      <div class="col-md-7 col-sm-7 list-inline">
+        <h2 class="margin10 header">{{header}}
+          <span class="sitenamefont" *ngIf="searchType === 'SNE'">SNE :</span>
+          <span class="sitenamefont" *ngIf="siteName">- {{siteName}}</span>
+        </h2>
+      </div>
+      <div class="col-md-5 col-sm-5 text-right">
+        <ul class="nav navbar navbar-left d-flex d-inline-flex padding0">
+          <li class="nav-item d-inline-flex marginright25 margintop5">
+            <span class="datamsgs">{{searchSiteErrorMsg}}</span>
+            <app-auto-suggestions [filterData]="filterData" (searchStr)="onkeyPressSearch($event)"
+              (selectStr)="onselectSearch($event)" [placeHolder]="searchBoxPlaceHolder">
+            </app-auto-suggestions>
+          </li>
+          <li class="nav-item d-inline-flex marginright25 btnbackground margin15">
+            <button type="button" class="btn btn-icon-custom btn-bottom" (click)="on3DClickNavigation()"
+              [disabled]="disable3DBtn"> 3D Site View </button>
+          </li>
+        </ul>
+      </div>
+      <hr class="hrclass">
+    </div>
+    <div class="row" *ngIf="!showGraphs && !noLineData">
+      <div class="col-md-12">
+        <h1 class="chooseMsg">{{ messageDisplay }}</h1>
+      </div>
+    </div>
+    <div class="row" *ngIf="noLineData">
+      <div class="col-md-12 noLineData">
+        <h1 style="text-align:center"> Historical data for this site/SNE is not found for the Graph</h1>
+      </div>
+    </div>
+    <div class="row" *ngIf="showGraphs">
+      <div class="col-md-12 col-sm-12" id="nodeTypeGraph">
+        <app-dsr-chart-view [graphData]="graphData?.data" (downloadCSV)="downloadCSV()" [elementId]="'nodeTypeGraph'" [deviceType]='deviceType' [siteName] ='siteName' [portspeed]='portspeed'>
+        </app-dsr-chart-view>
+      </div>
+    </div>
+    <div class="row" *ngIf="showTable">
+      <div class="col-md-12 col-sm-12">
+        <div class="row detail-site-table">
+          <div class="col-md-9 margntop edgeRT" *ngIf='deviceType == "Edge Rt"'>
+            <app-table [settings]="tableSettings" [noRecordError]="'No Record Found'"
+              (navigateUrl)="navigateUrlOnTableSelection($event)">
+            </app-table>
+          </div>
+          <div class="col-md-9 margntop treetable" *ngIf='deviceType == "Core Rt"'>
+            <p-treeTable [value]="tableSettings.data" [columns]="tableSettings?.headers" scrollHeight="{{tableSettings?.scrollHeight}}" [scrollable]="true">
+              <ng-template pTemplate="header" let-columns>
+                  <tr>
+                      <th *ngFor="let col of columns" [attr.ngvalue]="col.field" [ngStyle]="{'width':col?.columnWidth}">
+                          <span (click)="$event.stopPropagation()">
+                              <i class="plus radius show" id="{{col.field}}_plus" (click)="appendColumn(col);"
+                                *ngIf="col?.child?.length > 0"> </i>
+                              <i class="minus radius hide" id="{{col.field}}_minus" (click)="removeColumn(col)"
+                                *ngIf="col?.child?.length > 0"> </i>
+                            </span>
+                        {{col.header}}
+                      </th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns" >
+                  <tr [ngClass]="rowNode?.node?.children !== undefined ? 'parentrow' : 'childrow'">
+                      <ng-container *ngFor="let col of columns;let i = index">
+                      <td *ngIf="col?.link" [ngClass]=" col?.field == 'dataName' ? 'colorchangeparent' : 'colorchangechild'" [ngStyle]="{'text-align': col?.fixed? 'left': 'center','width':col?.columnWidth}" (click)="onClickNavigation(col.field,rowData[col.field],rowData)">
+                          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                          {{rowData[col.field]}}
+                      </td>
+                      <td *ngIf="col?.link == null || col?.link == false" [ngClass]=" col?.field == 'dataName' ? 'colorchangeparent' : 'colorchangechild'" [ngStyle]="{'text-align': col?.fixed? 'left': 'center','width':col?.columnWidth}">
+                          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+                          {{rowData[col.field]}}
+                      </td>
+                      </ng-container>
+                    </tr>            
+              </ng-template>
+          </p-treeTable>
+          </div>
+          <div class="col-md-3" id='pieScreen' #pieScreen>
+            <div *ngFor='let value of piechartdata'>
+              <div class="card-dashboard"  [ngClass]="deviceType == 'Edge Rt' ? 'edgrt' : 'corert'"  [id]="value.id">
+                <app-dsr-piechart-view [headerName]="value.labelheader" [siteName] ='siteName' [pieChartData]="value.data"
+                  [elementId]="value.id">
+                </app-dsr-piechart-view>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+    <div class="row" *ngIf="!noLineData && !showTable && nodonutdata">
+        <div class="col-md-12 noLineData">
+         <h1 class="chooseMsg">{{ messageDisplay }}</h1>
+        </div>
+    </div>
+  </div>
+  

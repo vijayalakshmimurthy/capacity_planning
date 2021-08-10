@@ -1,0 +1,56 @@
+<div class="board-inner" id="status-buttons">
+    <button data-html="true" data-toggle="tooltip" data-placement="top" class="prev-btn" [disabled]="isLeftDisabled"
+    (click)="prevNextWorkflow('previous')">
+        <i class="fas fa-chevron-circle-left lefticon"></i>
+        <span class="prevnext">Previous</span>
+    </button>
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="workflow disabled">
+            <a data-toggle="tab" class="tooltips">
+                <span class="round-tabs one"></span>
+                <span *ngIf="curentstatus !== 5" class="tooltiptext"><p>SNE ID: {{sourcesneid}}</p></span>
+                <span class='workflowname'>Source Device</span>
+            </a>
+        </li>
+
+        <!-- <base href="./"> -->
+        <base href="/srimsCapacityPlanning/">
+        <li class="workflow disabled">
+            <a data-toggle="tab" class="tooltips">
+                <span class="round-tabs two"></span>
+                <span *ngIf="curentstatus !== 5" class="tooltiptext"><p>Card Name : {{sourceCardName}}</p></span>
+                <span class='workflowname'>Source Card</span>
+            </a>
+        </li>
+
+
+        <li class="workflow disabled">
+            <a data-toggle="tab" class="tooltips">
+                <span class="round-tabs three"></span>
+                <span *ngIf="curentstatus !== 5" class="tooltiptext"><p>SNE ID: {{destinationsneid}}</p></span>
+                <span class='workflowname'>Destination Device </span>
+            </a>
+        </li>
+
+        <!-- circular ok icon -->
+        <li class="workflow disabled">
+            <a data-toggle="tab" class="tooltips">
+                <span class="round-tabs four"></span>
+                <span *ngIf="curentstatus !== 5" class="tooltiptext"><p>Card Name : {{desCardName}} </p></span>
+                <span class='workflowname'>Destination Card</span>
+            </a>
+        </li>
+
+        <li class="workflow disabled">
+            <a data-toggle="tab" class="tooltips">
+                <span class="round-tabs five"></span>
+                <span class='workflowname'>Review & Submit</span>
+            </a>
+        </li>
+    </ul>
+    <button data-html="true" data-toggle="tooltip" data-placement="bottom" class="next-btn" [disabled]="isRightDisabled"
+    (click)="prevNextWorkflow('next')">
+        <i class="fas fa-chevron-circle-right righticon"></i>
+        <span class="prevnext">Next</span>
+    </button>
+</div>

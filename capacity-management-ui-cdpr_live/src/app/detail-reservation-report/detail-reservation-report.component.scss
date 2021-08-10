@@ -1,0 +1,61 @@
+.chooseMsg {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 150px;
+}
+.hrclass {
+    border-bottom: 1px solid #e2dddd;
+    width: 98%;
+    right: 20px;
+    margin-top: 0rem;
+}
+.drrbutton {
+    height: 42px;
+}
+.marginleft10 {
+    margin-left: 10px;
+}
+.drrbutton span{
+    position: relative;
+    top: -5px;
+}
+.success-msg {
+    margin: 0 auto !important;
+    width: 80%;
+    margin-bottom: 7px !important;
+    text-align: center;
+    padding: 6px;
+  }
+.drr-download p {
+    margin-bottom: 0 !important;
+}
+#dropdownBasic2 {
+    min-width: 8rem !important;
+}
+.dropdown-menu {
+    font-size: 14px;
+    background: #eeeeee;
+    -webkit-transform: translate(50px, 45px) !important;
+    transform: translate(50px, 45px) !important;
+}
+.exportdrop {
+    left: -49px !important;
+    /* height: 65px; */
+    width: 8rem !important;
+    min-width: 8rem !important;
+    position: absolute;
+    top: 0px !important;
+    -webkit-transform: translate(793px, -154px);
+    transform: translate(793px, -154px);
+}
+.p-padding {
+    padding: 0px 4px;
+    margin-bottom: 5px;
+    margin-left: 8px;
+    width: auto;
+    cursor: pointer;
+    &:hover, &:active {
+        background-color: #D9BAE7;
+        color: #333;
+      }
+}

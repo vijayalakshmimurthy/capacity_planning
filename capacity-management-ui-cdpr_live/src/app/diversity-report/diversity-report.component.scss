@@ -1,0 +1,54 @@
+.filterheading {
+    font-size: 28px;
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+.marginright15 {
+    margin-right: 15px;
+}
+
+.padding0 {
+    padding: 0px;
+}
+
+.filterheader {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10%;
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-padding {
+    padding: 0px 4px;
+    margin-bottom: 5px;
+    line-height: 1.74em;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        background-color: #D9BAE7;
+        color: #333;
+    }
+}
+
+.tableclass {
+    padding-top: 10px;
+}
+
+.nopadding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.hrclass {
+    margin: 0 0 10px 0;
+}

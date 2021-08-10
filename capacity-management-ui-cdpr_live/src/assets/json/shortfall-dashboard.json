@@ -1,0 +1,46 @@
+{
+	"message": null,
+	"data": {
+		"shorfallGrapData": [{
+			"labels": ["30-Nov-20", "07-Dec-20", "14-Dec-20", "21-Dec-20", "28-Dec-20"],
+			"datasets": [{
+				"label": "Total Capacity Shortfall Received",
+				"backgroundColor": "#0991ce",
+				"borderColor": "#0991ce",
+				"barPercentage": 40,
+				"barThickness": 60,
+				"maxBarThickness": 50,
+				"minBarLength": 1,
+				"data": [30.0, 0.0, 0.0, 0.0, 0.0]
+			}, {
+				"label": "Shortfall Handled",
+				"backgroundColor": "#fc8c1d",
+				"borderColor": "#fc8c1d",
+				"barPercentage": 40,
+				"barThickness": 60,
+				"maxBarThickness": 50,
+				"minBarLength": 1,
+				"data": [6.0, 0.0, 0.0, 0.0, 0.0]
+			}, {
+				"label": "Inflight Capacity Identified",
+				"backgroundColor": "#9e9896",
+				"borderColor": "#9e9896",
+				"barPercentage": 40,
+				"barThickness": 60,
+				"maxBarThickness": 50,
+				"minBarLength": 1,
+				"data": [6.0, 0.0, 0.0, 0.0, 0.0]
+			}, {
+				"label": "New Capacity Planned",
+				"backgroundColor": "#6300a9",
+				"borderColor": "#6300a9",
+				"barPercentage": 40,
+				"barThickness": 60,
+				"maxBarThickness": 50,
+				"minBarLength": 1,
+				"data": [0.0, 0.0, 0.0, 0.0, 0.0]
+			}]
+		}],
+		"table": null
+	}
+}

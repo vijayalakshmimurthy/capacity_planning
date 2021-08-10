@@ -1,0 +1,62 @@
+.hrclass {
+    border-color: #6400aa; 
+}
+.loginh1 {
+    font-size: xx-large;
+    color: #6400aa;
+    font-weight: 500;
+}
+.loginsapn{
+    font-size: larger;
+    color: #333;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+  }
+  .siteResult{
+    color: #1fabe9;
+   text-decoration: underline;
+   cursor: pointer;
+   margin-right: 20px;
+   position: absolute;
+   left: 57.8%;
+   top: 42px;
+}
+.footerpading {
+    padding: 0px 30px;
+}
+p  {
+    margin-top: -15px;
+    margin-bottom: 10px;
+    font-size: larger;
+    color: #6400aa;
+    cursor: pointer;
+    }
+
+.logout-position{
+    position: relative;
+    height: 750px;
+    .logout-text{
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        transform: translate(-50%,-50%);
+        width: 30%;
+        .logout-icon{
+            width: 100px;
+            color: #6400aa;
+            height: 100px;
+            font-size: 60px;
+            display: inline-block;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 94px;
+            border: 3px solid #6400aa;
+            margin-right: 20px;
+            // margin-top: 20px;
+            }
+        }
+    }

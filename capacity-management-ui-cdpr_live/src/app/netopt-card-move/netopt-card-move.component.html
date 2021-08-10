@@ -1,0 +1,92 @@
+<div class="container-fluid mt-3">
+    <div class="card-move-upload">
+        <div class="header-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a (click)="redirectToHomePage()">
+                        <img src='assets/images/home.svg' class='home-icon' />
+                    </a>
+                    <span>Card Move</span>
+                </div>
+                <div class="col-md-7">
+                    <div class="wrapper-progressBar">
+                        <ul class="progressBar">
+                            <li class="active"><span class="text-font">Manual Planning</span></li>
+                            <li class="disable"><span class="text-font">Review & Submit</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="file-upload-section">
+            <div class="row">
+                <div class="col-md-6 radio-selection">
+                    <!-- <div class="select-radio"> -->
+                    <span class="radio-label">Select:</span>
+                    <p-radioButton name="groupname" value="manually" label="Add Inputs Manually"
+                        labelStyleClass="labelStyle" styleClass="radio-btn-style2 radio-btn-style"
+                        [(ngModel)]="selectedValue" (onClick)="diableFileUploader()">
+                    </p-radioButton>
+                    <p-radioButton name="groupname" value="uploadcsv" label="Upload CSV" labelStyleClass="labelStyle"
+                        styleClass="radio-btn-style1 radio-btn-style" [(ngModel)]="selectedValue"
+                        (onClick)="diableFileUploader()">
+                    </p-radioButton>
+                    <!-- </div> -->
+                </div>
+                <div class="vr"></div>
+                <div class="col-md-6 upload-file" [ngClass]="{'disableField': disableCon}">
+                    <app-file-uploader #fileUploader [acceptedFormats]="acceptedFormats" [csvHeaders]='csvHeaders'
+                        (fileUpload)="fileUpload($event)" *ngIf="!reloadCSV" [uploadSuccess]="uploadSuccess">
+                    </app-file-uploader>
+                    <div class="buttons" *ngIf="!reloadCSV">
+                        <button type="button" class="btn btn-primary" (click)="uploadCSV()" [disabled]="uploadCsvBtn">
+                            Submit</button>
+                        <a class="btn upload-csv btn-outline-primary"
+                            (click)="sampleCsv()"> <img
+                                alt="csv" src="assets/images/csv-purple.png" />Sample CSV</a>
+                    </div>
+                    <!-- Upload Error -->
+                    <div class="upload-error" *ngIf="reloadCSV">
+                        <h5>File Uploaded</h5>
+                        <div class="file-name-container">
+                            <img alt="csv" src="assets/images/csv.png" />
+                            <span class="file-name">{{fileName}}</span>
+                        </div>
+                        <div class="btn-container">
+                            <button type="button" class="btn btn-primary">
+                                <img alt="reupload" class="btn-with-icon"
+                                    src="assets/images/upload-white.png" />&nbsp;<span
+                                    (click)="reuploadFile()">Re-Upload CSV</span></button>
+                        </div>
+
+                        <div class="error-msg">
+                            <div class="err-heading">Error Uploading CSV</div>
+                            <div>{{csvUploadError}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tableBackground" [ngClass]="{'disableTable': disableTable}">
+            <h6>Input Data</h6>
+            <app-input-table [inputTableProperties]="inputTableProperties" (rowAdd)="appendRow()" 
+                (deleteRow)="deleteRow($event)" (emitproceedcheck)="emitproceedcheck($event)"></app-input-table>
+        </div>
+        <div class="email-field">
+            <div class="form-group">
+                <label class="email-addr">Email address<sup style="color:#ff4081">*</sup>
+                    <img class="help-icon" alt="help" src="assets/images/question.svg"
+                        pTooltip="Users can add multiple email address separated by semicolon(;)" tooltipPosition="top"
+                        tooltipStyleClass="help-tooltip" /></label>
+                <input type="text" class="form-control" placeholder="address1@bt.com;address2@bt.com ..."
+                    [(ngModel)]='emailIds' (input)="emailAdd()">
+            </div>
+        </div>
+        <div class="float-right clearfix">
+            <button type="button" class="btn btn-outline-primary" (click)="reset()"> Reset</button>
+            
+            <button type="button" class="btn btn-primary" (click)="proceedFun()" [disabled]="emailIds!== '' && proceedEnable">
+                Proceed</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,231 @@
+{
+   "siteName":"ABABR",
+   "productValue":
+   [
+   {
+   "productType":"Ethernet",
+   "data":
+   [
+     {
+       "portSpeed": "10G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "258",
+           "lSTMBidirectional": "258",
+           "lSTMConv": "258",
+           "holtsMethod": "258",
+           "holtWinter": "258"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "1G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "257",
+           "arima": "257",
+           "lSTMBidirectional": "257",
+           "lSTMConv": "257",
+           "holtsMethod": "257",
+           "holtWinter": "257"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "100G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "256",
+           "arima": "256",
+           "lSTMBidirectional": "256",
+           "lSTMConv": "256",
+           "holtsMethod": "256",
+           "holtWinter": "256"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     }
+   ]
+   },
+   {
+   "productType":"Broadband",
+   "data":
+   [
+     {
+       "portSpeed": "10G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "1G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "100G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     }
+   ]
+   },
+   {
+   "productType":"Backhaul",
+   "data":
+   [
+     {
+       "portSpeed": "10G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "1G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     },
+     {
+       "portSpeed": "100G",
+       "table": [
+         {
+           "model": "Yearly Forecast",
+           "actual": "258",
+           "arima": "256",
+           "lSTMBidirectional": "253",
+           "lSTMConv": "232",
+           "holtsMethod": "238",
+           "holtWinter": "218"
+         },
+         {
+           "model": "Accuracy",
+           "actual": "",
+           "arima": "",
+           "lSTMBidirectional": "",
+           "lSTMConv": "",
+           "holtsMethod": "",
+           "holtWinter": ""
+         }
+       ]
+     }
+   ]
+   }
+   ]
+   }

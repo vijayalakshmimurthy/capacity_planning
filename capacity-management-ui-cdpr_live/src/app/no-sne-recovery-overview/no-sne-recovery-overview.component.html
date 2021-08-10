@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="card-move-upload">
+        <div class="header-container filterheading">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 heading-main card-move-upload recoverytitle">
+                    <a (click)="redirectToHomePage()">
+                        <img src='assets/images/home.svg' class='home-icon' />
+                    </a>
+                    <h1 class="margin10 header header-title ">Sne Recovery - Overview</h1>
+                </div>
+                <div class="heading-main" 
+                    [ngClass]="enableRecoveryWorkflow ? 'col-md-4' : 'col-md-0'">
+                    <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;'
+                        *ngIf='enableRecoveryWorkflow'>
+                        <app-device-recovery-workflow></app-device-recovery-workflow>
+                    </div>
+                </div>
+                <div class="heading-main col-md-4"  *ngIf="!enableRecoveryWorkflow && role !== 'no user'">
+                    <div class="wrapper-progressBar">
+                        <ul class="progressBar">
+                            <li class="active"><span class="text-font">Manual Planning</span></li>
+                            <li class="disable"><span class="text-font">Review & Submit</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-right"  [ngClass]="role !== 'no user' ? 'col-md-4': 'col-md-8'">
+                    <ul class="nav navbar navbar-left d-flex d-inline-flex padding0 float-right">
+                        <li class=" exportdropdown  marginleft10">
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="info-button" (click)="export()" [disabled]="disableExportBtn" class="btn btn-custom btn-cdmove">
+                                    <app-svg icon="Capa_10-export_icon"> </app-svg>
+                                    <span> Export </span>
+                                </button>
+                            </div>
+                        </li>
+                        <li class=" exportdropdown  marginleft10">
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="info-button" (click)="save()" [disabled]="disableSaveBtn" class="btn btn-custom btn-cdmove">
+                                    <span> Save </span>
+                                </button>
+                            </div>
+                        </li>
+                        <li class=" exportdropdown  marginleft10">
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="info-button" (click)="submit()" [disabled]="disableSubmitBtn" class="btn btn-custom btn-save-custom btn-cdmove">
+                                    <span> Submit </span>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tableBackground">
+            <app-input-table [tableData]="tableData" (deleteRow)="deleteRow($event)" [disableEditIcon]="disableEditIcon" 
+            [disableSubmitBtn]="disableSubmitBtn" [disableSaveBtn]="disableSaveBtn" [disableExportBtn]="disableExportBtn"
+            [saveSuccess]="saveSuccess" [recoveryTypeHolder]= "recoveryTypeHolder" 
+            (emitCheckValidation)="checkValidation($event)" [role]="role" [disableTable]="disableTable"></app-input-table>
+        </div>
+
+    </div>
+</div>

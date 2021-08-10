@@ -1,0 +1,342 @@
+.right-panel-chassis-info,
+.right-panel-status-bar {
+  float: right;
+  width: 100%;
+}
+
+.panel-header {
+  text-align: left;
+  color: #6400aa;
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel-header h1 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+#cursoricn {
+  text-decoration: underline;
+}
+.disableactionsitename{
+  pointer-events:none;
+  text-decoration: none;
+}
+.panel-header.disableactionsitename #cursoricn {
+  text-decoration: none;
+}
+.otherhd {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.chassis-info {
+  background-color: #ffffff;
+  padding: 0 10px 10px 10px;
+}
+
+.chassis-info-block {
+  max-width: 25%;
+  width: 25%;
+  border: 1px solid #e0e0e0;
+  height: 64px;
+  background-color: #f8f8f8;
+  color: #333333;
+  padding: 3px 5px 10px;
+}
+.chassis-info-text-bold{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.chassis-info-text-bold-heading {
+  font-size: 14px;
+  color:#6400aa;
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.chassis-info-text-bold-content{
+  font-size: 13px;
+  text-align: right;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  padding: 10px 0 0 0;
+}
+.chassis-info-text {
+  font-size: 13px;
+  text-align: right;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  padding: 10px 0 0 0;
+}
+
+.chassis-block2 {
+  margin: 5px 0;
+}
+
+.status-bar {
+  background-color: #ffffff;
+  padding: 12px 5px 5px 5px;
+  margin-top: 5px;
+  display: inline-flex;
+  width: 100%;
+}
+
+.product-bar-list {
+  display: inline-flex;
+  display: -ms-inline-grid;
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1;
+}
+
+.status-bar-list,
+.speed-bar-list {
+  display: inline-flex;
+  display: -ms-inline-grid;
+}
+
+.product-list {
+  -moz-page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+  -o-column-break-inside: avoid;
+  -ms-column-break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.product-type {
+  list-style: none;
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1;
+  padding: 0 40px;
+
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0px 8px !important;
+  }
+}
+
+.speed-type {
+  list-style: none;
+  border-left: 1px solid #e0e0e0;
+  padding: 0 20px;
+
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0px 8px !important;
+  }
+}
+
+.status-info {
+  // width:250px;
+  list-style: none;
+  padding: 0px 20px;
+  border-left: 1px solid #e0e0e0;
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0px 8px !important;
+  }
+}
+
+.substatus-info {
+  // width:250px;
+  list-style: none;
+  padding: 0px 20px;
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0px 8px !important;
+  }
+}
+
+status-bar ul li.isActive span {
+  font-weight: bold;
+}
+
+.product-checkbox,
+.status-checkbox,
+.speed-checkbox {
+  font-size: 13px;
+  color: #333333;
+  padding: 0 10px;
+  margin-bottom: 0;
+  position: relative;
+  vertical-align: top;
+
+  @media only screen and (max-width: 1300px) {
+    font-size: 11px;
+  }
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.status-checkbox input:checked~.checkmark.Free {
+  background-color: #008a24;
+  border: none;
+}
+.status-checkbox input:checked~.checkmark.SAS {
+  background-color: #FF0000;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Used {
+  background-color: #00a2d7;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Reserved {
+  background-color: #a8730f;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Inflight {
+  background-color: #e3db10;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Cabled {
+  background-color: #008a24;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Un-Cabled {
+  background-color: #008a24;
+  border: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  left: 0;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid #333333;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.status-checkbox input,
+.product-checkbox input,
+.speed-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Show the checkmark when checked */
+.status-checkbox input:checked~.checkmark:after,
+.product-checkbox input:checked~.checkmark:after,
+.speed-checkbox input:checked~.checkmark:after {
+  display: block;
+}
+
+.product-checkbox input:checked~.checkmark,
+.speed-checkbox input:checked~.checkmark {
+  background-color: #6400aa;
+}
+
+.status-checkbox input:checked~.checkmark {
+  background-color: #6400aa;
+  border: none;
+}
+
+/* Style the checkmark/indicator */
+.status-checkbox .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.product-checkbox .checkmark:after {
+  left: 5px;
+  top: 0px;
+  width: 6px;
+  height: 12px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+.speed-checkbox .checkmark:after {
+  left: 5px;
+  top: 0px;
+  width: 6px;
+  height: 12px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+#cursoricn {
+  cursor: pointer;
+}
+
+#cursoricn.panel-header.disableactionsitename h1 {
+  text-decoration: none;
+}
+
+.headingfilter {
+  color: #6400AA;
+}
+.subli:before {
+  content: "";
+  display: block;
+  width: 0;
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 18px;
+  border-left: 1px dotted #6400aa;
+}
+.subli li:before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 0;
+  border-top: 1px dotted #6400aa;
+  margin-top: 4px;
+  position: absolute;
+  left: 20px;
+}
+.subli {
+  padding: 0;
+  li{
+    padding: 5px 10px;
+  }
+  
+}

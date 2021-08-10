@@ -1,0 +1,11 @@
+// BT Font
+@font-face {
+  font-family: "bt-font";
+  src: url(./../assets/fonts/btfont_rg-webfont.woff) format("woff"),
+    url(./../assets/fonts/btfont_rg-webfont.woff2) format("woff2");
+}
+
+body {
+  font-family: "bt-font" !important;
+  background-color: #eee;
+}

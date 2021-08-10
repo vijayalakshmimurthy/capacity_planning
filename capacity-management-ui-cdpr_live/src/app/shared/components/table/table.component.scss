@@ -1,0 +1,141 @@
+.otherhd {
+  //   background-color: #e3d1f0 !important;
+  color: rgb(66, 65, 65) !important;
+  text-align: center !important;
+  // border-bottom: 2px solid #6400aa;
+}
+
+//   .otherhd:nth-child(2),
+//  .otherhd:nth-child(1) {
+//  background: #d4b8e7 !important;
+
+// }
+.itemperpage {
+  position: absolute;
+  font-weight: normal;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.tableInput {
+  display: none;
+}
+
+td {
+  word-wrap: break-word;
+}
+
+.paddingTop {
+  padding-top: 5px;
+  margin-bottom: 0;
+}
+
+.siteLink {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.deltatSiteValue {
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.siteValue {
+  // padding-right: 20px;
+  margin-bottom: 0px;
+  color: black !important;
+}
+
+.negativeLink {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 0px;
+  color: red !important;
+}
+
+.negativeValue {
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 0px;
+  color: red !important;
+  pointer-events: none;
+}
+
+.norecord-p {
+  text-align: center;
+  background: white;
+  margin-top: 20px;
+}
+
+.rowGroup {
+  background: #ddd !important;
+  font-weight: bold;
+}
+
+.shiftData {
+  position: relative;
+  top: 2px;
+}
+
+.filter-icon-color {
+  color: #6400aa;
+  font-size: 24px !important;
+}
+
+.pi-bell {
+  cursor: pointer;
+}
+
+.green-color {
+  color: #5cb85c;
+}
+
+.red-color {
+  color: red;
+}
+
+.delete-icon {
+  border-left: 2px solid #e2dddd;
+  padding-left: 6px;
+  margin-left: 8px;
+}
+
+.cursoradd {
+  cursor: pointer !important;
+}
+
+.cursorremove {
+  cursor: default !important;
+}
+.background-green-color {			
+  background-color:#008a00 ;			
+  border: #008a00 1px solid;			
+    border-radius: 4px;			
+    color: whitesmoke;			
+    padding: 4px;			
+}			
+.background-red-color {			
+  background-color: #e60014;			
+    border: #e60014 1px solid;			
+    border-radius: 4px;			
+    color: whitesmoke;			
+    padding: 4px;			
+}			
+.background-yellow-color {			
+  background-color: #ffdc00;			
+  border: #ffdc00 1px solid;			
+  border-radius: 4px;			
+  color: black;			
+  padding: 4px;			
+}			
+.action {			
+  cursor: pointer;			
+  margin-left: 15px;			
+}
+
+:host {
+  ::ng-deep nb-accordion-item-body > div {
+  overflow: visible !important;
+  }
+  }

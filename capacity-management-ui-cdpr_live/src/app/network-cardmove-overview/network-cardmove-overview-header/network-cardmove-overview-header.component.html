@@ -1,0 +1,53 @@
+<div class="row filterheading">
+    <div class="col-md-3 col-sm-3 heading-main card-move-upload">
+        <a (click)="redirect()">
+            <img src='assets/images/home.svg' class='home-icon' />
+        </a>
+        <h1 class="margin10 header header-title">Card Move - Overview</h1>
+    </div>
+    <div class="heading-main" class="col-md-4" [ngClass]="enableNOCardMoveWorkflow ? 'col-md-6' : 'col-md-0'">
+        <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;' *ngIf='enableNOCardMoveWorkflow'>
+             <app-nocardmove-workflow></app-nocardmove-workflow> 
+        </div>
+    </div>
+    <div class="text-right" [ngClass]="enableNOCardMoveWorkflow ? 'col-md-3' : 'col-md-5'">
+        <ul class="nav navbar navbar-left d-flex d-inline-flex padding0">
+            <li class=" exportdropdown  marginleft10" *ngIf="index === 1">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="info-button" class="btn btn-custom btn-cdmove" (click)="export()" [disabled]="disableExportButton">
+                        <app-svg icon="Capa_10-export_icon"> </app-svg>
+                        <span> Export </span>
+                    </button>
+                </div>
+            </li>
+            <li class=" exportdropdown  marginleft10" *ngIf="index === 0">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="info-button" class="btn btn-custom btn-cdmove" [disabled]="disableCardInfillSave" (click)="saveCardInfill()">
+                        <span> Save </span>
+                    </button>
+                </div>
+            </li>
+            <li class=" exportdropdown  marginleft10"  *ngIf="index === 0">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="info-button" class="btn btn-custom btn-save-custom btn-cdmove" (click)="submitCardInfill()" [disabled]="disableCardInfillSubmit">
+                        <span> Submit </span>
+                    </button>
+                </div>
+            </li>
+            <li class=" exportdropdown  marginleft10" *ngIf="index === 1">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="info-button" class="btn btn-custom btn-cdmove" (click)="savetoValidate()" [disabled]="disablePortMoveSave">
+                        <span> Save </span>
+                    </button>
+                </div>
+            </li>
+            <li class=" exportdropdown  marginleft10" *ngIf="index === 1">
+                <div ngbDropdown class="d-inline-block">
+                    <button type="info-button" class="btn btn-custom btn-save-custom btn-cdmove" (click)="submitEnable()" [disabled]="disablePortMoveSubmit">
+                        <span> Submit </span>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

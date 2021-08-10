@@ -1,0 +1,82 @@
+.margin10 {
+    margin-top: 10px;
+}
+.filterheading {
+    font-size: 28px;
+    h1 {
+        font-size: 28px;
+    }
+}
+
+.btn-secondary {
+    background-color: #ababab;
+    color: white;
+    height: 32px;
+    padding: 1px 8px;
+}
+.list-action {
+    display: inline-flex;
+    list-style: none;
+}
+.li-margin {
+    margin-right: 10px;
+}
+
+.action-btn {
+    margin-top: 7%;
+    float: right;
+}
+
+.action-btn-search {
+    margin-top: 3%;
+    float: right;
+}
+
+.margintopmin2percent {
+    margin-top: -24px;
+}
+
+.margin15 {
+    padding: 10px 0px;
+}
+
+.error-msg {
+    color: red;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text {
+    text-align: center;
+    padding: 10px;
+}
+.padding10 {
+    padding: 10px;
+}
+
+.failedResult {
+    color: #da2525;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.successResult {
+    color: #5eae31;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.siteResult {
+    color: #1fabe9;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.marginright20 {
+    margin-right: 20px;
+}
+
+.marginleft15px {
+    margin-left: 15px;
+}

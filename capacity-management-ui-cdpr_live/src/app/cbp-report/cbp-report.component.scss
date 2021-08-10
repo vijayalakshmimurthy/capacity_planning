@@ -1,0 +1,123 @@
+.containerheigh {
+  margin-top: 90px;
+}
+
+.cbp-report {
+  margin: {
+    top: 16px;
+    bottom: 0px;
+  }
+}
+
+.no-record-found {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 16px;
+  font-weight: 700;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.card-move {
+  position: absolute;
+  right: 18px;
+  top: 90px;
+  border: none;
+}
+
+.cbp-table {
+  margin: {
+    top: 7px;
+  }
+
+  .error-msg {
+    margin: 0 auto !important;
+    width: 80%;
+    margin-bottom: 7px !important;
+    text-align: center;
+    padding: 6px;
+  }
+
+  .delete-row {
+    cursor: pointer;
+
+    padding: {
+      right: 6px;
+    }
+
+
+    border-right: 2px solid #e2dddd;
+
+    margin: {
+      right: 8px;
+    }
+  }
+
+  .edit-row {
+    cursor: pointer;
+  }
+
+  .green-color {
+    color: #5cb85c;
+
+    .text-adj {
+      margin-right: 8px;
+    }
+  }
+
+  .center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .content {
+    text-align: center;
+
+    padding: {
+      top: 16px;
+      bottom: 16px;
+    }
+  }
+
+  .button-align {
+    text-align: center;
+  }
+
+  .show-image {
+    display: inline-block !important;
+    margin-right: 8px;
+  }
+
+  .green-color1 {
+    color: #5cb85c;
+  }
+
+  .greencolor2 {
+    color: #5cb85c;
+  }
+
+  .greencolor3 {
+    color: red
+  }
+
+  .no-record-found {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 16px;
+    font-weight: 700;
+  }
+}
+
+.btn-icon-custom {
+  height: 40px;
+  padding: 8px 20px;
+  background: #6400aa;
+  color: #ffffff;
+  border-radius: 5px;
+  outline: none !important;
+}

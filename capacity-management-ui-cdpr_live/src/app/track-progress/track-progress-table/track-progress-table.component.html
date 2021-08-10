@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12 rowtop inputTable">
+        <p-table [columns]="inputTableProperties?.headers"
+            [value]="inputTableProperties?.data"
+            scrollHeight="{{inputTableProperties?.scrollHeight}}" 
+            [customSort]="inputTableProperties?.customSort" [scrollable]="true" dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-template ngFor let-col [ngForOf]="columns">
+                        <th [ngClass]="col?.properties?.sort? 'cursoradd':'cursorremove'" [attr.ngvalue]="col.field" *ngIf="col?.visible" pResizableColumn
+                        [pSortableColumn]="col?.properties?.sort && col.field !== 'actions' ? col.field : null"
+                        [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align': 'center' }">
+                        {{col.header}}
+                        <p-sortIcon *ngIf="col?.properties?.sort && col.field !== 'actions'" [field]="col.field"
+                        ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                        ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                    </th>
+                    </ng-template>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr> <ng-container *ngFor="let col of columns">
+                    <td *ngIf="col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.properties?.link && !(col?.properties?.fieldType === 'checkbox')  && !(col.header === 'Action')"
+                    [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour} ">
+                        <input class='inputWidth' *ngIf="col?.type === 'text'" pInputText type="text" [(ngModel)]="rowData[col.field]">
+                        <p-calendar
+                        *ngIf="col?.type === null"
+                        [inline]="false" [showWeek]="true" readonlyInput="true"
+                        [(ngModel)]="rowData[col.field]"
+                        dateFormat="dd/mm/yy" appendTo="body" dataType="string" showButtonBar="true"
+                        [minDate]="minimumDate" [showIcon]="true" inputId="icon" [disabled]="editordr"
+                        class="ng-tns-c13-9 p-calender-editior checke1">
+                    </p-calendar>
+                    </td>
+                  <td  *ngIf="col?.properties?.pageName === 'inputTablePage' && col?.properties?.fieldTypeCalenderbodyType !== 'calendar'"></td>
+                    <td style="text-align: center;"
+                    *ngIf="col.field === 'actions' && col?.visible || col.header === 'Action'"
+        
+                    [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight, 'color':col?.properties?.color}">
+                    <input *ngIf="col?.properties.action" type="image"
+                        class="delete-icon" src="assets/images/delete_icon.png">
+       
+                    <!-- <input *ngIf="editing  && col?.properties.action" type="image"
+                        class="delete-icon" src="assets/images/delete_icon.png"> -->
+
+                </td>
+                   </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+<div class="sidebar_dashboard">
+  <p-sidebar [(visible)]="display" blockScroll="true" [dismissible]="false" (onHide)="hideSideBar()">
+    <div class="dashboard_left">
+      <div class="row">
+        <div class="col-md-12 no-padding-left">
+          <h4 class="heading">Reservation</h4>
+        </div>
+      </div>
+      <form [formGroup]="reservationForm">
+        <div class=''>
+          <div class="row fields">
+            <div class="col-md-12">
+              <p>Reservation Type</p>
+              <!-- <select name="" class="form-control" (change)="dropdownChange($event)" formControlName='projectType'>
+                            <option [value]='null'>--Select Type--</option>
+                            <option [value]="projectType.id"  [ngClass]="{'customize' : projectType.id==5}" *ngFor="let projectType of listOfReservationProjectType">  {{projectType.projectType}}</option>
+                        </select> -->
+
+              <select name="" class="form-control dropDowntext" (change)="dropdownChange($event)"
+                formControlName='projectType'>
+                <option [value]='null'>--Select Type--</option>
+                <option [value]="projectType.projectType" [id]='projectType.id' [ngClass]="{'customize' : projectType.id==-1}"
+                  *ngFor="let projectType of listOfReservationProjectType"> {{projectType.projectType}}
+                  </option>
+                
+              </select>
+           
+
+            </div>
+
+            <div class="col-md-12">
+              <p>Reserving Domain Name*</p>
+              <input type="text" class="form-control dashboard_input" formControlName='domainNames' maxlength="50"
+                placeholder="Enter Domain Name">
+            </div>
+            <div class="col-md-12">
+              <p>Reservation Token Id*</p>
+              <input type="text" class="form-control dashboard_input" formControlName='tokenIds' maxlength="50"
+                placeholder="Enter Token Id">
+            </div>
+            <div class="col-md-12">
+              <p>Expiry Date</p>
+              <p-calendar formControlName='calenderDates' [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true"
+                [inputStyle]="{'width':'100%'}" [disabled]="directPeering"></p-calendar>
+            </div>
+            <div class="col-md-12">
+              <p>Notes*</p>
+              <textarea class="form-control dashboard_input" id='txtareheight' maxlength="250" formControlName='notesN' rows="5">
+                </textarea>
+            </div>
+            <div class="col-md-12" style="visibility: hidden; height: 0;">
+              <p>Email Id*</p>
+              <input type="text" class="form-control dashboard_input" formControlName='emailIds'
+                pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Enter Email Id" disabled>
+            </div>
+            <div class="col-md-12" *ngIf="userType === 'ADMIN'">
+              <input type="checkbox" class="checkboxnEntire" formControlName='entireSnes' />
+              <span> Entire SNE</span>
+            </div>
+          </div>
+        </div>
+        <div class="row bottom">
+          <div class="col-md-12 button-set">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <button type="info-button" class="btn btn-modal" (click)="cancelForm()">Cancel</button>
+              </li>
+              <li class="list-inline-item">
+                <button class="btn btn-icon-custom" type="button" (click)="onSubmit()"
+                  [disabled]="!reservationForm.valid">Submit </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-sidebar>
+</div>
+
+<app-modal-popup [display]="displaySuccessPopup" [commonModelProperties]='commonModelProperties'
+  (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayErrorPopup" [commonModelProperties]='commonModelProperties' (submitData)="onSubmit()"
+  (submitData)="onSubmit()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayTimeoutPopup" [commonModelProperties]='commonModelProperties'
+  (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+
+<p-dialog [modal]="true" [baseZIndex]="10000" class="classheader overflowXhidden"
+  header="Customize : Add/Remove Reservation Type" [width]="600" [contentStyle]="{'height': '600' }"
+  [(visible)]="projectpopUp" (onHide)="close()">
+
+  <div class="row">
+    <div style="margin-left: -12px" class=" col-md-3 col-sm-3">
+      <ul
+        class="nav nav-item d-inline-flex form-group1  navbar-left d-flex d-inline-flex form-group padding0 paddingTop search-tab">
+        <li class="form-group search-tab_chassis chassisalignment li-right searchbox autocomplete autocomplete-input">
+          <app-auto-suggestions *ngIf="searchFilter" [filterData]="filterData" [placeHolder]="searchBoxPlaceHolder"
+            (searchStr)="onkeyPressSearch($event)" (resetSearchClear)="OnResetSearchInput($event)"
+            (selectStr)="onselectSearch($event)">
+          </app-auto-suggestions>
+
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9 col-sm-9 ">
+      <li>
+        <button *ngIf="addhideBoolean" class="btn btn-custom-empty position" type="submit"
+          (click)="addData()">Add</button>
+      </li>
+      <li>
+        <button *ngIf="addBoolean" class="btn btn-custom-empty position addOtherbtn " type="submit"
+          (click)="addData2()">Add
+          Another Row</button>
+      </li>
+
+    </div>
+  </div>
+
+  <div class="card-move-table">
+
+    <app-table [settings]="tableSettings" [rowUpdatedSuccessfully]="rowUpdatedSuccessfully"
+      (deleteRow)="deleteRow($event)" (enableSubmitButton)="addRows($event)"
+      [successsfullysubmitted]="successsfullysubmitted" [allCheck]="allcheck" (updatedRow)="updateRow($event)">
+    </app-table>
+
+    <div class="row bottom">
+      <div class="col-md-12 button-set">
+        <ul class="list-inline">
+
+          <li class="li-margin">
+            <!-- <button type="button"  class="btn btn-custom-empty paddingbtn" (click)="updateData()">Update </button> -->
+          </li>
+
+          <li class="list-inline-item">
+            <button class="btn headerUpdate " type="button" [disabled]="updateValue" *ngIf="updateHideBoolean"
+              (click)="updateData()">Update </button>
+          </li>
+
+          <li class="list-inline-item">
+            <button class="btn headersubmit " type="button" [disabled]="submitValue" *ngIf="submitBoolean"
+              (click)="onSubmitReservation()">Submit</button>
+          </li>
+
+          <li class="list-inline-item">
+            <button *ngIf="updateBoolean" type="info-button" class="btn btnCancel" (click)="resetTable()"
+              reset>Cancel</button>
+          </li>
+
+          <li class="list-inline-item">
+            <button *ngIf="cancelPopupBoolean" type="info-button" class="btn btnCancel" reset
+              (click)="close()">Cancel</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</p-dialog>
+
+<p-dialog header="Delete" [modal]="true" [baseZIndex]="10000" [(visible)]="deletePopup" [width]="400"
+  [contentStyle]="{'height': '500' }" class="addcancelpopup" [baseZIndex]="10000">
+  <div>
+    <!-- <img class="center" src="assets/images/question_icon.png"> -->
+    <p style=" text-align: center ;margin-bottom: 10px;">Are you sure you want to delete the data </p>
+    <p class="text">
+      <span>
+        <button type="submit" class="btn btnDeletePopup marginright10" (click)="deleteCancel()">No</button>
+      </span>
+      <span class="">
+        <button type="submit" class="btn btnDeletePopup " (click)="deleteOk()"> Yes
+        </button>
+      </span>
+    </p>
+  </div>
+</p-dialog>

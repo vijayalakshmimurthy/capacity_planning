@@ -1,0 +1,37 @@
+<div class="container" *ngIf="enabledivOneimg" [ngClass]="{'enabledivOneimg':enabledivOneimg}">
+  <div class='col'>
+    <div class='satellitebuttondiv'> 
+      <button *ngIf='satellitecount>1' (click)=opensatellitepopup(satellitecount)>Satellite</button>
+  </div>
+    <span #ref style="display:none">{{sneId}}</span>
+    <BT-device-visualizer-2d *ngIf='deviceData && deviceConfiguration' (mouseenter)="onMouseover(ref.innerText)" (click)="ondblClickNavigate(ref.innerText,$event)"
+    (mouseleave)="onMouseLeave(ref.innerText)" #visualizer [deviceData]='deviceData'
+      [deviceConfiguration]='deviceConfiguration'>
+    </BT-device-visualizer-2d>
+  </div>
+</div>
+<div class="container" *ngIf="enabledivTwoimg" [ngClass]="{'enabledivTwoimg':enabledivTwoimg}">
+  <div class='col'>
+    <div class='satellitebuttondiv'> 
+      <button *ngIf='satellitecount>1' (click)=opensatellitepopup(satellitecount)>Satellite</button>
+  </div>
+    <span #ref style="display:none">{{sneId}}</span>
+    <BT-device-visualizer-2d *ngIf='deviceData && deviceConfiguration' (mouseenter)="onMouseover(ref.innerText)" (click)="ondblClickNavigate(ref.innerText,$event)"
+    (mouseleave)="onMouseLeave(ref.innerText)" #visualizer [deviceData]='deviceData'
+      [deviceConfiguration]='deviceConfiguration'>
+    </BT-device-visualizer-2d>
+  </div>
+</div>
+<div class="container" *ngIf="enablediv" [ngClass]="{'enablediv':enablediv}">
+  <div class='col' >
+    <div class='satellitebuttondiv'> 
+        <button *ngIf='satellitecount>1' (click)=opensatellitepopup(satellitecount)>Satellite</button>
+    </div>
+    
+    <span #ref style="display:none">{{sneId}}</span>
+    <BT-device-visualizer-2d (mouseenter)="onMouseover(ref.innerText)" (click)="ondblClickNavigate(ref.innerText,$event)"
+    (dblclick)="openpopup($event,ref.innerText)" (mouseleave)="onMouseLeave(ref.innerText)" *ngIf='deviceData && deviceConfiguration' #visualizer [deviceData]='deviceData'
+      [deviceConfiguration]='deviceConfiguration'>
+    </BT-device-visualizer-2d>
+  </div>
+</div>

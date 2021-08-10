@@ -1,0 +1,349 @@
+.hrclass {
+  border-bottom: 1px solid #e2dddd;
+  width: 98%;
+  right: 20px;
+  margin-top: -10px;
+  margin-bottom: 0 !important;
+}
+
+.search-sne {
+  margin: 10%;
+}
+
+.filterheader {
+  font-size: 30px;
+}
+
+.search-icon {
+  background: url(/assets/images/search_purple.png) center no-repeat;
+  height: 85px;
+  background-size: contain;
+}
+
+@media screen and (min-width: 760px) and (max-width: 1640px) {
+  #hideleftpad {
+    padding: 0px;
+  }
+}
+
+.panel-height {
+  height: calc(100vh - 150px);
+  padding-left: 0 !important;
+  margin: -.5% 0 0;
+  padding: 0;
+}
+
+#devicepanel {
+  margin-top: -8px;
+  height: calc(100vh - 150px);
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.chevron-up-down {
+  position: fixed;
+  color: #6400aa;
+  opacity: 0.7;
+  bottom: 3px;
+  font-size: 32px;
+  cursor: pointer;
+  width: 31px;
+  right: 26%;
+  z-index: 999999;
+}
+
+.prev-next-btn {
+  background: transparent;
+  border: none;
+  color: #6400aa;
+}
+
+.prevbtn {
+  font-size: 15px;
+  background: #6400aa;
+  color: #fff;
+  padding: 5px 20px;
+  position: absolute;
+  bottom: 46px;
+  left: -12px;
+  border-radius: 2px;
+  border: none;
+}
+
+/* popup*/
+#modal,#modalsatellite {
+  position: fixed;
+  z-index: 99999;
+  padding-top: 0;
+  left: 0;
+  top: 8%;
+  width: 100vw;
+  height: calc(100vh - 0px);
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  background-color: #fefefe;
+  -webkit-box-orient: unset;
+  margin: auto;
+  padding: 5px;
+  border: 1px solid #888;
+  width: 87vw;
+  height: calc(100vh - 90px);
+  padding: 17px 12%;
+  flex-wrap: wrap;
+  left: 4%;
+
+  @media screen and (min-width: 760px) and (max-width: 1640px) {
+    padding: 17px 6% !important;
+  }
+}
+#modalsatellite{
+  top: 0%;
+}
+#modalsatellite .modal-content{
+  padding: 17px 0%;
+  width: 76vw;
+  left: 0%;
+  top: 8%;
+  @media screen and (min-width: 760px) and (max-width: 1640px) {
+    padding: 17px 0% !important;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 3px;
+  z-index: 999;
+  position: relative;
+  left: 0%;
+  cursor: pointer;
+
+  @media screen and (min-width: 760px) and (max-width: 1640px) {
+    left: 0% !important;
+  }
+}
+
+#modalsatellite .close {
+  top: -100px;
+  @media screen and (min-width: 760px) and (max-width: 1640px) {
+    top: -90px;
+  }
+}
+#modalsatellite .closediv{
+  width: 74vw;
+}
+.displayblock {
+  display: block
+}
+
+.displaynone {
+  display: none;
+}
+.closediv {
+  width: 93vw;
+  position: relative;
+}
+#sateliteshelf{
+  color: #6400aa;
+  border-bottom: 2px solid #eee;
+  margin: 0;
+  padding: 0;
+  h1{
+    font-size: 28px;
+    padding: 0px 15px;
+  }
+}
+#portalign {
+  text-align: center;
+  h1{
+    font-size: 26px;
+    text-align: center;
+    padding: 0px 30px;
+    display: inline;
+    border-bottom: 2px solid #eee;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+  }
+}
+.status-bar {
+  background-color: #ffffff;
+  padding: 12px 5px 5px 5px;
+  margin-top: 5px;
+  display: inline-flex;
+  width: 100%;
+}
+.status-info {
+  list-style: none;
+  padding: 25px;
+  li {
+    text-align: left;
+    padding: 10px;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0px 8px !important;
+  }
+}
+status-bar ul li.isActive span {
+  font-weight: bold;
+}
+
+.status-checkbox, {
+  font-size: 13px;
+  color: #333333;
+  padding: 0 30px;
+  margin-bottom: 0;
+  position: relative;
+  vertical-align: top;
+
+  @media only screen and (max-width: 1400px) {
+    font-size: 11px;
+  }
+  @media screen and (min-width: 700px) and (max-width: 1800px) {
+    padding: 0 15px;
+   }
+
+}
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.status-checkbox input:checked~.checkmark.Free {
+  background-color: #008a24;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Used {
+  background-color: #00a2d7;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Reserved {
+  background-color: #a8730f;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Inflight {
+  background-color: #e3db10;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Cabled {
+  background-color: #008a24;
+  border: none;
+}
+
+.status-checkbox input:checked~.checkmark.Un-Cabled {
+  background-color: #008a24;
+  border: none;
+}
+.status-checkbox input:checked~.checkmark.SAS {
+  background-color: #FF0000;
+  border: none;
+}
+.checkmark {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  left: 0;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.status-checkbox input, {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Show the checkmark when checked */
+.status-checkbox input:checked~.checkmark:after {
+  display: block;
+}
+.status-checkbox input:checked~.checkmark {
+  background-color: #6400aa;
+  border: none;
+}
+#loader-wrapper {
+  position: fixed;
+  // width: 100%;
+  // height: 100%;
+  top: 0;
+  left: 0;
+  // background-color: transparent;
+  z-index: 999;
+}
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+.subli:before {
+  content: "";
+  display: block;
+  width: 0;
+  position: absolute;
+  top: 20px;
+  bottom: 13px;
+  left: 38px;
+  border-left: 1px dotted #6400aa;
+}
+.subli li:before {
+  content: "";
+  display: block;
+  width: 23px;
+  height: 0;
+  border-top: 1px dotted #6400aa;
+  margin-top: 10px;
+  position: absolute;
+  left: 38px;
+}
+.subli {
+  padding: 0;
+  li{
+    padding: 5px 10px;
+  
+  }  
+  
+}
+.substatus-info{
+  list-style: none;
+}
+.padding0 {
+  padding: 0;
+  margin: 0;
+}
+.uplinkstyle{
+  font-weight: bold;
+    padding: 0 5px;
+}
+@media screen and (min-width: 760px) and (max-width: 1800px) {
+  .subli li:before {
+    left: 24px;
+  }
+  .subli:before{
+    left: 24px;
+  }
+
+}

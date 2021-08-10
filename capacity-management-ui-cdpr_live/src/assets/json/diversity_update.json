@@ -1,0 +1,41 @@
+{
+	"data": [{
+		"id": null,
+		"sneId": "20926620",
+		"cardStatus": "Success",
+		"cardDetails": "2/1",
+		"diversityGroupName": "BTRAN-LON-49",
+		"operationPerformed": null,
+		"creadtedDate": null,
+		"cardId": "20926620:/shelf=1/slot=2/sub_slot=1"
+    }],
+    "header": [{
+	"id": 20,
+	"field": "sneId",
+	"header": "SNE Id",
+	"fixed": true,
+	"visible": true
+},
+{
+	"id": 20,
+	"field": "cardDetails",
+	"header": "Card",
+	"fixed": true,
+	"visible": true
+},
+{
+	"id": 20,
+	"field": "diversityGroupName",
+	"header": "Site",
+	"fixed": true,
+	"visible": true
+},
+{
+	"id": 20,
+	"field": "cardStatus",
+	"header": "Status",
+	"fixed": true,
+	"visible": true
+}
+]
+}

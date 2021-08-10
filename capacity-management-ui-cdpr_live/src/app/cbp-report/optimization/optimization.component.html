@@ -1,0 +1,109 @@
+<div class="card-move-table optimizationTable">
+    <p-table #dt [columns]="header" [value]="tableData" [scrollable]="true" [paginator]="true" [rows]="100"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Item per page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{first} - {last} of {totalRecords}"
+        [rowsPerPageOptions]="[100,200,300]" scrollHeight="50vh" (onRowSelect)="rowSelect()"
+        (onRowUnselect)="rowSelect()" (onFilter)="checkingFilter($event)" [(selection)]="selectedRow">
+        <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+                <col style='width:50px'>
+                <col *ngFor="let col of columns" [style.width]="col?.width">
+                <col style='width:75px' *ngIf="roleName === 'PROD_CE_ADMIN'">
+            </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr class="table-header">
+                <th colspan="5"></th>
+                <th colspan="5" style="text-align: center;">Source</th>
+                <th colspan="5" style="text-align: center;">Destination</th>
+                <th [attr.colspan]="colspanNo"></th>
+            </tr>
+            <tr>
+                <th>
+                    <p-checkbox (onChange)="selectRow(e.checked)" #e value="val1" [(ngModel)]="selectedValues">
+                    </p-checkbox>
+                    All
+                </th>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    <span>{{col.header}}</span>
+                    <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                        ariaLabelDesc="Activate to sort in descending order"
+                        ariaLabelAsc="Activate to sort in ascending order">
+                    </p-sortIcon>
+                </th>
+                <th *ngIf="roleName === 'PROD_CE_ADMIN'">
+                    Action
+                </th>
+            </tr>
+            <tr>
+                <th></th>
+                <th *ngFor="let col of columns">
+                    <input *ngIf="col.type === 'input'" pInputText
+                        (input)="dt.filter($event.target.value, col.field, 'contains')" placeholder="Type to filter" />
+
+                    <p-calendar [(ngModel)]="dateValue" placeholder="Type to filter" dateFormat="dd/mm/yy"
+                        inputStyleClass="cbp-calender" dataType="string"
+                        (onSelect)="dt.filter(dateValue, col.field, 'contains')"
+                        (onInput)="dt.filter(dateValue, col.field, 'contains')" showButtonBar="true"
+                        (onClearClick)="dt.filter(dateValue, col.field, 'contains')" *ngIf="col.type === 'calander'"
+                        appendTo="body">
+                    </p-calendar>
+
+                    <p-dropdown [options]="status" [style]="{'min-width':'98%', 'width': '100%'}"
+                        (onChange)="dt.filter($event.value, col.field, 'equals')" styleClass="cbp-filter-dropdown"
+                        *ngIf="col.type === 'select'" appendTo="body">
+                    </p-dropdown>
+                </th>
+                <th *ngIf="roleName === 'PROD_CE_ADMIN'"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+            <tr [pSelectableRow]="rowData">
+                <td style="text-align: center;">
+                    <p-tableCheckbox [value]="rowData"
+                        [disabled]="rowData.status !== 'Saved' || rowData.cardMoveStatus === 'Pending'">
+                    </p-tableCheckbox>
+                </td>
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="rowData.status !== 'Awaiting Card Plan'">
+                        <ng-container *ngIf="col.field !== 'status'; else other_content">
+                            <span>{{rowData[col.field]}}</span>
+                        </ng-container>
+                        <ng-template #other_content>
+                            <span *ngIf="rowData[col.field] !== 'Saved'"
+                                [ngClass]="{'green-color': rowData[col.field] == 'Submitted' || rowData[col.field] == 'Processing', 'red-color': rowData[col.field] == 'Submission Failed'}">
+                                {{rowData[col.field]}}
+                            </span>
+                            <span *ngIf="rowData[col.field] == 'Saved'" class="green-color">
+                                <img src="assets/images/round-done-button.png" alt="saved" class="text-adj" />
+                                {{rowData[col.field]}}
+                            </span>
+                        </ng-template>
+                    </ng-container>
+
+
+                    <span *ngIf="rowData.status === 'Awaiting Card Plan'">
+                        <span *ngIf="col.field !== 'status'">
+                            {{rowData[col.field]}}
+                        </span>
+                        <span *ngIf="col.field === 'status'">
+                            <select class="form-control" #selectValue [(ngModel)]="rowData.status"
+                                (change)="changingStatus(i,rowData, selectValue.value)" title={{rowData.status}}>
+                                <option value="Awaiting Card Plan">Awaiting Card Plan</option>
+                                <option value="Saved">Saved</option>
+                            </select>
+                        </span>
+                    </span>
+                </td>
+                <td style="text-align: center;" *ngIf="roleName === 'PROD_CE_ADMIN'">
+                    <span class="delete-row"
+                        *ngIf="rowData.status === 'Saved' || rowData.status === 'Awaiting Card Plan'"><img
+                            src="assets/images/delete_icon.png" alt="delete" (click)="deleteRow(rowData.id)" /></span>
+                    <span class="edit-row"
+                        *ngIf="rowData.status === 'Saved' || rowData.status === 'Awaiting Card Plan'"><img
+                            src="assets/images/edit_icon.png" alt="edit" (click)="editRow(rowData)" /></span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

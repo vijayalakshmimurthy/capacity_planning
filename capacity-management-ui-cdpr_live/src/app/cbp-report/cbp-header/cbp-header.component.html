@@ -1,0 +1,32 @@
+<div class="cbp-header-wrapper clearfix">
+    <div class="pull-left">
+        <h1>{{header}} <span>{{sitename}}</span></h1>
+    </div>
+    <div class="pull-right clearfix">
+        <div class="right-side-nav pull-left">
+            <app-auto-suggestions [filterData]="filterData" (searchStr)="onkeyPressSearch($event)"
+                (selectStr)="onselectSearch($event)" [placeHolder]="searchBoxPlaceHolder" [emptyMessage]="emptyMessage">
+            </app-auto-suggestions>
+        </div>
+        <div class="right-side-nav pull-left">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-custom" data-hover="dropdown" id="dropdownBasic2" ngbDropdownToggle
+                    aria-expanded="true" [disabled]="exportDisable" (click)="tableConvert('csv')">
+                    <app-svg icon="Capa_10-export_icon"> </app-svg>
+                    <span> Export </span>
+                </button>
+            </div>
+        </div>
+        <div class="right-side-nav pull-left btnbackground">
+            <button type="button" class="btn btn-icon-custom" (click)="clearFilter()" [disabled]="clearValue">Clear
+                All</button>
+        </div>
+        <div class="right-side-nav pull-left btnbackground" *ngIf="index === 0 || index === 3">
+            <button type="button" class="btn btn-icon-custom" [disabled]="value"
+                (click)="submitToWfmt()">Submit</button>
+        </div>
+        <div class="right-side-nav pull-left btnbackground" *ngIf="index === 2">
+            <button type="button" class="btn btn-icon-custom" (click)="planRack()">Plan Rack</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+[
+	{
+		"id": 489159,
+		"code1141": "AA",
+		"siteName": "ABERDARE",
+		"broadband1g": "46",
+		"broadband10g": "1",
+		"ethernetFaste": "0",
+		"ethernet1gHe": "0",
+		"ethernet10gHe": "1",
+		"ethernet10gWmcApolloTef": "0",
+		"ethernet100gAccess": "0",
+		"backhaul10g": "0",
+		"backhaul100g": "0",
+		"forecastddlr100g": "0",
+		"forecastddsr100g": "0",
+		"forecastlr4100g": "0",
+		"forecastsr4100g": "0",
+		"forecastsr10100g": "0",
+		"forecastother100g": "0",
+		"forecastlr410g": "0",
+
+	  "message": null
+	}
+  ]

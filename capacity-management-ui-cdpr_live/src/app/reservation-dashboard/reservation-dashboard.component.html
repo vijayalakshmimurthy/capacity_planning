@@ -1,0 +1,46 @@
+<div class="container-fluid containerwidth">
+    <div class="row filterheading">
+        <div class="col-md-7 col-sm-7 list-inline">
+            <h2 class="margin10 header">Reservation dashboard</h2>
+        </div>
+        <div class="col-md-5 col-sm-5 text-right">
+            <ul class="lnav navbar navbar-left d-flex d-inline-flex padding0">
+                <li class="nav-item d-inline-flex marginleft10 exportdropdown margin-top23px export">
+                    <div ngbDropdown class="d-inline-block exportAlign">
+                        <button [disabled]="this.tableSettings.data.length === 0" class="btn btn-custom" data-hover="dropdown" id="dropdownBasic2" ngbDropdownToggle aria-expanded="true" >                            
+                            <img src="assets/images/export.png" class="exportpadding" width="20" height="30" >                            
+                            <span> Export </span>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                            <p class="p-padding" appCSVDownload [data] ="exportData" [fileName] ="fileName">Export as Excel</p>                            
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        <hr class="hrclass">
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="card-dashboard" id="reservationChart1">
+                <app-reservation-dashboard-piechart [headerName]="'Total Port versus Reservation'" [pieChartData]="reservationData?.totalPortVersusReservation" [elementId]="'reservationChart1'">
+                </app-reservation-dashboard-piechart>
+            </div>            
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card-dashboard" id="reservationChart2">
+                <app-reservation-dashboard-piechart [headerName]="'Reservation Category'" [pieChartData]="reservationData?.reservationCategory" [elementId]="'reservationChart2'">
+                </app-reservation-dashboard-piechart>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 tableborderbottom">
+            <app-table [settings]="tableSettings" (selectedPageNo)="getSelectedPageNo($event)"
+            (listRowSelect)="getlistRowSelect($event)" [noRecordError]="noRecordError" (customSortRecord)="customSort($event)">
+            </app-table>       
+        </div>
+    </div>
+</div>
+ 

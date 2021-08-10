@@ -1,0 +1,141 @@
+<div class="container-fluid containerwidth">
+  <app-loader *ngIf="showLoader"></app-loader>
+  <app-three60-header [showLoader]="showLoader" [workflowenable]='workflowenable'
+    [disablesearchnput]='disablesearchnput' [deltaEnable]='deltaEnable' [deltavalue]='deltavalue'
+    (load2dDataBySNE)="load2dDataBySNE($event)" (slectedvaluefromdropdown)='slectedvaluefromdropdown($event)'
+     [counter]='counter' [totalnumberofDevice]='totalnumberofDevice' [dropdown]='dropdown'
+     [enableNOCardMoveWorkflow]='enableNOCardMoveWorkflow' [previousvalue]='previousvalue'
+     [enableRecoveryWorkflow]="enableRecoveryWorkflow">
+  </app-three60-header>
+  <div class="row">
+    <div class="col-md-12" style='z-index: 99;'>
+      <hr class="hrclass">
+    </div>
+  </div>
+  <div class="row" [hidden]="!showHtml">
+    <div class="col-md-9 col-sm-8" id='devicepanel' #devicePanel (scroll)='onScroll($event)'>
+      <div class="row setheight">
+        <!-- <div id='loader-wrapper' [ngClass]="loader ? 'displayblock' : 'displaynone'">
+          <div class="spinner">
+            <img src="assets/images/loader.gif" alt="loader">
+          </div>
+        </div> -->
+        <ng-template #2dcontainer></ng-template>
+        <div class="chevron-up-down">
+          <div *ngIf='previousbtnenable'>
+            <button data-html="true" data-toggle="tooltip" data-placement="top" title="Previous Page"
+              (click)='loadprevious()' class="prevbtn">
+              Prev </button>
+          </div>
+          <div *ngIf="lazyenable">
+            <button data-html="true" data-toggle="tooltip" data-placement="top" title="Scroll Top"
+              (click)='scrolltotopfn()' class="prev-next-btn">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-4 panel-height over-flow-hidden">
+      <app-three60-right-panel [rightPanelInfo]="firstsixdata" [rightPanelTotalportcount]="totalportcount"
+        [rightPanelnfoSiteName]="siteheading" [rightPanelStatusList]="rightPanelStatusList"
+        [changesitename]='changesitename' [rightPanelSpeedList]='rightPanelSpeedList'
+        [rightPanelProductList]="rightPanelProductList" [hovertable]='sneidhoverdata' [filters]='filters'
+        (modifyColorParmater)="modifyColorParmater($event)">
+      </app-three60-right-panel>
+    </div>
+  </div>
+  <div [hidden]="showHtml" class="row search-sne">
+    <h1 class="col-md-12 filterheader text-center"> Search the Site/1141 for 360 Site Report </h1>
+  </div>
+  <div id='modal' [ngClass]="popup ? 'displayblock':'displaynone'">
+    <div class='closediv'>
+      <span class="close" (click)='closepopup()'>&times;</span>
+    </div>
+
+    <div class="col-md-12 modal-content">
+      <ng-template #popupcontainer></ng-template>
+    </div>
+  </div>
+  <div id='modalsatellite' [ngClass]="satellitecontainer ? 'displayblock':'displaynone'">
+    <div class='modal-content'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col-md-12' id='sateliteshelf'>
+            <h1>Satelliite Shelves</h1>
+          </div>
+        </div>
+        <div class='row' style='height:80%;margin-top:4%'>
+          <div class='col-md-9'>
+            <div class='closediv'>
+              <span class="close" (click)='closesatpopup()'>&times;</span>
+            </div>
+
+            <div class="col-md-12 padding0">
+              <ng-template #satellitecontainerr></ng-template>
+            </div>
+          </div>
+          <div class='col-md-3' id="portalign">
+            <h1>
+              Port Status
+            </h1>
+            <div>
+              <span class="status-bar-list">
+                <ul class="status-info">
+                  <ng-container *ngFor="let status of rightPanelStatusList let i = index">
+                    <ng-container *ngIf='status.statusName == "Free" else othertype'>
+                      <li>
+                        <label class="status-checkbox">
+                          <input type="checkbox" name="2dstatus" checked id="{{status.statusName}}" value="{{i}}"
+                            class="filter_status" (click)='checkFree($event)'>
+                          <span class="checkmark {{status.statusName}}"></span>
+                          <span>{{status.statusName}}</span>
+                          <ul class="substatus-info subli">
+                            <li><label class="status-checkbox">
+                                <input type="checkbox" name="satsubstatus" checked id="Cabled Up" value="4"
+                                  class="filter_status" (click)='selectedFilters()'>
+                                <span class="checkmark Cabled Up"></span>
+                                <span>Cabled to PP</span>
+                              </label>
+                            </li>
+                            <li><label class="status-checkbox">
+                                <input type="checkbox" name="satsubstatus" checked id="Un-Cabled" value="5"
+                                  class="filter_status" (click)='selectedFilters()'>
+                                <span class="checkmark Un-Cabled"></span>
+                                <span>Un-Cabled to PP</span>
+                              </label>
+                            </li>
+                          </ul>
+                        </label>
+                      </li>
+                    </ng-container>
+
+                    <ng-template #othertype>
+                      <li *ngIf='status.statusName !== "Cabled Up" &&  status.statusName !== "Un-Cabled"'>
+                        <label class="status-checkbox">
+                          <input type="checkbox" name="2dstatus" checked id="{{status.statusName}}" value="{{i}}"
+                            class="filter_status" (click)='selectedFilters()'>
+                          <span class="checkmark {{status.statusName}}"></span>
+                          <span>{{status.statusName}}</span>
+                        </label>
+                      </li>
+                    </ng-template>
+
+                  </ng-container>
+                </ul>
+              </span>
+            </div>
+            <div>
+              <img src='assets/images/uplink_port.jpg'/> 
+              <span class='uplinkstyle'>
+                 Uplinked Device Port
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class='row' style='border-top:3px solid #eee;'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

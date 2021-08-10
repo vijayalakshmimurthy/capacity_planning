@@ -1,0 +1,78 @@
+.port-name {
+    color: #6400aa;
+    font-size: 20px;
+    top: 16px;
+    font-weight: 400;
+
+    @media only screen and (min-width: 990px) and (max-width: 1400px) {
+        //   top: 39%;
+        font-size: 16px !important;
+    }
+}
+
+.circle-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.piechart {
+    text-align: center;
+    margin-top: 30px;
+
+    li {
+        display: inline-block;
+        padding-right: 5px;
+        padding-left: 5px;
+        p {
+            @media only screen and (min-width: 900px) and (max-width: 1400px) {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.pie {
+    margin-top: 30px;
+}
+
+.totalports {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    @media only screen and (min-width: 990px) and (max-width: 1400px) {
+        //   top: 39%;
+        font-size: 12px;
+    }
+    @media only screen and (min-width: 900px) and (max-width: 1160px) {
+        top: 39%;
+        //  font-size: 12px;
+    }
+}
+
+.port-speed {
+    position: absolute;
+    right: 55px;
+    top: 23px;
+
+    select {
+        border: 0px;
+        color: #6400aa;
+        font-weight: 600;
+    }
+}
+
+.port-speed-download {
+    position: absolute;
+    right: 4px;
+    top: 18px;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}

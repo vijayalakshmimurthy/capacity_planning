@@ -1,0 +1,107 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 list-inline">
+                <h1 class="margin10 header">Track Progress </h1>
+            </div>
+            <div class="col-md-8 col-sm-8 text-center">
+                <app-alert></app-alert>
+            </div>
+        </div>
+        <hr class="hrclass">
+        <div class="row padding-bottom1">
+            <div class="col-md-12 col-sm-12 margin-top6">
+                <ul class="navbar-left d-flex d-inline-flex padding0 form-group">
+                 
+                    <li class="nav-item d-inline-flex marginright15">
+                      <p-dropdown [options]="searchByOptions" optionLabel="label" [(ngModel)]="selectedSearchBy" id="float-input" [autoDisplayFirst]="false" placeholder="File Name" 
+                         [style]="{'width':'90%'}"></p-dropdown>
+                         <!-- <p-dropdown [options]="cities" [(ngModel)]="selectedCity1" placeholder="Select a City" optionLabel="name" [showClear]="true">
+                           
+                         </p-dropdown> -->
+
+                  </li>
+                    <li class="nav-item d-inline-flex marginright15 marginleft15 ">
+                       
+                        <div class='search-div'>
+                            <input class='search-inp' [(ngModel)]='keyword' placeholder="Search" />
+                            <img src='assets/images/Search.png' alt='search-icon' class='search-icon'
+                            (click)='searchKeyword(keyword, selectedSearchBy)' />
+                        </div>
+                        <!-- <span class="datamsgs" *ngIf="errorMsg != ''">{{errorMsg}}</span> -->
+                        <!-- <app-auto-suggestions [type]="type" [filterData]="filterData" 
+                            (selectStr)="onselectSearch($event)" [placeHolder]="searchBoxPlaceHolder"
+                            (dataKeyEnter)="onManageSearchData($event)" (resetSearchClear)="OnResetSearchInput($event)">
+                        </app-auto-suggestions> 
+                        <img src='assets/images/Search.png' alt='search-icon' class='search-icon'
+                        (click)='searchKeyword(keyword, selectedSearchBy)' />-->
+                      
+                        
+                    </li>
+                    <li class=" exportdropdown  marginleft10">
+                        <div  class="d-inline-block">
+                            <button  class="btn btn-custom" (click)='onRefresh()'
+                               id="dropdownBasic2" >
+                              
+                                <img src='assets/images/reset-white.svg' alt='reset'  class='btn-with-icon reset-icon-btn' />
+                               
+                                <span> Refresh </span>
+                            </button>
+                           
+                        </div>
+                    </li>
+                  
+                    <li class="list-inline-item marginleft10">
+                            <!-- <button  class="btn btn-custom" (click)='getUploadedFileData()' -->
+                                <button  class="btn btn-custom" (click)='getUploadedFileData()'
+                             id="dropdownBasic2" >
+                            <img src='assets/images/refresh-white.svg' alt='refresh'  class='btn-with-icon reset-icon-btn' />
+                            <span> Reset </span>
+                        </button>
+
+                        <!-- <button type="button" class="btn btn-icon-custom" (click)="clearFilter()" [disabled]="clearValue">Clear
+                            All</button> -->
+
+
+                    </li>
+                </ul>
+           
+            </div>
+              
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" >
+    <div class="row"> 
+<div class="col-md-12">
+
+        <div class="card-move-table optimizationTable">
+            <app-table [settings]="tableSettings" [clearData]="clearTable"
+             (selectedPageNo)="getSelectedPageNo($event)"
+            (listRowSelect)="getlistRowSelect($event)" 
+             [noRecordError]="'No Record Found'"  [clearData]="clearfilterData">
+            </app-table>
+
+            <!-- <app-table [settings]="tableSettings" [clearData]="clearTable"
+            (selectedPageNo)="getSelectedPageNo($event)" (filterTableRecords)="exportFilterdRecord($event)"
+           (listRowSelect)="getlistRowSelect($event)"(setExpiryDateAllColumnValue)="setExpiryDateAllColumnValue($event)" (setExpiryDateColumnValue)="setExpiryDateColumnValue($event)"
+            [noRecordError]="'No Record Found'" (customSortRecord)="customSort($event)" (exportParam)="getFilterData($event)" [clearData]="clearfilterData">
+           </app-table> -->
+ 
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+
+ <!-- <div class="container-fluid mt-3">
+    <div class="card-move-upload">
+        <div class="col-md-12 tableBackground">
+            <h4>Input Data</h4>
+        <app-input-table [inputTableProperties]="inputTableProperties"></app-input-table>
+        </div>
+    </div>
+</div> -->

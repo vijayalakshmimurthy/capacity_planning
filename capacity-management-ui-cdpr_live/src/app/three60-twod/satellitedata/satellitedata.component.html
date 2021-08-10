@@ -1,0 +1,19 @@
+<div class="container padding0">
+    <div class="triple enablecanvas">
+      <div class='col' style="z-index:9999">
+            <span #ref style='display:none'>{{sneid}}</span>
+            <span #ref1>{{shelfnumber}}</span>
+            <span #ref2 style='display:none'>{{Index}}</span>
+        <BT-device-visualizer-2d (click)="ondblClickNavigate(ref.innerText,ref1.innerText,ref2.innerText,$event)" *ngIf='deviceData && deviceConfiguration' #visualizer [deviceData]='deviceData'
+          [deviceConfiguration]='deviceConfiguration'>
+        </BT-device-visualizer-2d>
+        <span><img src='assets/images/uplink_port.jpg' /></span>
+        <ul >
+          <li *ngFor="let x of uplinkport">{{x}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  

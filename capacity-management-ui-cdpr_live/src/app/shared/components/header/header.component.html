@@ -1,0 +1,145 @@
+<div class="container-fluid width-custom">
+  <div class="row topnav-bar commonDropdown">
+    <div class="col-md-7 navbar-left">
+      <ul class="nav navbar navbar-left d-flex d-inline-flex padding0">
+        <li class="nav-item d-inline-flex">
+          <img src="assets/images/BT_logo_46x46.png" style="cursor: pointer;">
+        </li>
+        <li class="nav-item d-inline-flex headre_li">WS SRIMS</li>
+        <li class="nav-item d-inline-flex headre_li" *ngIf="( menuList.length === 0) || !loggedINMenu">{{headerName}}
+        </li>
+        <li ngbDropdown class="nav-item d-inline-flex headre_li left-nav-li"
+          *ngIf="menuList.length > 0 && loggedINMenu">
+          <a class=" btn-outline-primary userdropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>
+            <span>{{headerName}} </span>
+            <span *ngIf="menuList.length > 1">
+              <i class="fa fa-angle-down fa-1" aria-hidden="true"></i>
+            </span>
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic" class="hover" *ngIf="this.changedRole !== 'no user'">
+            <li *ngFor="let menu of menuList" ngbDropdownItem class="headrerdropdown cursor"
+              (click)="navigateToUrl(menu.url)">
+              <span class="menu-sub-option"> {{menu.menuName}}
+
+                <i class="pi pi-chevron-right fa-1 pull-right-header" *ngIf="menu?.child?.length > 0"
+                  aria-hidden="true"></i>
+              </span>
+              <ul *ngIf="menu?.child?.length > 0" class="dropdown dropdown-padd">
+                <li *ngFor="let v of menu?.child" class="headrerdropdown cursor listStyle">
+                  <span
+                    *ngIf="(v.url === 'plancardmove' || v.url ==='devicerecovery') && v.menuName != 'Detailed Site Report'"
+                    (click)="headerPopUp(v.url)"> {{v.menuName}}
+                    <i class="pi pi-chevron-right fa-1 sub-child" *ngIf="v?.v?.length > 0" aria-hidden="true"></i>
+                  </span>
+                  <span
+                    *ngIf="v.url !== 'plancardmove' &&  v.url !=='devicerecovery' && v.menuName != 'Detailed Site Report'"
+                    (click)="navigateToUrl(v.url);$event.stopPropagation()"> {{v.menuName}}
+                    <i class="pi pi-chevron-right fa-1 sub-child" *ngIf="v?.subChild?.length > 0"
+                      aria-hidden="true"></i>
+                  </span>
+                  <span *ngIf="v.menuName == 'Detailed Site Report' " class="menu-sub-option"> {{v.menuName}}
+
+                    <i class="pi pi-chevron-right fa-1 pull-right-header" *ngIf="v?.child?.length > 0"
+                      aria-hidden="true"></i>
+                  </span>
+                  <ul *ngIf="v?.child?.length > 0" class="dropdown dropdown-padd level2">
+                    <li *ngFor="let child2 of v?.child" class="headrerdropdown cursor listStyle">
+                      <span (click)="navigateToUrl(child2.url)"> {{child2.menuName}}
+                        <i class="pi pi-chevron-right fa-1 sub-child" *ngIf="child2?.child2?.length > 0"
+                          aria-hidden="true"></i>
+                      </span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-5 col-sm-5 text-right" *ngIf="loggedIN; else loggedOut">
+      <ul class="nav navbar navbar-left d-flex d-inline-flex switch">
+        <li class="notification">
+          <img alt="user-avtar" class="notificationPopup" src="assets/images/bell.png" (click)="notificationPopup()" />
+        </li>
+        <li ngbDropdown class="d-inline-block">
+          <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle>
+            <img alt="user-avtar" class="user-avtar" src="assets/images/user.png">{{headerUser}}
+            <span>
+              <i class="fa fa-angle-down fa-1" aria-hidden="true"></i>
+            </span>
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic">
+            <li>
+              <a class="logoutWidth" ngbDropdownItem (click)="openSwitchProfile()">
+                <img src="assets/images/switch_profile.png">
+                <span class="symbols">Switch Profile</span>
+              </a>
+            </li>
+            <li>
+              <a class="logoutWidth" ngbDropdownItem (click)="logoutfinal()">
+                <!-- <app-svg icon="logout_icon"> </app-svg> -->
+                <img src="assets/images/logout.png">
+                <span class="symbols">Logout</span>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ng-template #loggedOut>
+      <div class="col-md-7 col-sm-7 text-right">
+        <ul class="nav navbar navbar-left d-flex d-inline-flex">
+          <li> Login </li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+  <p-dialog header="Choose Profile" [modal]="true" [(visible)]="displaySwtichProfile" [style]="{width: '30vw'}"
+    class="info" [baseZIndex]="10000">
+    <div class="modal-body">
+      <fieldset class="form-group">
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="form-check margintop10" *ngFor="let userRole of userRoleList">
+              <input class="form-check-input" type="radio" name="roles" [(ngModel)]="changedRole"
+                id="role_{{userRole.roleName}}" value="{{userRole.roleName}}">
+              <label class="form-check-label" id="role_{{userRole.roleName}}" for="role_{{userRole.roleName}}">
+                {{userRole.displayName}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <p-footer>
+      <div class="form-group row">
+        <div class="col-sm-12 text-right">
+          <button type="submit" class="btn headersubmit marginright10" (click)="switchProfile()">Select</button>
+          <button type="submit" class="btn btn-modal" (click)="closeSwtichProfilePopup()">Cancel</button>
+        </div>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>
+<app-modal-popup [display]="display" [commonModelProperties]='commonModelProperties' (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<div class="switch-popup">
+  <p-dialog [(visible)]="switchPopup" [baseZIndex]="1000000" [modal]="true" [responsive]="true"
+    [style]="{width: '400px', minWidth: '200px'}" [blockScroll]="true">
+    <p-header>
+      Selecting Planning Mode
+    </p-header>
+    <p-radioButton name="groupname" value="360View" label=" 360 Site Viewer" labelStyleClass="labelStyle"
+      styleClass="radio-btn-style2 radio-btn-style" [(ngModel)]="selectedValue">
+    </p-radioButton>
+    <p-radioButton name="groupname" value="manualInput" label="Add Inputs Manually" labelStyleClass="labelStyle"
+      styleClass="radio-btn-style1 radio-btn-style" [(ngModel)]="selectedValue">
+    </p-radioButton>
+    <p-footer>
+      <button class="btn btn-modal" type="button" (click)="closePopup()">Cancel</button>
+      <button class="btn btn-custom submit-padd" type="button" (click)="navigateToPage()">Submit</button>
+    </p-footer>
+  </p-dialog>
+</div>

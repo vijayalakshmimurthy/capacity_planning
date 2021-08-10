@@ -1,0 +1,89 @@
+<div class="row filterheading1">
+  <div class="col-md-3 col-sm-3 heading-main">
+    <div class ="row">
+      <div class="col-md-2 col-sm-2" *ngIf='enableNOCardMoveWorkflow || enableRecoveryWorkflow'>
+        <a (click)="redirectToHomePage()">
+          <img src='assets/images/home.svg' class='home-icon' />
+        </a>
+      </div>
+      <div class="col-md-9 col-sm-9" [ngClass]="enableNOCardMoveWorkflow || enableRecoveryWorkflow ? 'padding10' : ''">
+        <h1 class="margin10 header">3D Chassis Viewer</h1>
+    </div>
+  </div>
+  </div>
+  <div class="heading-main" style='margin: 5px 0px 12px 0px;' [ngClass]="workflowenable || enableNOCardMoveWorkflow || enableRecoveryWorkflow ? 'col-md-0' : 'col-md-4'">
+    <div id='setheight' class="inline-block-class" *ngIf="deltaEnable">
+      <h5 class="inline-block-class vertivlealign">Delta</h5>
+      <div class="inline-block-class vertivlealign" id="delatval">
+        <ul>
+          <li *ngFor="let x of deltavalue"><span>{{x.deltaLabel}}</span> <span
+              [ngClass]="x.deltaValue >= 0 ? 'positive' : 'negative'">{{x.deltaValue}}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='workflowenable' [ngClass]="workflowenable ? 'col-md-4' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style="height: 75px;margin: 7px 0px;" *ngIf='workflowenable'>
+      <app-cardmove-workflow></app-cardmove-workflow>
+      <div class="col-md-2 col-sm-2" id='nxtbtnalgn'>
+        <button type="info-button" class="btn btn-plan btnnext" (click)='activatenextstatus()'
+          *ngIf='enablenextbutton'>Next</button>
+      </div>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='enableNOCardMoveWorkflow' [ngClass]="enableNOCardMoveWorkflow ? 'col-md-5' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style="height: 75px;margin: 7px 0px;" *ngIf='enableNOCardMoveWorkflow'>
+      <app-nocardmove-workflow [prevvalue]='prevvalue' [enableapicall]='enableapicall' (emitnextclick) = 'emitnextBtnPortMove()'></app-nocardmove-workflow>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='enableRecoveryWorkflow' [ngClass]="enableRecoveryWorkflow ? 'col-md-4' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;' *ngIf='enableRecoveryWorkflow'>
+      <app-device-recovery-workflow [prevvalue]='prevvalue' [enableapicall]='enableapicall' [disablenext]='disablenext' (emitnextclick) = 'emitnextclick()'></app-device-recovery-workflow>
+    </div>
+  </div>
+  <div class="text-align-end col-md-4 col-sm-4">
+    <ul class="list-inline pull-right chassis-ul">
+      <li *ngIf="editMode" class="margin-top4">
+        <app-chassis-action [clearActionListArray]="clearActionListArray" [deviceInfo]="deviceInfo" [defaultInfo]="defaultInfo"
+          [cardmoverequest]='cardmoverequest' [actiondisable]='actiondisable' [sneId]="sneId"
+          [deviceChangeEvent]="deviceChangeEvent" (resetImgData)="resetImgData()" (saveworkflow)='saveworkflow()'
+          (planSaveApi)='planSaveApi($event)' (planEditInCardmove)='planEditInCardmove($event)'
+          (closeplanforcm)='closeplanforcm()' (opencufpopup) = 'opencufpopup($event)' [siteName]="siteName" [clearAllplanvalue]='clearAllplanvalue'
+          [requestData]='requestData' [workflow]='workflowenable' [selectionDetails]='selectionDetails'
+          [enableplanwindow]='enableplanwindow' [planname]='planvalue' [cardmoveplan]='planBtn' [deltavalue]='deltavalue'
+          [cardmoveedit]='cardmoveedit' [cardInfillFlow]="cardInfillFlow" [selectedPlanDetails]="selectedPlanDetails"
+          [showEthernet]="showEthernet" [demandId]="demandId" [productType]='productType' [originaldeltavalue]='originaldeltavalue'  [originalDelta]='originalDelta'
+          [savedplanincardinfill]='savedplanincardinfill' [activeObjects]="activeObjects" [SASPlan]="SASPlan" 
+          (opencufpopup) = 'opencufpopup($event)' [CPMType]="CPMType"  [deviceVersion]="deviceVersion" 
+          [emailId]="emailId" [enableNOCardMoveWorkflow]='enableNOCardMoveWorkflow' 
+          (nextWorkflow)="nextWorkflow($event)" [opencufinflightpopup]='opencufinflightpopup' 
+          [enableRecoveryWorkflow]="enableRecoveryWorkflow" (emitRecovery)="emitRecovery()" 
+          [showhidecuf]='showhidecuf' ></app-chassis-action>
+      </li>
+      <li class="form-group search-tab_chassis chassisalignment li-right">
+        <app-auto-suggestions [filterData]="filterData" [placeHolder]="searchBoxPlaceHolder"
+          [disableField]="disableinputfield" (searchStr)="onkeyPressSearch($event)" (selectStr)="onselectSearch($event)"
+          (showListOnFocus)="showListOnFocus()" (validateInputData)="validateInputData($event)">
+        </app-auto-suggestions>
+      </li>
+      <li class="toggle-check" *ngIf="showToggle"  [ngClass]="disableinputfield ? 'disableactionsitename' : ''">
+        <div class="onoffswitch">
+          <input type="checkbox" [disabled]="showLoader" [checked]="editMode" name="onoffswitch"
+            class="onoffswitch-checkbox" (click)="modechange($event)" id="myonoffswitch">
+          <label [ngClass]="showLoader ? 'onoffswitch-label disable' : 'onoffswitch-label'" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </li>
+      <li>
+        <div class="export_icon_3D"  *ngIf="showToggle" >
+          <a class="btn btn-custom" id="dropdownBasic2" href="{{deviceportdetailsdownload}}">
+          <app-svg icon="Capa_10-export_icon"> </app-svg>
+          <span></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

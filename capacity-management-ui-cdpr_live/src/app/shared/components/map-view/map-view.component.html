@@ -1,0 +1,58 @@
+<agm-map style="height: 80vh" [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" (mapDblClick)="mapClicked($event)">
+  <agm-circle *ngFor="let data of radiusCircleObj?.radius" [latitude]="radiusCircleObj?.lat" [longitude]="radiusCircleObj?.lng"
+    [circleDraggable]="false" [editable]="false" [fillColor]="data.color" [strokeWeight]="1" [strokeColor]="'#540E85'" [radius]="data.value * 1000">
+  </agm-circle>
+
+  <agm-marker *ngIf="customLatLng.lat != null && customLatLng.lng != null"  [latitude]="customLatLng?.lat"  [longitude]="customLatLng?.lng"></agm-marker>
+
+  <agm-marker *ngFor="let marker of serviceMarker; let i = index" [iconUrl]="marker?.url" [latitude]="marker?.latitude" [longitude]="marker?.longitude"
+    (mouseOver)="OnmouseOver(tooltip, marker)" (mouseOut)="OnmouseOut(tooltip, marker)" (markerClick)="markerClickInfo(tooltip, marker)">
+    <agm-info-window #tooltip>
+      <ng-template [ngIf]="markerDt">
+        <div *ngFor="let table of markerDt?.toolTipInfo?.sttTableData" class="text-center">
+          <div class="title">
+            <span>{{table?.titleOne}}</span>
+          </div>
+          <div class="title margintop1" *ngIf="table?.titleTwo != null">
+            <span>{{table?.titleTwo}}</span>
+          </div>
+          <div class="title margintop1" *ngIf="table?.titleThree != null">
+            <span>{{table?.titleThree}}</span>
+          </div>
+          <div class="warning-title  margintop1" *ngIf="table?.titleFour != null">
+            <span>{{table?.titleFour}}</span>
+          </div>
+          <table class="table table-striped table-height">
+            <thead class="header">
+              <tr>
+                <th>{{table?.toolTipheaders?.headerOne}}</th>
+                <th>{{table?.toolTipheaders?.headerTwo}}</th>
+                <th>{{table?.toolTipheaders?.headerThree}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dt of table.data">
+                <td>{{dt.cellOneData}}</td>
+                <td *ngIf="dt?.cellTwoData == 'null'">0</td>
+                <td *ngIf="dt?.cellTwoData != 'null'">{{dt?.cellTwoData}}</td>
+                <td *ngIf="dt?.cellThreeData == 'null'">0</td>
+                <td *ngIf="dt?.cellThreeData != 'null'">{{dt?.cellThreeData}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="marker?.toolTipInfo?.sttTableData.length == 0">
+          <div class="title">
+            <span>No data found</span>
+          </div>
+        </div>
+      </ng-template>
+    </agm-info-window>
+  </agm-marker>
+  <ng-container>
+    <agm-polyline *ngIf="latlng[0].lat != ''" [visible]="true" [strokeWeight]="4" [strokeColor]="'#e60050'">
+      <agm-polyline-point *ngFor="let coordinate of latlng; let i=index" [latitude]="coordinate.lat" [longitude]="coordinate.lng">
+      </agm-polyline-point>
+    </agm-polyline>
+  </ng-container>
+</agm-map>

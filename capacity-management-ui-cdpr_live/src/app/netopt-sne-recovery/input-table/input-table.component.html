@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-12 rowtop inputTable">
+        <p-table [columns]="inputTableProperties?.headers" [value]="inputTableProperties?.data"
+            scrollHeight="{{inputTableProperties?.scrollHeight}}" [customSort]="inputTableProperties?.customSort"
+            [scrollable]="true" [paginator]="true" [totalRecords]="inputTableProperties?.data.length"
+            [paginatorPosition]='paginatorPosition' [rows]="10" [rowsPerPageOptions]="[10,20]" dataKey="id">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <ng-template ngFor let-col [ngForOf]="columns">
+                        <th [ngClass]="col?.properties?.sort? 'cursoradd':'cursorremove'" [attr.ngvalue]="col.field"
+                            *ngIf="col?.visible" pResizableColumn
+                            [pSortableColumn]="col?.properties?.sort && col.field !== 'actions' ? col.field : null"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align': 'center' }">
+                            {{col.header}}
+                            <p-sortIcon *ngIf="col?.properties?.sort && col.field !== 'actions'" [field]="col.field"
+                                ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                        </th>
+                    </ng-template>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns" let-i="rowIndex">
+                <tr>
+
+                    <ng-container *ngFor="let col of columns">
+                        <td *ngIf="col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.properties?.link && !(col?.properties?.fieldType === 'checkbox')  && !(col.header === 'Action')"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour} ">
+                            <input class='inputWidth' *ngIf="col?.type === 'text' && col.field !== 'holder'" pInputText type="text"
+                                [(ngModel)]="rowData[col.field]" (keyup)='checkValidation()'
+                                (focus)="isEmpty(rowData, findIndexByKeyValue(columns,col.field))">
+                                <input class='inputWidth holder' *ngIf="col?.type === 'text' && col.field === 'holder'" pInputText type="text"
+                                [(ngModel)]="rowData[col.field]" (keyup)='checkValidation()'
+                                [disabled]="rowData.disabletextbox === true" >
+                            <p-calendar *ngIf="col?.type === null" [inline]="false" [showWeek]="true"
+                                readonlyInput="true" [(ngModel)]="rowData[col.field]" dateFormat="dd-mm-yy"
+                                [minDate]="minimumDate" dataType="string" showButtonBar="true" placeholder="dd-mm-yyyy"
+                                [showIcon]="true" class="ng-tns-c13-9 p-calender-editior checke1"
+                                (onSelect)="checkValidation()"
+                                (onFocus)="isEmpty(rowData, findIndexByKeyValue(columns,col.field))" appendTo="body">
+                            </p-calendar>
+                            <p-dropdown *ngIf="col.type === 'select'" [style]="{'min-width':'98%', 'width': '100%'}"
+                                appendTo="body" [(ngModel)]="rowData[col.field]" [options]="col.options"
+                                optionValue="col.options.value" styleClass="cbp-filter-dropdown"
+                                placeholder="Select"
+                                (onFocus)="isEmpty(rowData, findIndexByKeyValue(columns,col.field))" (onChange)="checkValidation()"
+                                appendTo="body">
+                            </p-dropdown>
+                            <small
+                                *ngIf="!rowData[col?.field] && rowData.showErr[findIndexByKeyValue(columns,col.field)]"
+                                class="error-info">{{col?.header}} is
+                                required.
+                            </small>
+                        </td>
+                        <td
+                            *ngIf="col?.properties?.pageName === 'inputTablePage' && col?.properties?.fieldTypeCalenderbodyType !== 'calendar'">
+                        </td>
+                        <td style="text-align: center;"
+                            *ngIf="col.field === 'actions' && col?.visible || col.header === 'Action'"
+                            [ngStyle]="{'width': inputTableProperties.columnWidthDynamic? col?.columnWidth: inputTableProperties.columnWidth , 'height': inputTableProperties.columnHeight, 'color':col?.properties?.color}">
+                            <input type="image" (click)="onRowEditAdd()" src="assets/images/add.png"
+                                *ngIf="inputTableProperties?.data.length -1 === i">
+                            <input *ngIf="col?.properties.action" type="image" (click)="onDelete(rowData, i)"
+                                class="delete-icon" src="assets/images/delete_icon.png">
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

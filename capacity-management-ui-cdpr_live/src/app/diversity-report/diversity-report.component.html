@@ -1,0 +1,104 @@
+<div class="container-fluid containerwidth">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="margin10">Diversity Group Forecast</h1>
+            </div>
+            <div class="col-md-7">
+                <span *ngIf="errorcall" class="alert-danger">Unable To call with PACS</span>
+                <span *ngIf="errorcallDGname" class="alert-danger alert_width">System is unable to add, As Total 5 DG
+                    name can be added on a card</span>
+                <span *ngIf="errorcallDGnamesame" class="alert-danger alert_width">Adding the DG name of same region is
+                    not allowed</span>
+                <span *ngIf="prefixErrorSame" class="alert-danger alert_width">Exceed the entry of DG names</span>
+                <!-- <span class="alert-danger" *ngIf="checkflagchar">Length should be less than 15.</span> -->
+                <span *ngIf="errorDropdown" class="alert-danger alert_width">Select proper values from dropdown</span>
+            </div>
+        </div>
+        <hr class="hrclass">
+    </div>
+    <div class="row">
+        <div class=" col-md-4 col-sm-4">
+            <button class="btn btn-custom-empty" (click)="showFilter()"><span *ngIf="searchButton"
+                    style="top:0px">Edit</span><span *ngIf="!searchButton" style="top:0px">Search</span> Filter</button>
+        </div>
+        <div class=" col-md-8 col-sm-8 text-right">
+            <ul class="nav navbar navbar-left d-flex d-inline-flex padding0 form-group">
+                <li class="nav-item d-inline-flex marginright15" *ngIf="updateTableButton">
+                    <button type="info-button" class="btn btn-modal" (click)="cancelValue()">
+                        Cancel
+                    </button>
+                </li>
+                <li class="nav-item d-inline-flex marginright15" *ngIf="updateTableButton">
+                    <button type="info-button" class="btn btn-custom-empty" data-toggle="modal"
+                        (click)="showUpdatePopup()">
+                        Update
+                    </button>
+                </li>
+                <li class="nav-item d-inline-flex marginright15" *ngIf="editDGButton">
+                    <button type="button" *ngIf="roleName !== 'PROD_CE_VIEWER'" class="btn btn-custom-empty"
+                        (click)="editDGName()">
+                        Edit DG Name
+                    </button>
+                </li>
+                <li class="nav-item d-inline-flex marginright15" *ngIf="roleName !== 'PROD_CE_VIEWER'">
+                    <button type="button" (click)="phaseForecast()" class="btn btn-custom-empty">
+                        Phase Forecast </button>
+                </li>
+                <li class="nav-item d-inline-flex marginright15">
+                    <div ngbDropdown class="d-inline-block">
+                        <button [disabled]="!searchButton" class="btn btn-custom-empty exportpadding"
+                            data-hover="dropdown" id="dropdownBasic2" ngbDropdownToggle aria-expanded="true">
+                            <img src="assets/images/export.png" width="18" height="18">
+                            <span> Export </span>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                            <p class="p-padding" appCSVDownload [data]="exportData" [fileName]="fileName">Export as
+                                Excel</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item d-inline-flex">
+                    <button type="info-button" class="btn btn-custom" (click)="showInfo()">
+                        <app-svg icon="Capa_11-info_icon"></app-svg>
+                        <span> Info </span>
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 nopadding">
+            <app-diversity-report-table *ngIf="tableResponse.length > 0" [loadEditableRow]="loadEditableRow"
+                [groupData]="groupData" (getFilterData)="getFilterData($event)" [tableResponse]="tableResponse"
+                (getSearchFlag)="getSearchFlag($event)" (addValueGroup)="addValueGroup($event)"
+                [loadUpdatableRow]="loadUpdatableRow" [rowGroupMetaList]="rowGroupMetaList"
+                [rowGroupDataList]="rowGroupDataList">
+            </app-diversity-report-table>
+            <div class="col-md-12 col-sm-12 tableclass" *ngIf="!tableResponse?.length">
+                <p-table>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th class="blue-border">MSE(SNE ID)</th>
+                            <th class="blue-border">Card Detail</th>
+                            <th class="green-border">Card Status</th>
+                            <th class="green-border">Diversity Group Name</th>
+                            <th class="green-border">Free Port Detail</th>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <h1 class="filterheader">Search Filter To See Forecast Report </h1>
+                <img class="center" src="assets/images/filter.png" width="48" height="48">
+            </div>
+        </div>
+    </div>
+</div>
+<app-search-filter [display]="display" (getFilterData)="getFilterData($event)" (OnsearchGroup)="OnsearchGroup($event)"
+    (displayChange)="onDialogClose($event)" [checkflag]="checkflag" [groupData]="groupData"></app-search-filter>
+<app-info-diversity [display]="displayInfo" (displayChangeInfo)="onDialogInfoClose($event)"></app-info-diversity>
+<!-- <app-modal-popup [header]="headerUpdatePopup" [popuptype]="popuptype" [popSettings]="tableSettingsPopup" [display]="displayPopup" (displayChange)="onDialogUpdateClose($event)"></app-modal-popup> -->
+<app-modal-popup [display]="displayPopup" [commonModelProperties]='commonModelProperties'
+    (displayChange)="onDialogUpdateClose($event)" (cancelData)="cancelpopup()">
+</app-modal-popup>

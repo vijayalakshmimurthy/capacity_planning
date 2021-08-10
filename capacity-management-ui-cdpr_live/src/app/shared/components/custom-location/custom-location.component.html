@@ -1,0 +1,20 @@
+<h6 class="strong type_heading fontweight"> Customer Location </h6>
+<ul class="list-inline check_Node">
+    <li class="padding_custom">
+        <p-dropdown [options]="customLocationDrp" class="height30" (onChange)="changeCustomMode($event)" placeholder="Select Any"
+            optionLabel="label" [showClear]="true"></p-dropdown>
+    </li>
+    <li class="padding_custom" *ngIf="customMode == 'postcode'">
+        <input class="form-control height30" [(ngModel)]="postcode" type="text" id="txtPostCode" placeholder="Post Code">
+    </li>
+    <li class="padding_custom" *ngIf="customMode == 'latlng'">
+        <input type="text" class="form-control height30" pInputText [(ngModel)]="lat" pKeyFilter="num" placeholder="Latitude">
+    </li>
+    <li class="padding_custom" *ngIf="customMode == 'latlng'">
+        <input type="text" class="form-control height30" pInputText [(ngModel)]="lng" id="float-input" pKeyFilter="num" placeholder="Longitude">
+    </li>
+    <li class="padding_custom">
+        <button [disabled]="(!lat || !lng) && !postcode" class="btn btn-custom" (click)="onSubmit()">Submit</button>
+        <button [disabled]="(!lat || !lng) && !postcode" *ngIf="clearAllBtnFlag.flag" class="btn btn-modal float-right" (click)="clearAllWhileClickOnBtn()">Clear All</button>
+    </li>
+</ul>

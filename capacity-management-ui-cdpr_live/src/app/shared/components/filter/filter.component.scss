@@ -1,0 +1,203 @@
+.padding_custom {
+    padding: 5px 0px;
+}
+
+.margintop20 {
+    margin-top: 20px;
+}
+
+.margintop10 {
+    margin-top: 10px;
+}
+
+.type_heading {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.marginleft20 {
+    margin-left: 20px;
+}
+
+.marginleft15 {
+    margin-left: 15px !important;
+}
+.height30 {
+    height: 30px;
+}
+
+.check_Node {
+    .nodetype {
+        padding-top: 20px;
+    }
+    .nodetype_label {
+        display: block;
+        padding-top: 10px;
+    }
+    .nodetype_span {
+        margin-left: 10px;
+        vertical-align: top;
+    }
+}
+
+.fontweight {
+    font-weight: bold;
+}
+
+.main {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.filterCDPR {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    visibility: hidden;
+    @media screen and (min-width: 760px) and (max-width: 1400px) { 
+        display: block;
+        height: 0;
+    }
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff;
+    border-color: #000;
+    border: 1px solid #767676;
+    border-radius: 3px;
+}
+
+.main input:checked ~ .checkmark {
+    background-color: #6400aa;
+}
+
+.filterCDPR input:checked ~ .checkmark {
+    background-color: #ffffff;
+}
+
+.main input:checked ~ .checkmark_four {
+    background-color: green !important;
+}
+.main input:checked ~ .checkmark_one_three {
+    background-color: #ffbf00 !important;
+}
+.main input:checked ~ .checkmark_zero {
+    background-color: #e81e1e !important;
+}
+
+.main input:checked ~ .checkmark_25000 {
+    background-color: #ce9df5 !important;
+}
+.main input:checked ~ .checkmark_30000 {
+    background-color: #ad5def !important;
+}
+.main input:checked ~ .checkmark_50000 {
+    background-color: #ba76f1 !important;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Display checkmark when checked */
+.main input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.filterCDPR input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.collapse-heading {
+    color: #444;
+    font-size: 0.875em;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.marginleft15 {
+    margin-left: 15px;
+}
+
+.filter-hr {
+    border-bottom: 1px solid #bfbfbf;
+    margin-top: 10px;
+}
+
+.main .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.filterCDPR .checkmark:after {
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.marginleft59 {
+    margin-left: 59%;
+}
+
+.margintop5 {
+    margin-top: 5px;
+}
+.activeselected#device_Model {
+    display: block !important;
+}
+.collapse.devModelOpen {
+    display: block !important;
+}
+
+// .main input[type='radio']:checked:after {
+//     width: 10px;
+//     height: 10px;
+//     border-radius: 15px;
+//     top: -2px;
+//     left: -1px;
+//     position: relative;
+//     background-color: #000;
+//     content: '';
+//     display: inline-block;
+//     visibility: visible;
+//     border: 1px solid #000;
+// }

@@ -1,0 +1,137 @@
+p-dropdown {
+    min-width: 80%;
+}
+// .ui-dropdown{
+//     width: 100%;
+// }
+// .dropDowntext{
+//  border: 1px solid #6b6b6b;
+//   font-size: 12px;
+//   margin-bottom: 12px;
+// }
+.margin10 {
+    margin-top: 10px;
+}
+.header{
+    font-size: 28px !important ;
+}
+.filterheader {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+  
+  }
+.delete-row {
+    cursor: pointer;
+
+    padding: {
+        right: 6px;
+    }
+
+
+    border-right: 2px solid #e2dddd;
+
+    margin: {
+        right: 8px;
+    }
+}
+
+.edit-row {
+    cursor: pointer;
+}
+
+.green-color {
+    color: #5cb85c;
+}
+
+.red-color {
+    color: red;
+}
+.marginleft10{
+    margin-left: 10px;;
+}
+.marginleft15{
+    margin-left: 32px;
+    margin-top: -2px;
+}
+.marginright15{
+height: 38.4px
+}
+
+p-dropdown {
+    min-width: 135%;
+}
+.ui-dropdown{
+    width: 135%;
+}
+.searchbox .ui-autocomplete .ui-autocomplete-input {
+    padding: 0.429em !important;
+    height: 35px !important;
+    max-width: 234px !important;
+}
+.search ng-star-inserted{
+    width:20px;
+}
+.ui-widget-header .ui-inputtext{
+    width: 10px;
+}
+.refresh-btn,
+.reset-btn {
+  padding: 3px 7px;
+}
+.reset-btn {
+  margin-left: 10px;
+}
+.reset-icon-btn {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-top: -18px;
+  }
+  .searchbox .ui-autocomplete .ui-autocomplete-input{
+    height:35px;
+  }
+  .autocomplete_icon{
+      position: relative;
+      .search-icon{
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        right: 6px;
+        top: 11px;
+
+      }
+  }
+
+  .search-div {
+    position: relative;
+    cursor: pointer;
+    vertical-align: bottom;
+    min-width: 12.5em;
+    border: 1px solid #a6a6a6;
+    background: #fefefe;
+    border-radius: 3px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 5px 10px 5px 10px;
+    width: 300px;
+    height: 37.2px !important;
+    margin-left: 20px;
+    margin-right: 7px;
+  }
+  .search-inp {
+    border: none;
+    width: 100%;
+    outline: none;
+  }
+  .search-inp-container {
+    margin-left: 130px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  ul {
+    list-style-type: none;
+}
+// .ui-inputtext ui-corner-all ui-state-default ui-widget ng-star-inserted{
+//    // width: 20px;
+// }

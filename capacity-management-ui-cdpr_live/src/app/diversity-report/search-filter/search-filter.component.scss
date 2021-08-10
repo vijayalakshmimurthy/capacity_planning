@@ -1,0 +1,127 @@
+.search-tab {
+    position: relative;
+    padding: 20px 0px;
+    .btn-custom-empty {
+      height: 40px;
+      position: relative;
+      top: -2px;
+      right: 5px;
+      border-radius: 5px;
+      @media only screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        top: 0px;
+      }
+      .position{
+        position: none !important;
+      }
+  }
+  .required{
+      color:red;
+      width: 230px;
+      display: block;
+      font-size: 14px;
+      line-height: 14px;
+      position: absolute;
+    }
+    li {
+    padding-right: 10px !important;
+    }
+    .required2{
+      color:red;
+      width: 330px;
+      display: block;
+      font-size: 14px;
+      line-height: 14px;
+      position: absolute;
+      padding-left: 90px;
+      top: 75%;
+    }
+    .red{
+      color:red;
+    }
+    .form-control:focus {
+      border-color: none;
+    }
+  }
+  .padr0{
+    padding-right:0px;
+  }
+  .width-custom{
+    width: 296px;
+  }
+  .list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}
+.dropdownli{
+    width: 33%;
+    padding-right: 0px !important;
+   // position: absolute;
+ .dropdown-geo {
+   /* width: 100%; */
+   display: inline-block !important;
+   border: 0;
+   box-shadow: none;
+   height: 40px;
+   border-radius: 0px;
+   border-bottom: 2px solid #cecece;
+ }
+ }
+ .cross_save{
+  cursor: pointer;
+  font-weight: 600;
+    color: #6400aa;
+}
+.saveSpan{
+  margin-top: 30px;
+      border: 1px solid #6400AA;
+      border-radius: 19px;
+      height: 40px;
+      padding: 10px;
+      margin-left: 10px;
+}
+.saveInput {
+  padding: 20px 0px 0px 0px;
+  li {
+    margin-top: 10px;
+    border: 1px solid #6400aa;
+    border-radius: 19px;
+    height: 40px;
+    padding: 10px;
+    margin-left: 10px;
+  }
+}
+.alertPop{
+  float: right;
+  margin-left: 10px;
+}
+.alert-danger{
+  width: 300px;
+  //height: 35px;
+  padding-top: 05px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  display: block;
+  padding-left: 10px;
+  background-color: white;
+  color: red;
+ 
+
+}
+.padding0{
+  padding: 0px;
+}
+.paddingLeft{
+  padding-left: 212px;
+}
+.textStyle{
+  float: left;
+  color: #43bee4;
+  font-style: italic;
+  margin-bottom: 0px;
+  padding-left: 20px;
+}
+.paddingTop {
+  padding-top: 5px;
+}
+ 

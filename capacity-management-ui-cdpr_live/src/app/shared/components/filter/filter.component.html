@@ -1,0 +1,38 @@
+ <div [ngClass]="{'row': viewType == 'popup'}">
+        <div *ngFor="let fil of filters;" class="margintop10" [ngClass]="{'col-md-4': viewType === 'popup'}">
+            <h6 class="strong type_heading fontweight" *ngIf="!fil.accordian"> {{fil.filterName}} </h6>
+            <div *ngIf="fil.accordian" (click)="expandFilter(fil.filterKey)">
+                <a href="#{{fil.filterKey}}" data-toggle="collapse" class="collapse-heading">{{fil.filterName}}
+                    <i class="fa fa-caret-down float-right margintop5"></i>
+                </a>
+                <hr class="filter-hr">
+            </div>
+            <ng-template [ngIf]="fil.type == 'select'">
+                <p-dropdown [options]="fil?.values" [(ngModel)]="selectServiceType" (onChange)="selectService()"
+                    placeholder="Select Any" optionLabel="label" [showClear]="true">
+                </p-dropdown>
+            </ng-template>
+            <div class="collapse" [ngClass]="{'activeselected': isOpen, 'devModelOpen' :isOpendev}" id="{{fil.filterKey }}">
+                <ng-container *ngFor="let val of fil.values;">
+                    <ng-template [ngIf]="fil.type == 'checkbox'">
+                        <label class="main">{{val.label}}
+                            <input type="checkbox" name="{{val.value}}"
+                                [checked]="checkFilterIsSaved(val.value, fil.filterKey)  || val?.selected"
+                                value="{{val.value}}" (click)="checkFilter(val.value, fil.filterKey, val.id, fil.filterName)">
+                            <span class="{{val.color}}"></span>
+                        </label>
+                    </ng-template>
+                    <ng-template [ngIf]="fil.type == 'radio'">
+                        <label class="main">
+                            <input class="form-check-input" type="radio" name="{{fil.filterKey}}"
+                                (click)="checkFilter(val.value, fil.filterKey, val.id, fil.filterName)" value="{{val.value}}"
+                                [checked]="val?.selected">
+                            <label class="form-check-label">
+                                {{val.label}}
+                            </label>
+                        </label>
+                    </ng-template>
+                </ng-container>
+            </div>
+        </div>
+    </div>

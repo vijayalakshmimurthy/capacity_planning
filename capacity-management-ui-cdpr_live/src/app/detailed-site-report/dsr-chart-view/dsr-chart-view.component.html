@@ -1,0 +1,61 @@
+<div class="card-dashboard">
+  <div *ngIf="showlineData; else noLineData">
+    <ul class="list-inline listpadding">
+      <li class="productTab" *ngFor="let ele of productType" class="td-color"
+        [ngClass]="{ activeClass: ele.active ? true : false }" [id]="ele.name" (click)="changeProduct(ele)">
+        {{ ele.name}}
+      </li>
+    </ul>
+
+    <div class="linecharts">
+      <ul class="list-inlinesitename" *ngIf='ondownloadclick'>
+        <li>
+          {{siteName}}
+        </li>
+      </ul>
+
+      <ul class="list-inline" *ngIf="activeTabName == 'Overall'">
+        <li class="" *ngFor="let a of legends">
+          <p><span class="circle-dot" [ngStyle]="{'background-color': a.color}"></span> {{a.label}} </p>
+          <!-- <p><span class="circle-dot" [ngStyle]="{'background-color': a.borderColor}"></span> {{a.label}} </p> -->
+        </li>
+      </ul>
+
+      <ul class="list-inline" *ngIf="activeTabName != 'Overall'">
+        <li class="bar-type"><img src="assets/images/legends_icon.png"><span>{{portspeed}} </span></li>
+        <li class="" *ngFor="let a of legends">
+          <p><span class="circle-dot" [ngStyle]="{'background-color': a.color}"></span> {{a.label}} </p>
+        </li>
+      </ul>
+      <ul>
+        <li ngbDropdown class="d-inline-block">
+          <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle> <span
+              class="icon-line "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 16 8">
+                <defs>
+                  <style>
+                    .a {
+                      fill: #6400aa;
+                    }
+
+                  </style>
+                </defs>
+                <path class="a" d="M18,4V5H2V4ZM2,8.5H18v-1H2ZM2,12H18V11H2Z" transform="translate(-2 -4)" />
+              </svg></span>
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <li *ngIf="type == 'line'"><a ngbDropdownItem><span (click)="downloadCSVLine()">Download XLS</span></a></li>
+            <li><a ngbDropdownItem appPNGDownload [elementId]="elementId" [downloadImageName]="downloadImageName" (click)="downloadimg()">
+                <span>Download PNG</span>
+              </a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="chart-container">
+        <app-chart [type]="type" [data]="data" [options]="options" [height]="'300px'"></app-chart>
+      </div>
+    </div>
+  </div>
+  <ng-template #noLineData>
+    <h1 style="text-align:center"> Historical data for this site/SNE is not found for the Graph</h1>
+  </ng-template>
+</div>

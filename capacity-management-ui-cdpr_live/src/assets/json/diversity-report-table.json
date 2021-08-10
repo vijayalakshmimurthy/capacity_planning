@@ -1,0 +1,198 @@
+[
+    {
+        "search": "No. of Ports : 20, Diversity Group Name : BTRAN-LON-03, PoP Location : MBF",
+        "diversityGroupForecastList": [
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/1)",
+                "freePortDetail": "2/1/7/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=1-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLN-01,BTRAN-test44,btran_lon_66",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=1",
+                "cardDGName": "BTRAN-LLN-01,BTRAN-test44,btran_lon_66"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/1)",
+                "freePortDetail": "2/1/1/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=1-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLN-01,BTRAN-test44,btran_lon_66",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=1",
+                "cardDGName": "BTRAN-LLN-01,BTRAN-test44,btran_lon_66"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/4/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/2/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/9/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/3/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/8/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/6/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/7/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 2/2)",
+                "freePortDetail": "2/2/5/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=2/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "TEF-MMM-01,BTRAN-GLX-01",
+                "cardId": "20926620:/shelf=1/slot=2/sub_slot=2",
+                "cardDGName": "TEF-MMM-01,BTRAN-GLX-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/6/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/9/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/2/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/5/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/7/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/4/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/1/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/8/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            },
+            {
+                "sneId": "20926620",
+                "cardDetail": "Dummy IMM Module (card = 6/2)",
+                "freePortDetail": "6/2/3/1",
+                "cardStatus": "Installed",
+                "scenario": "Scenario-2-Stage1-cardtod=Y-cardstatus=Installed-porttod=Capable-portCUF=Ethernet Access-DG=BTRAN-LON-03-CardID=20926620:/shelf=1/slot=6/sub_slot=2-DisplayName=Dummy IMM Module",
+                "diversityGroupName": "BTRAN-LLL-01",
+                "cardId": "20926620:/shelf=1/slot=6/sub_slot=2",
+                "cardDGName": "BTRAN-LLL-01"
+            }
+        ],
+        "portAvailablity": "Not Enough Capacity"
+    }
+]

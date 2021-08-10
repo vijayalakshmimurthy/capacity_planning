@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-md-6 col-sm-6 marginleft15">
+        <div class="nav-item d-inline-flex margin15 searchbox form-group1">
+            <p-autoComplete emptyMessage={{emptyMessage}} type={{type}} [(ngModel)]="searchData" [disabled]="disableField" [suggestions]="autocompletedata"
+                (onKeyUp)="onKeyPressSiteCode($event)" (onSelect)="onSelectSearch($event)" [size]="30"
+                placeholder="{{placeHolder}}" (onFocus)="showListofSNE()" (keydown.enter)="onManageSearchData()"
+                [autoHighlight]="false" (keypress)="validateOnKeyPress($event)" (onClear)="resetSearch()"> </p-autoComplete>
+        </div>
+    </div>
+</div>

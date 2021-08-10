@@ -1,0 +1,60 @@
+<p-dialog header="Service Transparency Tool Dictionary" [(visible)]="displayBasic" [style]="{width: '50vw'}" class="info"
+    [baseZIndex]="10000">
+    <div class="modal-body">
+        <p>
+            <u>
+                <strong>Definitions</strong>
+            </u>
+        </p>
+        <p class="margintop15">
+            <strong>Pop-Up Box </strong>
+        </p>
+        <p class="margintop15">
+            <strong>Total Number of Ports -</strong> The number of Phase Enabled ports + Non-Phase Enabled ports at a site.</p>
+        <p class="margintop15">
+            <strong>Phase Enabled Ports -</strong> Phase Enabled ports are used by Mobile Backhaul for 5G. Mobile Networks require
+            phase synchronisation to ensure both packets arrive in the correct order for services such as voice and video
+            as well as hand over between cell sites and accurate communication with the network. </p>
+        <p class="margintop15">
+            <strong>In-Build Ports -</strong> The number of ports that currently have jobs that are currently scheduled and in progress.</p>
+        <p class="margintop15">
+            <u>
+                <strong>Filters: </strong>
+            </u>
+        </p>
+        <p class="margintop15">
+            <strong>Node Type </strong>
+        </p>
+        <p>
+            <strong>H.E.-</strong> All Core Metro Sites and 10G Tier 1 Sites with 100G Backhaul &amp; 10G 3
+            <sup>rd</sup> Party Data Centres with 100G Backhaul</p>
+        <p>
+            <strong>Mobile Backhaul -</strong> All Core Metro Sites and All 10G Tier 1 Sites</p>
+        <p>
+            <strong>All Ethernet -</strong> All Core Metro Sites, All 10G Tier 1 Sites, and All 10G 3rd Party.</p>
+        <p>
+            <strong>Phase Enabled -</strong> All sites that are capable of selling Phase Enabled services</p>
+        <p>&nbsp;</p>
+        <p class="margintop15">
+            <strong>Available Capacity</strong>
+        </p>
+        <p>
+            <strong>4+ -</strong> Sites which have 4 or more 10G ports (Green)</p>
+        <p>
+            <strong>1-3 -</strong> Sites which have between 1-3 10G ports (Amber)</p>
+        <p>
+            <strong>0 -</strong> Sites which have 0 10G ports (Red)</p>
+        <p>&nbsp;</p>
+        <p class="margintop15">
+            <strong>
+                <u>Radius</u>
+            </strong>
+        </p>
+        <p>
+            <strong>EAD: 25km -</strong> The radial distance of an EAD product is 25km</p>
+        <p>
+            <strong>OSA-FC: 30km -</strong> The radial distance of an OSA-FC product is 30km</p>
+        <p>
+            <strong>OSA: 50km -</strong>The radial distance of an OSA product is 50km</p>
+    </div>
+</p-dialog>

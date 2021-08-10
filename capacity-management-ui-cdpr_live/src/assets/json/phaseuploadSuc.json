@@ -1,0 +1,550 @@
+{
+	"invalidPhaseForecastRecords": [{
+		"sauId": "CHA",
+		"code1141": "SDCHCHS",
+		"siteName": "CHICHESTER",
+		"id": 1,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "AGV",
+		"code1141": "NSASH",
+		"siteName": "ABERDEEN ASHGROVE",
+		"id": 2,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/EAS",
+		"code1141": "LNCNW",
+		"siteName": "POPLAR",
+		"id": 3,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "BA",
+		"code1141": "SSKMD",
+		"siteName": "BATH KINGSMEAD ",
+		"id": 4,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "DO",
+		"code1141": "STDORCH",
+		"siteName": "Dorchester",
+		"id": 5,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "CIP",
+		"code1141": "WWCRWN",
+		"siteName": "CROWNHILL",
+		"id": 6,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "EH/WAV",
+		"code1141": "ESWAV",
+		"siteName": "EDINBURGH WAVERLEY",
+		"id": 7,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "STS",
+		"code1141": "EMSTIVE",
+		"siteName": "ST. IVES, CAMBRIDGESHIRE",
+		"id": 8,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "BK",
+		"code1141": "LCBLK",
+		"siteName": "BLACKBURN",
+		"id": 9,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/RIV",
+		"code1141": "LWHAM",
+		"siteName": "HAMMERSMITH",
+		"id": 10,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "SKP",
+		"code1141": "EMSLFRD",
+		"siteName": "SLEAFORD",
+		"id": 11,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "DZ",
+		"code1141": "SSDEV",
+		"siteName": "DEVIZES",
+		"id": 12,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "CU/EX",
+		"code1141": "NDCAN",
+		"siteName": "CANTERBURY",
+		"id": 13,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "WAS",
+		"code1141": "NEW",
+		"siteName": "WALLSEND",
+		"id": 14,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/OP",
+		"code1141": "LSORP",
+		"siteName": "ORPINGTON",
+		"id": 15,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "EH/CAL",
+		"code1141": "ESROS",
+		"siteName": "EDINBURGH ROSE STREET",
+		"id": 16,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "",
+		"code1141": "qq",
+		"siteName": "",
+		"id": 17,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SiteName/SNE_ID/SAU_ID/PhaseForecastDate",
+		"sneId": "",
+		"phaseForecastDate": ""
+	}, {
+		"sauId": "",
+		"code1141": "a",
+		"siteName": "",
+		"id": 18,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SiteName/SNE_ID/SAU_ID/PhaseForecastDate",
+		"sneId": "",
+		"phaseForecastDate": ""
+	}, {
+		"sauId": "",
+		"code1141": "b",
+		"siteName": "",
+		"id": 19,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SiteName/SNE_ID/SAU_ID/PhaseForecastDate",
+		"sneId": "",
+		"phaseForecastDate": ""
+	}, {
+		"sauId": "",
+		"code1141": "CLKEN",
+		"siteName": "",
+		"id": 20,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SiteName/SNE_ID/SAU_ID/PhaseForecastDate",
+		"sneId": "",
+		"phaseForecastDate": ""
+	}, {
+		"sauId": "CLP",
+		"code1141": "LCCLV",
+		"siteName": "CLEVELEYS",
+		"id": 21,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/LV",
+		"code1141": "LNLVY",
+		"siteName": "LEA VALLEY",
+		"id": 22,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/HSN/1",
+		"code1141": "#N/A",
+		"siteName": "KINGS CROSS - Harrison Street 2",
+		"id": 23,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/ELT",
+		"code1141": "LSELT",
+		"siteName": "ELTHAM",
+		"id": 24,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "HVG",
+		"code1141": "SLHLG",
+		"siteName": "HEALING",
+		"id": 25,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "WGA",
+		"code1141": "SDWCNTR",
+		"siteName": "WORTHING CENTRAL",
+		"id": 26,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/ISL",
+		"code1141": "LWISL",
+		"siteName": "ISLEWORTH",
+		"id": 27,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "WS",
+		"code1141": "WNWEL",
+		"siteName": "TELFORD",
+		"id": 28,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "NEA",
+		"code1141": "WWNABB",
+		"siteName": "NEWTON ABBOT",
+		"id": 29,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "NFY",
+		"code1141": "EMBASFO",
+		"siteName": "BASFORD",
+		"id": 30,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "CJY",
+		"code1141": "EMCOALV",
+		"siteName": "COALVILLE",
+		"id": 31,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "LV/BRO",
+		"code1141": "LVBRO",
+		"siteName": "BROMBOROUGH TE",
+		"id": 32,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "DSN",
+		"code1141": "EMDUSTO",
+		"siteName": "DUSTON",
+		"id": 33,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "HAN",
+		"code1141": "SDHLSHM",
+		"siteName": "Hailsham",
+		"id": 34,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/GUL",
+		"code1141": "CLKEN",
+		"siteName": "KENTISH TOWN",
+		"id": 35,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/RH",
+		"code1141": "LSRED",
+		"siteName": "REDHILL",
+		"id": 36,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "WBY",
+		"code1141": "SMWN",
+		"siteName": "WANTAGE",
+		"id": 37,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "NDW",
+		"code1141": "WWNEWQ",
+		"siteName": "NEWQUAY",
+		"id": 38,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "NC/C",
+		"code1141": "EANCW",
+		"siteName": "NORWICH WEST",
+		"id": 39,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "DR",
+		"code1141": "NDDOV",
+		"siteName": "DOVER",
+		"id": 40,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "L/LIV",
+		"code1141": "LSBEU",
+		"siteName": "BEULAH HILL",
+		"id": 41,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "Invalid SNE_ID/PhaseForecastDate",
+		"sneId": null,
+		"phaseForecastDate": null
+	}, {
+		"sauId": "treyuityertieu",
+		"code1141": "ABW",
+		"siteName": "tyuirtuiii",
+		"id": 42,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID not matched with the same 1141/site/TRS",
+		"sneId": "20526335",
+		"phaseForecastDate": "03/08/2020"
+	}, {
+		"sauId": "asdfg",
+		"code1141": "DL/C",
+		"siteName": "iopklmnbcvb",
+		"id": 43,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID not matched with the same 1141/site/TRS",
+		"sneId": "595471",
+		"phaseForecastDate": "04/08/2020"
+	}, {
+		"sauId": "terwerwuey",
+		"code1141": "ytoiryoitrohtir",
+		"siteName": "ALDERSHOT ORDNANCE ROAD BT EXCH",
+		"id": 44,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID not matched with the same 1141/site/TRS",
+		"sneId": "804689",
+		"phaseForecastDate": "02/08/2020"
+	}, {
+		"sauId": "dsasdagsjdafsdsjd",
+		"code1141": "BM/GRE/K,BM/GRE/KA",
+		"siteName": "fgjkfgfkljgf",
+		"id": 45,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID not matched with the same 1141/site/TRS",
+		"sneId": "20017396",
+		"phaseForecastDate": "05/08/2020"
+	}, {
+		"sauId": "SSALM",
+		"code1141": "ACW",
+		"siteName": "ALMONDSBURY",
+		"id": 46,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID doesn't exist in the system",
+		"sneId": "762511",
+		"phaseForecastDate": "06/08/2020"
+	}, {
+		"sauId": "NSNTH",
+		"code1141": "AB/NTH/K,AB/NTH/KA",
+		"siteName": "ABERDEEN NORTH TE",
+		"id": 47,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID doesn't exist in the system",
+		"sneId": "262379",
+		"phaseForecastDate": "07/08/2020"
+	}, {
+		"sauId": "NSLNG",
+		"code1141": "AA",
+		"siteName": "ABERDEEN CENTRAL TA",
+		"id": 48,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": "SNE_ID not matched with the same 1141/site/TRS",
+		"sneId": "20391115",
+		"phaseForecastDate": "08/08/2020"
+	}],
+	"recordsSummary": {
+		"errorRecord": 48,
+		"successRecord": 6,
+		"totalRecord": 54
+	},
+	"validPhaseForecastRecords": [{
+		"sauId": "azsxdc",
+		"code1141": "OM/K",
+		"siteName": "CVBNMX",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "613175",
+		"phaseForecastDate": "31/07/2020"
+	}, {
+		"sauId": "sdfghjk",
+		"code1141": "ABW/K,ABW/KB",
+		"siteName": "tyreyerotueiru",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "20881233",
+		"phaseForecastDate": "01/08/2020"
+	}, {
+		"sauId": "SSNOR",
+		"code1141": "BS/G",
+		"siteName": "BRISTOL NORTH 1ST FLR",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "577732",
+		"phaseForecastDate": "28/07/2020"
+	}, {
+		"sauId": "opklj",
+		"code1141": "opkl",
+		"siteName": "DOWNEND",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "20250365",
+		"phaseForecastDate": "29/07/2020"
+	}, {
+		"sauId": "asdf",
+		"code1141": "PO",
+		"siteName": "assdfdg",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "20415225",
+		"phaseForecastDate": "30/07/2020"
+	}, {
+		"sauId": "NSLNG",
+		"code1141": "AA",
+		"siteName": "ABERDEEN CENTRAL TE",
+		"id": null,
+		"phasePlannedDate": null,
+		"phaseStatus": null,
+		"message": null,
+		"sneId": "20391115",
+		"phaseForecastDate": "09/08/2020"
+	}],
+	"status": true
+}

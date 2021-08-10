@@ -1,0 +1,11 @@
+<div class="pie">
+    <app-chart [type]="type" [data]="data" [options]="options" [height]="'300'"></app-chart>
+    <p class="totalports">{{data?.totalTbps}}
+        <span>tbps</span>
+    </p>
+    <!-- <ul class="list-inline ">
+        <li class="" *ngFor="let lab of data?.labels; let i = index">
+            <p><span class="circle-dot" [ngStyle]="{'background-color': data.datasets[0].backgroundColor[i]}"></span> {{lab}}</p>
+        </li>
+ </ul> -->
+</div>

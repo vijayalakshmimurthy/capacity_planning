@@ -1,0 +1,251 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                 <h1 class="margin10">{{header}}</h1>
+                <hr class="hrclass">
+            </div>
+        </div>
+               <!-- <div class="row text-right">	
+            <div class="col-md-12">	
+                <ul class="list-inline pull-right">	
+                    <li class="list-inline-item">	
+                        <span class="siteResult marginright20"> Download Complete Product Line Forecast </span>	
+                    </li>	
+                </ul>	
+            </div>	
+        </div> -->	
+        <span class="userlabel">Last updated by : {{userName}}</span>
+        <div class="Tabswitch">
+            <p-tabView (onChange)="tabChange($event)">
+                <p-tabPanel header="Product Line Forecast Upload">
+                    <div class="row text-right">
+                        <div class="col-md-12">
+                            <ul class="list-inline pull-right">
+                                <li class="list-inline-item">
+                                    <span *ngIf="tableType == 'failed' && successRecord !== 0" class="successResult"
+                                        (click)="showSucessresult()">
+                                        Processed Site Name </span>
+                                    <span *ngIf="tableType == 'successTable' && errorRecord !== 0" class="failedResult"
+                                        (click)="showFailedresult()">Failed Site Name </span>
+                                </li>
+                                <li class="list-inline-item marginleft15px">
+                                    <span *ngIf="successRecord !== 0 && errorRecord !== 0"> | </span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="siteResult marginright20" appCSVDownload [data]="csvData" [fileName]="downloadFileName"> Download Complete Product Line Forecast </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row margintopmin2percent">
+                        <div class="col-md-6 col-sm-6">
+                            <app-file-upload *ngIf="selectedTab === 'Product Line Forecast Upload'"
+                                [upload]="uploadHeading" (sendFileToParent)="submitfile($event)"></app-file-upload>
+                        </div>
+                        <!-- <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4 col-sm-4">
+                                <app-alert></app-alert>
+                            </div>
+                        </div> -->
+                        <div class="col-md-6 col-sm-6">
+                            <ul class="list-action pull-right action-btn" *ngIf="tableType == 'successTable'">
+                                <li class="li-margin">
+                                    <button type="button" class="btn btn-custom-empty" (click)="submitFileData()">Submit
+                                    </button>
+                                </li>
+                                <li class="marginright20">
+                                    <button type="button" class="btn btn-modal"
+                                        (click)="onfileUploadFromActionCancel()">Cancel
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Manage Product Line Forecast">
+                    <div class="row marginleft">
+                        <div class="col-md-3 col-sm-3">
+                            <app-auto-suggestions [type]="type" [placeHolder]="searchBoxPlaceHolder"
+                                *ngIf="selectedTab === 'Manage Product Line Forecast'  && searchSite"
+                                [filterData]="filterData" (searchStr)="onKeyPressSearchBox($event)"
+                                (selectStr)="onSelectSearch($event)" (dataKeyEnter)="onManageSearchData($event)"
+                                (resetSearchClear)="OnResetSearchInput($event)" (validateInputData)="validateInputData($event)" >
+                            </app-auto-suggestions>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <app-alert></app-alert>
+                        </div>
+                        <!-- <div class="col-md-2 col-sm-2">
+                            <ul class="list-action pull-right action-btn-search">
+                                <li class="li-margin">
+                                    <button type="button" *ngIf="tableType == 'update'"
+                                        class="btn btn-custom-empty paddingbtn" (click)="submitData()">Update </button>
+                                </li>
+                                <li>
+                                    <button type="button" *ngIf="tableType == 'update'" class="btn btn-modal"
+                                        (click)="onSearchdataUpdateCancel()">Cancel
+                                    </button>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <div class="col-md-5 col-sm-1 text-right">
+                            <ul
+                                class="nav navbar navbar-left d-flex d-inline-flex list-action pull-right action-btn-search ad-class">
+                                <li class="nav-item d-inline-flex">
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-custom-empty paddingbtn add" *ngIf="addMode"
+                                        (click)="addData()"> Add
+                                    </button>
+                                </li>
+
+                                <li class="li-margin">
+                                    <button type="button" *ngIf="tableType == 'update' && !testType"
+                                        class="btn btn-custom-empty paddingbtn" (click)="submitData()">Update </button>
+                                </li>
+                                <li>
+                                    <button type="button" *ngIf="tableType == 'update' && !testType" class="btn btn-modal"
+                                        (click)="onSearchdataUpdateCancel()">Cancel
+                                    </button>
+                                </li>
+
+                                <li class="buttonPaddingLeft">
+                                    <button class="btn btn-custom addan" *ngIf="showbutnRows" (click)="addData()">
+                                        <span> Add another row </span>
+                                    </button>
+                                </li>
+
+                                <li class="btnbackground buttonPaddingLeft">
+                                    <button type="button" *ngIf="showbutnRows" class="btn btn-icon-custom"
+                                        [disabled]="submitValue" (click)="submitRecord()">Submit</button>
+                                </li>
+                                <li class="btnbackground buttonPaddingLeft ">
+                                    <button type="button" *ngIf="showbutnRows" class="btn btn-icon-custom"
+                                        (click)="cancelRows()">Cancel</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <div class="row marginleftright">
+                    <div class="col-md-12 col-sm-12 cbp-table"   [ngClass]="{'addRow': testType === true}">
+                        <app-table [settings]="tableSettings"
+                            *ngIf="rows.length > 0 || selectedTab === 'Manage Product Line Forecast'"
+                             (updatedRow)="updateRow($event)"
+                            [rowUpdatedSuccessfully]="rowUpdatedSuccessfully" (deleteRow)="deleteRowPopup($event)"
+                            [noRecordError]="noRecordError" (enableSubmitButton)="addRows($event)"
+                            [successsfullysubmitted]="successsfullysubmitted" [allCheck]="allcheck">
+                        </app-table>
+                    </div>
+                </div>
+
+                <!-- <div class="error-msg pull-right" *ngIf="errorMsg"><span>Record not found </span><span (click)="hideerror()"> &#10006;</span></div> -->
+            </p-tabView>
+        </div>
+    </div>
+</div>
+<p-dialog header="Added Result" [(visible)]="displayAddreport" [style]="{width:'30vw' }" class="addcancelpopup"
+    [baseZIndex]="10000">
+    <div>
+        <p *ngIf="addsuccessRecords !== 0 && addsuccessRecords != 1"> {{addsuccessRecords}} Records has been added
+            successfully
+        </p>
+        <p *ngIf="addsuccessRecords === 1"> {{addsuccessRecords}} Record has been added successfully
+        </p>
+        <p *ngIf="addErrorRecords !== 0 && addErrorRecords != 1"> {{addErrorRecords}} Records has been failed to add
+        </p>
+        <p *ngIf="addErrorRecords === 1"> {{addErrorRecords}} Record has been failed to add
+        </p>
+        <p class="text"></p>
+        <span class="padding10">
+            <button type="button" class="btn btn-success okcss pull-right" (click)="closepopup()"> Okay
+            </button>
+        </span>
+    </div>
+</p-dialog>
+
+<p-dialog header="Added Result" dismissableMask="true" [(visible)]="alertCancel" [style]="{width:'30vw' }"
+    class="addcancelpopup" [baseZIndex]="10000">
+    <div>
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to cancel the add </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-success" (click)="modelOk()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-danger" (click)="modelCancel($event)">Cancel</button>
+            </span>
+        </p>
+    </div>
+</p-dialog>
+
+<!-- <p-dialog header="Delete Result" dismissableMask="true" [(visible)]="deletePopup" [style]="{width:'30vw' }"
+    class="addcancelpopup" [baseZIndex]="10000">
+    <div>
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to delete the data </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-success" (click)="deleteOk()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-danger" (click)="deleteCancel()">Cancel</button>
+            </span>
+        </p>
+    </div>
+</p-dialog> -->
+<!-- delete popup -->
+<p-dialog header="Upload Result" [(visible)]="displayBasic" [style]="{width: popupType}"
+    [ngClass]="popupType === '50vw' ? 'info upload' : 'info'" [baseZIndex]="20000" [modal]="true">
+    <div class="modal-body" *ngIf="popupType == '30vw'">
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to delete the data </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-Okay" (click)="deleteRow()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-modal" (click)="modelCancel($event)">Cancel</button>
+            </span>
+        </p>
+    </div>
+    <div style="text-align: left" *ngIf="popupType == '50vw'">
+        <p *ngIf="successRecord !== 0"> {{successRecord}} Site name has been uploaded successfully,
+            <span *ngIf="successRecord !== 0" class="siteResult" (click)="showSucessresult()">
+                See the Result </span>
+        </p>
+        <p *ngIf="errorRecord !== 0"> {{errorRecord}} Site name has been failed to upload,
+            <span *ngIf="errorRecord !== 0" class="siteResult" (click)="showFailedresult()">
+                See the Result </span>
+        </p>
+        <ng-template
+            [ngIf]="fileMessage == 'File contains invalid header' || fileMessage == 'error occured at record: 1' ">
+            <span> Invalid File format is uploaded. Please upload CSV/XLS in the below format with header:
+                <br> 1141 CODE, SITE NAME, 1G_BROADBAND, 10G_BROADBAND, FASTE_ETHERNET, 1G_HE_ETHERNET,
+                <br>10G_HE_ETHERNET, 10G_WMC_Apollo_TEF, 100G_ACCESS_ETHERNET, 10G_BACKHAUL, 100G_BACKHAUL;
+
+            </span>
+        </ng-template>
+        <ng-template	
+        [ngIf]="fileMessage == 'File contains invalid header for CoreRt' || fileMessage == 'error occured at record: 1' ">	
+        <span> Invalid File format is uploaded. Please upload CSV/XLS in the below format with header:	
+            <br> 1141 CODE, SITE NAME, 10GE,  100GE_LR4, 100GE_SR4,	100GE_SR10,
+            <br>100GE_DD-SR4, 100GE_DD-LR4,100GE_LR10, 100GE_Other;	
+        </span>	
+    </ng-template>
+        <ng-template
+            [ngIf]="fileMessage == 'File contain only headers and no data in the file to read' || fileMessage == 'File format is not expected'">
+            <span> {{fileMessage}}
+            </span>
+        </ng-template>
+    </div>
+    <p-footer *ngIf="popupType == '50vw'">
+        <button type="button" class="btn  btn-modal" (click)="modelfileuploadCancel()">Cancel</button>
+    </p-footer>
+</p-dialog>
+

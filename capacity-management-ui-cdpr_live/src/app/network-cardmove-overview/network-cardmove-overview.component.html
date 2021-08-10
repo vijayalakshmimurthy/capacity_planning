@@ -1,0 +1,24 @@
+<div class="container-fluid containerwidth">
+    <app-network-cardmove-overview-header (saveCBP)="saveCBP()" (submitCBP)="submitCBP()" (saveCardMove)="saveCardMove()"
+    (submitCardMove)="submitCardMove()" (exportCardMove)=exportCardMove() [enableNOCardMoveWorkflow]="enableNOCardMoveWorkflow"
+    [disablePortMoveSave]='disablePortMoveSave' [disableCardInfillSave]="disableCardInfillSave" 
+    [disablePortMoveSubmit]="disablePortMoveSubmit" [disableCardInfillSubmit]="disableCardInfillSubmit" 
+    [disableExportButton]="disableExportButton" [index]="index" 
+    (redirectToHomePage)="redirectToHomePage()">
+</app-network-cardmove-overview-header>
+    <p-tabView [activeIndex]="index" (onChange)="tabChange($event)">
+        <p-tabPanel header="Capacity Build Plan - Card">
+          <app-table [settings]="tableSettings">
+      </app-table>
+        </p-tabPanel>
+        <p-tabPanel header="Capacity Optimization Plan" class="tableBackground">
+            <app-overview-table [enableNOCardMoveWorkflow]="enableNOCardMoveWorkflow" 
+            [tableData]="tableData" [orderIDValue]="orderIDValue" (deleteRow)="deleteRow($event)" 
+            (emitsavecheck)='emitsavecheck($event)' [disablePortMoveSave]='disablePortMoveSave'
+            [disableCardInfillSave]="disableCardInfillSave" [disablePortMoveSubmit]="disablePortMoveSubmit" 
+            [disableCardInfillSubmit]="disableCardInfillSubmit" [disableExportButton]="disableExportButton"
+            [cardInfillTableData]="tableSettings?.data" [saveSucess]="saveSucess" [portMoveList]="portMoveList"
+            [disableTable]="disableTable"></app-overview-table>
+        </p-tabPanel>
+    </p-tabView>
+ </div>

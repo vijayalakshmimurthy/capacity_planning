@@ -1,0 +1,168 @@
+.left-panel-button-navig {
+    padding: 2px 1px;
+    border-bottom: 1px solid #6400aa;
+    text-align: left;
+}
+
+.left-panel {
+    z-index: 1;
+}
+
+.left-panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.left-panel ul li {
+    padding: 3px 5px;
+    text-align: left;
+}
+
+.left-panel ul li div {
+    margin: 0;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.54;
+    letter-spacing: 0px;
+    color: #333333;
+    display: inline-block;
+}
+
+.left-panel ul li .key {
+    font-size: 13px;
+    padding-right: 10px;
+}
+
+.left-panel ul li .value {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus {
+    font-weight: bold;
+    opacity: 1;
+    background-color: #6400aa !important;
+    color: white !important;
+    
+}
+
+.nav-tabs > li.active > a:hover {
+    font-weight: bold;
+    opacity: 1;
+    background-color: #6400aa !important;
+    color: white !important;
+    
+}
+
+.accounts_li {
+    min-height: 24px;
+    text-align: center;
+}
+
+.accounts_li a {
+    background-color: white;
+    border: none;
+    padding: 3px;
+    opacity: 0.5;
+    font-size: 14px;
+    outline: none !important;
+    min-height: 24px;
+    border: solid 2px #6400aa;
+    border-radius: 5px 5px 0 0;
+    color: #6400aa;
+    text-align: center;
+    cursor: pointer;
+    width:79px;
+    text-decoration: none;
+}
+
+.accounts_li a.is-active {
+    font-weight: bold;
+    opacity: 1;
+    background-color: #6400aa !important;
+    color: white !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus {
+    font-weight: bold;
+    opacity: 1;
+    background-color: #6400aa !important;
+    color: white !important;
+    
+}
+.nav-tabs > li.active > a:hover {
+    font-weight: 700;
+    opacity: 1;
+    background-color: #6400aa !important;
+    color: white !important;
+   
+   
+}
+
+.collpase-left-panel {
+    padding: 0 10px 10px;
+    background-color: #ffffff;
+    width: auto;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    margin-right: 2px;
+    line-height: 1.42857143;
+}
+
+.bodyArea {
+    overflow-y: auto;
+    height: 100%;
+    max-height: calc(100vh - 210px);
+    //border: 1px solid #e0e0e0;
+    opacity: 1;
+}
+
+.panel-header {
+    text-align: left;
+    color: #6400aa;
+    display: flex;
+    justify-content: space-between;
+}
+
+.panel-header h1 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.keyValList li {
+    border-bottom: 1px solid #d8d8d8;
+    padding: 3px 5px;
+}
+
+.listDisable {
+    background: #ccc !important;
+    cursor: default !important;
+    border-color: #ccc !important;
+    pointer-events: none;
+    display: block;
+}
+
+#closeicn {
+    color: #6400aa;
+    font-size: 22px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.navi-info-section {
+    min-height: calc(100vh);
+    background: #ffffff
+}
+.fade.in {
+    opacity: 1;
+}
+
+.errormessage {
+    color: red;
+  }

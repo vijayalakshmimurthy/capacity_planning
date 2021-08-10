@@ -1,0 +1,29 @@
+{
+    "filters": [
+        {
+            "name": "radius",
+            "displayName": "Radius",
+            "type": "checkbox",
+            "values": [
+                {
+                    "label": "EAD:25km",
+                    "value": 25,
+                    "class": "checkmark checkmark_25000",
+                    "color": "#ce9df5"
+                },
+                {
+                    "label": "OSA-FC: 30km",
+                    "value": 30,
+                    "class": "checkmark checkmark_30000",
+                    "color": "#ad5def"
+                },
+                {
+                    "label": "OSA: 50km",
+                    "value": 50,
+                    "class": "checkmark checkmark_50000",
+                    "color": "#ba76f1"
+                }
+            ]
+        }      
+    ]
+}

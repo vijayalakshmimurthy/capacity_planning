@@ -1,0 +1,219 @@
+.filterheading {
+    font-size: 28px;
+    .sitenamefont {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+}
+.margin10 {
+    margin-top: 10px;
+}
+.hrclass {
+    border-bottom: 1px solid #e2dddd;
+    width: 98%;
+    right: 20px;
+    margin-top: 0rem;
+}
+.p-padding {
+    padding: 0px 4px;
+    margin-bottom: 5px;
+    line-height: 1.74em;
+    cursor: pointer;
+  
+    &:hover, &:active {
+      background-color: #D9BAE7;
+      color: #333;
+    }
+  }
+.padding0 {
+    padding: 0px;
+}
+.marginleft10{
+    margin-left: 10px;
+}
+.margin-top23px{
+    margin-top: -20px;
+}
+.export {
+    display: inline-block;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    .dropdown-toggle:hover, .dropdown-toggle:active, .dropdown-toggle:focus {
+        background: #6400aa;
+        cursor: pointer;
+    }
+    .dropdown-menu{
+        font-size: 14px;
+        transform: translate(50px, 45px) !important;
+    }
+    .dropdown-menu>li:hover,.dropdown-menu li:focus{
+        color: #6400aa;
+        text-decoration: underline;
+        font-weight: 500;
+        cursor: pointer;
+         background: #eeeeee;
+    }
+}
+.exportdrop {
+    left: -61px !important;
+    height: 65px;
+    width: 112px;
+    min-width: 91px !important;
+    position: absolute;
+    top: 0px !important;
+    transform: translate(793px, -154px);
+  }
+      
+.card-dashboard{
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 30px;
+    h2 {
+            position: absolute;
+            color: #6400aa;
+            font-size: 20px;
+            top: 16px;
+            font-weight: 400;
+            a{
+                font-size: 16px; 
+            }
+        }
+        h1 {
+            color: #6400aa;
+            font-size: 20px;
+            font-weight: 400;
+            margin-left: 9px;
+            margin-bottom: 10px;
+        }
+    
+}
+.exportpadding{
+    padding-bottom: 10px;
+}
+.move{
+    margin-right: 24px;
+    margin-top: 4px;
+}
+body .ui-dropdown .ui-dropdown-label {
+    padding-right: 4em;
+}
+.center-header{
+    text-align: center;
+}
+.font-weight{
+    font-weight: 700;
+}
+.right-arrow{
+    margin-left: 7rem;
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+    background-color: #eddcff;
+    padding-bottom: 0px;
+    padding-top: 2px;
+}
+.left-arrow{
+    margin-left: 3rem;
+    padding-top: 2px;
+    font-size: 1.8rem;
+    padding-bottom: 0px;
+    background-color: #eddcff;
+}
+.text-bold{
+    font-weight: 700;
+}
+.col-background{
+    background-color: #e7d8ff;
+}
+.left-drop{
+    text-align: left;
+}
+.no-data{
+    font-size: 1.3rem;
+}
+.card-dashboard{
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 30px;
+    h2 {
+            position: absolute;
+            color: #6400aa;
+            font-size: 20px;
+            top: 16px;
+            font-weight: 400;
+            a{
+                font-size: 16px; 
+            }
+        }
+        h1 {
+            color: #6400aa;
+            font-size: 20px;
+            font-weight: 400;
+            margin-left: 9px;
+            margin-bottom: 10px;
+        }
+    
+}
+.next {
+    padding-left: 1rem;
+    margin-top: 2px;
+}
+// .top-headers th {
+//     width: 4%;
+// }
+.test-tbl table {
+    table-layout: auto !important;
+}
+.btnbackground .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    background: #efefef;
+}
+.drclass{
+    margin-top: 5px;
+}
+.cl{
+    margin-top: -27px;
+}
+.cln{
+    margin-top: 17px;
+}
+.buttonc{
+    padding-top: 8px;
+    padding-bottom: 0px;
+    margin-top: 6px;
+}
+.blk{
+    color: black;
+}
+.navlinkDetailedReport {
+    text-align: end;
+    color: #6400aa;
+}
+.navlinkDetailedReport:hover {
+    text-decoration: none !important;
+}
+.space{
+    margin-top: -14px;
+}
+.nw{
+    padding-top: 0.4rem;
+    padding-bottom: 0.1rem;
+    padding-bottom: -4px;
+}
+.mv{
+    margin-top: 2px;
+}
+.wc{
+    padding-bottom: 0px;
+    margin-top: 2px;
+}
+.space-remove{
+    margin-top: -29px;
+}
+.shortfalldashboard  tr  th {
+    border-left: 2px solid #c7c7c7;
+    border-bottom: 4px solid #a26afd;
+    font-weight: 700;
+    color: #444444;
+    background-color: #ffffff;
+    padding: 9px 1px;
+    font-family: "bt-font" !important;
+}

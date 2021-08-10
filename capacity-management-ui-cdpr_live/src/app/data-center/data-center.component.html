@@ -1,0 +1,131 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1 class="margin10">Data Centre Upload</h1>
+                <hr class="hrclass">
+            </div>
+        </div>
+        <div class="Tabswitch">
+            <p-tabView (onChange)="tabChange($event)">
+                <p-tabPanel header="Data Centre Upload">
+                    <div class="row text-right">
+                        <div class="col-md-12">
+                            <ul class="list-inline pull-right">
+                                <li class="list-inline-item">
+                                    <span *ngIf="tableType == 'failed' && successRecord !== 0" class="successResult" (click)="showSucessresult()">
+                                        Processed Site Name </span>
+                                    <span *ngIf="tableType == 'successTable' && errorRecord !== 0" class="failedResult" (click)="showFailedresult()">Failed Site Name </span>
+                                </li>
+                                <li class="list-inline-item marginleft15px">
+                                    <span *ngIf="successRecord !== 0 && errorRecord !== 0"> | </span>
+                                </li>
+                                <li class="list-inline-item">
+                                    <span class="siteResult marginright20" appCSVDownload [data]="csvData" [fileName]="downloadFileName"> Download Complete Data Centre </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row margintopmin2percent">
+                        <div class="col-md-6 col-sm-6">
+                            <app-file-upload *ngIf="selectedTab === 'Data Centre Upload'" (sendFileToParent)="submitfile($event)"></app-file-upload>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4 col-sm-4">
+                                <app-alert></app-alert>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <ul class="list-action pull-right action-btn" *ngIf="tableType == 'successTable'">
+                                <li class="li-margin">
+                                    <button type="button" class="btn btn-custom" (click)="submitFileData()">Submit
+                                    </button>
+                                </li>
+                                <li class="marginright20">
+                                    <button type="button" class="btn btn-modal" (click)="onfileUploadFromActionCancel()">Cancel
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <p-tabPanel header="Manage Data Centre">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <app-auto-suggestions [placeHolder]="searchBoxPlaceHolder" *ngIf="selectedTab === 'Manage Data Centre'" [filterData]="filterData"
+                                (searchStr)="onKeyPressSearchBox($event)" (selectStr)="onSelectSearch($event)" (dataKeyEnter)="onManageSearchData($event)">
+                            </app-auto-suggestions>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <app-alert></app-alert>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <ul class="list-action pull-right action-btn-search">
+                                <li class="li-margin">
+                                    <button type="button" *ngIf="tableType == 'update'" class="btn btn-custom" (click)="submitData()">Update </button>
+                                </li>
+                                <li>
+                                    <button type="button" *ngIf="tableType == 'update'" class="btn btn-modal" (click)="onSearchdataUpdateCancel()">Cancel
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </p-tabPanel>
+                <div class="col-md-12 col-sm-12">
+                    <app-table [settings]="tableSettings" *ngIf="rows.length > 0 || selectedTab === 'Manage Data Centre'" (updatedRow)="updateRow($event)"
+                        [rowUpdatedSuccessfully]="rowUpdatedSuccessfully" (deleteRow)="deleteRowPopup($event)" [noRecordError] = "noRecordError">
+                    </app-table>
+                    <!-- <div class="table">
+                        <div *ngIf="noRecordError">
+                            <p class =  "Norecord-p">
+                                No records found
+                            </p>
+                        </div>
+                    </div> -->
+                </div>
+            </p-tabView>
+        </div>
+    </div>
+</div>
+<!-- delete popup -->
+<p-dialog header="Upload Result" pButton [(visible)]="displayBasic" [style]="{width: popupType}" [ngClass]="popupType === '50vw' ? 'info upload' : 'info'"
+    [baseZIndex]="10000">
+    <div class="modal-body" *ngIf="popupType == '30vw'">
+        <img class="center" src="assets/images/question_icon.png">
+        <p style=" text-align: center">Are you sure that you want to delete the data </p>
+        <p class="text">
+            <span class="padding10">
+                <button type="button" class="btn btn-Okay" (click)="deleteRow()"> Okay
+                </button>
+            </span>
+            <span>
+                <button type="button" class="btn btn-modal" (click)="modelCancel($event)">Cancel</button>
+            </span>
+        </p>
+    </div>
+    <div *ngIf="popupType == '50vw'">
+        <p *ngIf="successRecord !== 0"> {{successRecord}} Site name has been uploaded successfully,
+            <span *ngIf="successRecord !== 0" class="siteResult" (click)="showSucessresult()">
+                See the Result </span>
+        </p>
+        <p *ngIf="errorRecord !== 0"> {{errorRecord}} Site name has been failed to upload,
+            <span *ngIf="errorRecord !== 0" class="siteResult" (click)="showFailedresult()">
+                See the Result </span>
+        </p>
+        <!-- <p> Please correct the file which you have uploaded.</p> -->
+        <ng-template [ngIf]="fileMessage == 'File format is not expected' || fileMessage == 'error occured at record: 1'">
+            <span> Invalid File format is uploaded. Please upload XLS in the below format with header:
+                <br> SAU, TRS AREA, 3rd Party Data Centre Name, 7750 SNEID, Max Etherway Bandwidth, Max EVC Bandwidth, Future
+                availablity of 10Gb EVCs., Number of Etherflows >1GB;
+            </span>
+        </ng-template>
+        <ng-template [ngIf]="fileMessage == 'File contain only headers and no data rows in the file to read'">
+            <span> {{fileMessage}}
+            </span>
+        </ng-template>
+    </div>
+    <p-footer *ngIf="popupType == '50vw'">
+        <button type="button" class="btn  btn-modal" (click)="modelfileuploadCancel()">Cancel</button>
+    </p-footer>
+</p-dialog>

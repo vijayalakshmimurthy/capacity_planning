@@ -1,0 +1,25 @@
+{
+    "sne_Id": null,
+    "holder": null,
+    "recovery_type": null,
+    "fist_Project_No": null,
+    "scheme_Driver": null,
+    "capacity_Required_Date": null,
+    "physical_Connector_Removal": null,
+	"rack_Recovery": null,
+	"network_Change": null,
+	"auto_Progression": null,
+   "showErr": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false],
+    "sne_type_options" : [{ "label": "Y", "value": "Y" } , { "label": "N", "value": "N" }]
+
+}

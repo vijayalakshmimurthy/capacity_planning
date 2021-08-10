@@ -1,0 +1,53 @@
+<div class="sidebar_dashboard">
+    <p-sidebar [(visible)]="display" blockScroll="true" [dismissible]="false" (onHide)="hideSideBar()">
+        <div class="dashboard_left">
+            <div class="row">
+                <div class="col-md-12 no-padding-left">
+                    <h4 class="heading">Un-Reserve</h4>
+                </div>
+            </div>
+            <form [formGroup]="unReservesForm">
+                <div class="row fields">
+                    <div class="col-md-12">
+                        <p>Reserving Domain Name*</p>
+                        <input type="text" class="form-control dashboard_input" formControlName='domainNames'
+                            maxlength="50" placeholder="Enter Domain Name">
+                    </div>
+                    <div class="col-md-12">
+                        <p>Reservation Token Id*</p>
+                        <input type="text" class="form-control dashboard_input" formControlName='tokenIds'
+                            maxlength="50" placeholder="Enter Token Id">
+                    </div>
+                    <p class="tokenvalue">{{tokenvalue}}</p>
+                </div>
+
+                <div class="row bottom">
+                    <div class="col-md-12 button-set">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <button type="info-button" class="btn btn-modal" (click)="cancelForm()">Cancel</button>
+                            </li>
+                            <li class="list-inline-item">
+                                <button class="btn btn-icon-custom" type="button" (click)="onSubmit()"
+                                    [disabled]="!unReservesForm.valid">Submit </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </p-sidebar>
+</div>
+
+<app-modal-popup [display]="showUnReserveModal" [commonModelProperties]='commonModelProperties'
+    (submitData)="confirmLayerdPopup()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displaySuccessPopup" [commonModelProperties]='commonModelProperties'
+    (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayErrorPopup" [commonModelProperties]='commonModelProperties'
+    (submitData)="confirmLayerdPopup()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayTimeoutPopup" [commonModelProperties]='commonModelProperties'
+    (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>

@@ -1,0 +1,66 @@
+<div class="container-fluid containerwidth">
+    <app-loader *ngIf="showLoader"></app-loader>
+    <div class="row filterheading">
+        <div class="col-md-7 col-sm-7 list-inline">
+            <h2 class="margin10 header">Detailed Patch Panel Report
+                <span class="sitenamefont" *ngIf="siteNameval">- {{siteNameExport}}</span>
+            </h2>
+        </div>
+
+        <div class="col-md-5 col-sm-5 text-right">
+            <ul class="nav navbar navbar-left d-flex d-inline-flex padding0"> 
+                <li class="nav-item d-inline-flex marginright25 margintop5">
+                    <span class="datamsgs">{{searchSiteErrorMsg}}</span>
+                    <app-auto-suggestions [filterData]="filterData" (searchStr)="onkeyPressSearch($event)"
+                    (selectStr)="onselectSearch($event)" [placeHolder]="searchBoxPlaceHolder">
+                    </app-auto-suggestions>
+                </li>
+                <li class=" exportdropdown  marginleft10" *ngIf="showTable">
+                    <div ngbDropdown class="d-inline-block">
+                        <button [disabled]="this.tableSettings.data.length === 0" class="btn btn-custom drr-download" data-hover="dropdown" id="dropdownBasic2"
+                            ngbDropdownToggle aria-expanded="true" [disabled]="disableExportButton">
+                            <app-svg icon="Capa_10-export_icon"> </app-svg>
+                            <span> Export </span>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                            <p class="p-padding" ngbDropdownItem (click)="exportData()">Export as XLSX</p>
+                        </div>
+                    </div>
+                </li>
+                <li class=" exportdropdown">
+                    <div class="d-inline-block">
+                            <button class="btn btn-custom drrbutton marginleft10"  *ngIf="searchVisible"
+                            (click)="cancelSearch()">
+                            <span>Cancel Search</span>
+                        </button>
+                      </div>  
+                </li>
+
+            </ul>
+        </div>       
+        <hr class="hrclass">
+    </div>
+    <div class="row" *ngIf="!showTable">
+        <div class="col-md-12">
+            <h1 class="chooseMsg">{{ messageDisplay }}</h1>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="showTable">
+        <div class="col-md-12 col-sm-12">
+            <div class="row detail-site-table">
+                <div class="col-md-12">
+                   
+                    <app-table [settings]="tableSettings"
+                    [noRecordError]="'No Record Found'"(exportParam)="getFilterData($event)" [clearData]="clearfilterData" (filterTableRecords)="exportDisableFilter($event)">
+                </app-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- <app-modal-popup [display]="display" [commonModelProperties]='commonModelProperties'
+    (submitData)="submitDataApi()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup> -->

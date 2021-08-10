@@ -1,0 +1,72 @@
+.content {
+  text-align: center;
+
+  padding: {
+    top: 16px;
+    bottom: 16px;
+  }
+}
+.button-align {
+  text-align: center;
+}
+.btn-Okay {
+  margin-right: 10px;
+}
+.center {
+  display: block;
+  margin: 0 auto;
+}
+.columnData {
+  text-align: left;
+}
+.otherhd {
+  text-align: left;
+}
+
+th.otherhd[ngvalue="SNE_ID"] {
+  width: 120px;
+}
+
+th.otherhd[ngvalue="Card_Details"] {
+  width: 300px;
+}
+
+th.otherhd[ngvalue="CUF_values"] {
+  width: 200px;
+}
+
+th.otherhd[ngvalue="Status"] {
+  width: 100px;
+}
+
+th.otherhd[ngvalue="Error_code"] {
+  width: 100px;
+}
+
+th.otherhd[ngvalue="Error_description"] {
+  width: 300px;
+}
+
+td.columnData[ngvalue="SNE_ID"] {
+  width: 120px;
+}
+
+td.columnData[ngvalue="Card_Details"] {
+  width: 300px;
+}
+
+td.columnData[ngvalue="CUF_values"] {
+  width: 200px;
+}
+
+td.columnData[ngvalue="Status"] {
+  width: 100px;
+}
+
+td.columnData[ngvalue="Error_code"] {
+  width: 100px;
+}
+
+td.columnData[ngvalue="Error_description"] {
+  width: 300px;
+}

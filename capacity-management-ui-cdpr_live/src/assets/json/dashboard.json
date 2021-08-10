@@ -1,0 +1,187 @@
+{
+	"data": {
+        "totalNetworkTrend": {
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "label": "NETWORK_CAPACITY_TREND",
+                "datasets": [{
+                                "label": "Ethernet",
+                                "data": [857.95, 857.95, 855.45, 855.74, 875.95, 875.95, 862.89]
+                }, {
+                                "label": "Broadband",
+                                "data": [188.29, 189.4, 190.52, 191.6, 195.3, 195.82, 196.42]
+                }, {
+                                "label": "Backhaul",
+                                "data": [0.02, 0.02, 0.46, 0.46, 4.09, 4.59, 4.59]
+                }, {
+                                "label": "Infrastructure",
+                                "data": [31.3, 33.0, 33.08, 32.9, 33.73, 33.73, 32.38]
+                }, {
+                                "label": "P2PE",
+                                "data": [21.86, 24.37, 24.23, 24.15, 25.44, 25.44, 24.79]
+                }, {
+                                "label": "Total Capacity",
+                                "data": [1099.03, 1099.03, 1103.17, 1104.27, 1134.51, 1134.51, 1121.07]
+                }] 
+},
+        "ProductNetworkTrend": [{
+                "typeName": "Ethernet",
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "datasets": [{
+                                "label": "1G",
+                                "data": [154463, 154492, 154032, 153395, 155306, 155306, 153410]
+                }, {
+                                "label": "10G",
+                                "data": [59944, 59944, 59417, 59442, 60761, 60761, 59854]
+                }, {
+                                "label": "100G",
+                                "data": [852, 852, 891, 891, 941, 941, 921]
+                }, {
+                                "label": "FE",
+                                "data": [188644, 188648, 188411, 188311, 189301, 189301, 188391]
+                }]
+}, {
+                "typeName": "Broadband",
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "datasets": [{
+                                "label": "1G",
+                                "data": [30564, 30554, 30377, 30151, 30934, 30934, 30690]
+                }, {
+                                "label": "10G",
+                                "data": [15764, 15888, 16025, 16146, 16427, 16503, 16563]
+                }, {
+                                "label": "100G",
+                                "data": [1, 1, 1, 1, 1, 1, 1]
+                }, {
+                                "label": "FE",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }]
+}, {
+                "typeName": "Backhaul",
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "datasets": [{
+                                "label": "1G",
+                                "data": [1, 1, 1, 1, 1, 1, 1]
+                }, {
+                                "label": "10G",
+                                "data": [2, 2, 46, 46, 399, 409, 409]
+                }, {
+                                "label": "100G",
+                                "data": [0, 0, 0, 0, 1, 5, 5]
+                }, {
+                                "label": "FE",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }]
+}, {
+                "typeName": "Infrastructure",
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "datasets": [{
+                                "label": "1G",
+                                "data": [0, 0, 1, 1, 10, 10, 10]
+                }, {
+                                "label": "10G",
+                                "data": [3130, 3300, 3308, 3290, 3372, 3372, 3237]
+                }, {
+                                "label": "100G",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }, {
+                                "label": "FE",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }]
+}, {
+                "typeName": "P2PE",
+                "labels": ["W22,2020", "W23,2020", "W24,2020", "W25,2020", "W26,2020", "W27,2020", "W28,2020"],
+                "datasets": [{
+                                "label": "1G",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }, {
+                                "label": "10G",
+                                "data": [2186, 2437, 2423, 2415, 2544, 2544, 2479]
+                }, {
+                                "label": "100G",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }, {
+                                "label": "FE",
+                                "data": [0, 0, 0, 0, 0, 0, 0]
+                }]
+}],
+
+        "keyNetworkStatistics": [
+            {
+                "productType": "Ethernet",
+                "totalPorts": 40468,
+                "freePorts": 17098
+            },
+            {
+                "productType": "Broadband",
+                "totalPorts": 18137,
+                "freePorts": 9239
+            },
+            {
+                "productType": "Backhaul",
+                "totalPorts": 16440,
+                "freePorts": 7833
+            },
+            {
+                "productType": "Infrastructure",
+                "totalPorts": 3257,
+                "freePorts": 2695
+            },
+            {
+                "productType": "P2PE",
+                "totalPorts": 9828,
+                "freePorts": 3003
+            }
+            
+        ],
+        "capacityDistribution": {
+            "labels": [
+                "Ethernet",
+                "Broadband",
+                "Backhaul",
+                "Infrastructure",
+                "P2PE"
+            ],
+            "datasets": [
+                {
+                    "data": [
+                        630,
+                        212,
+                        166,
+                        33,
+                        146
+                    ]
+                }
+            ],
+            "totalTbps": 1187
+        },
+        "table": {
+                "deviceDetails": [{
+                                "TiMOS-C-15.0.R15": 1080,
+                                "TiMOS-C-12.0.R14": 2,
+                                "TiMOS-C-15.0.R1": 1,
+                                "TiMOS-C-15.0.R6-1": 657,
+                                "TiMOS-C-13.0.R12-1": 794,
+                                "(N/A)": 72,
+                                "TiMOS-C-13.0.R12": 630,
+                                "TiMOS-C-15.0.R6": 92,
+                                "TiMOS-C-15.0.R12": 310
+                }],
+                "cardDetails": [{
+                                "IMM12": 1956,
+                                "CPM5": 4060,
+                                "IOMv1": 4525,
+                                "CPM3": 2259,
+                                "CPM2": 720,
+                                "IOMv3": 5211,
+                                "IMM5": 3707,
+                                "IMM20": 1110,
+                                "IMM2 x 100G": 559,
+                                "IOMv3c": 6919,
+                                "IMM 1 x 100G": 44,
+                                "IMM12(5)": 2299,
+                                "IOM4-e-hs": 1184
+                }]
+}
+
+        }
+}

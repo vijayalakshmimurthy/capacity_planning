@@ -1,0 +1,120 @@
+<div class="rack-popup">
+    <form [formGroup]="planRackForm" (scroll)='scrollevent($event)'>
+        <table class="table table-bordered" id="plan-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let col of header">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <ng-container *ngFor="let body of header">
+                        <ng-container>
+                            <td *ngIf="body.type === 'autocomplete'" [ngClass]="saswfmt ? 'saswfmtpopup':''" (click)='checkclick()'>
+                                <p-autoComplete [suggestions]="filtersite" (completeMethod)="search($event)"
+                                    emptyMessage="Search is not available" (onSelect)="selectedValue($event.data)"
+                                    field="data" (onClear)="clearSerach($event)" formControlName={{body.formValue}}
+                                    [inputStyle]="{'width':'100%'}">
+                                    <ng-template let-brand pTemplate="item">
+                                        <div>{{brand.data}}</div>
+                                    </ng-template>
+                                </p-autoComplete>
+                            </td>
+                            <td *ngIf="body.type === 'input'">
+                                <input type="text" pInputText formControlName={{body.formValue}}
+                                    class="ui-inputtext ui-inputtext" [readonly]=body.readonly style="width:100%" />
+                            </td>
+                            
+                            <td *ngIf="body.type === 'dropdown' && body.formValue === 'trsArea'" [ngClass]="saswfmt ? 'saswfmtpopup':''"  (click)='checkclick()'>
+                                <p-dropdown [options]="trsAreaDropDown" class ='widthhh'formControlName={{body.formValue}}
+                                    [editable]=body.editable [style]="{'width':'100%', 'min-width':'100%'}"
+                                    optionLabel="description">
+                                </p-dropdown>
+                            </td>
+                            <td *ngIf="body.type === 'dropdown' && body.formValue !== 'trsArea'"  [ngClass]="saswfmt ? 'saswfmtpopup':''" (click)='checkclick()'>
+                                <p-dropdown [options]="body.options" formControlName={{body.formValue}}
+                                    [editable]=body.editable [style]="{'width':'100%', 'min-width':'100%'}">
+                                </p-dropdown>
+                            </td>
+                            <td *ngIf="body.type === 'calander'" [ngClass]="saswfmt ? 'saswfmtpopup':''"  (click)='checkclick()'>
+                                <p-calendar formControlName={{body.formValue}} [showIcon]="true"
+                                    styleClass="calender-style" panelStyleClass="panel-calander" dateFormat="dd/mm/yy"
+                                    [minDate]="minimumDate" dataType="string" [inputStyle]="{'width':'65%'}">
+                                </p-calendar>
+                            </td>
+                            <td *ngIf="body.type === 'textarea'">
+                                <textarea pInputTextarea formControlName={{body.formValue}} maxLength="400"
+                                    placeholder="Blank" style="width:100%"></textarea>
+                            </td>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+        <table *ngIf='header1.length>0' class="table table-bordered table2" id="plan-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let col of header1">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <ng-container *ngFor="let body of header1">
+                        <ng-container>
+                            <td *ngIf="body.type === 'autocomplete'" [ngClass]="saswfmt ? 'saswfmtpopup':''" (click)='checkclick()'>
+                                <p-autoComplete [suggestions]="filtersite" (completeMethod)="search($event)"
+                                    emptyMessage="Search is not availablee" (onSelect)="selectedValue($event.data)"
+                                    field="data" (onClear)="clearSerach($event)" formControlName={{body.formValue}}
+                                    [inputStyle]="{'width':'100%'}">
+                                    <ng-template let-brand pTemplate="item">
+                                        <div>{{brand.data}}</div>
+                                    </ng-template>
+                                </p-autoComplete>
+                            </td>
+                            <td *ngIf="body.type === 'input'">
+                                <input type="text" pInputText formControlName={{body.formValue}}
+                                    class="ui-inputtext ui-inputtext" [readonly]=body.readonly style="width:100%" />
+                            </td>
+                            
+                            <td *ngIf="body.type === 'dropdown' && body.formValue === 'trsArea'" [ngClass]="saswfmt ? 'saswfmtpopup':''"  (click)='checkclick()'>
+                                <p-dropdown [options]="trsAreaDropDown" class ='widthhh'formControlName={{body.formValue}}
+                                    [editable]=body.editable [style]="{'width':'100%', 'min-width':'100%'}"
+                                    optionLabel="description">
+                                </p-dropdown>
+                            </td>
+                            <td *ngIf="body.type === 'dropdown' && body.formValue !== 'trsArea'"  [ngClass]="saswfmt ? 'saswfmtpopup':''" (click)='checkclick()'>
+                                <p-dropdown [options]="body.options" formControlName={{body.formValue}}
+                                    [editable]=body.editable [style]="{'width':'100%', 'min-width':'100%'}">
+                                </p-dropdown>
+                            </td>
+                            <td *ngIf="body.type === 'calander'" [ngClass]="saswfmt ? 'saswfmtpopup':''"  (click)='checkclick()'>
+                                <p-calendar formControlName={{body.formValue}} [showIcon]="true"
+                                    styleClass="calender-style" panelStyleClass="panel-calander" dateFormat="dd/mm/yy"
+                                    [minDate]="minimumDate" dataType="string" [inputStyle]="{'width':'65%'}">
+                                </p-calendar>
+                            </td>
+                            <td *ngIf="body.type === 'textarea'">
+                                <textarea pInputTextarea formControlName={{body.formValue}} maxLength="400"
+                                    placeholder="Blank" style="width:100%"></textarea>
+                            </td>
+                        </ng-container>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <div class="ui-dialog-footer">
+        <p-footer>
+            <button type="button" class="btn btn-custom model-btn-custom-css" (click)="confirm()"
+                [disabled]="!planRackForm.valid">{{configData.confirm}}</button>
+            <button type="button" class="btn btn-modal" (click)=hidePopup()>{{configData.cancel}}</button>
+        </p-footer>
+    </div>
+    <app-modal-popup [display]="display" [commonModelProperties]='commonModelProperties'
+        (submitData)="confirmLayerdPopup()" (cancelData)="cancelLayerdPopup()">
+    </app-modal-popup>
+</div>

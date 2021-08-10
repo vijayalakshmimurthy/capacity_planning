@@ -1,0 +1,718 @@
+<p-dialog header="Diversity Group Forecast" [(visible)]="display" (onHide)="onClose()" [style]="{width: '800px'}" class="info"
+    [baseZIndex]="10000" [responsive]="true" [modal]="true">
+    <div class="modal-body">
+        <p>This Application is to support planning community by reporting a forecast on ports availability based on diversity
+            group name against a 7750-SR-12 MSE/cards in a given location. OSS systems will use existing inventory of phased
+            cards, planned cards, phase compatible cards, installed free ports, marked for HE/WMC use with &#39;Ethernet
+            Access&#39; as their capacity usage would be considered for forecast process.</p>
+
+        <p>
+            <b class="selectedfilter color-info">Search Filter: </b>Below are the search criteria input required to perform the forecast search</p>
+
+        <table class="table table-info" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <p>No of ports</p>
+                    </td>
+                    <td valign="top">
+                        <p>It should be a free integer values from 1-40</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Diversity Group name</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the matching diversity group name as per the input string of minimum 3 Character</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Location (1141 code)</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the matching 1141 code/Site name as per the input string of minimum 2 Character</p>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <p>
+            <b class="selectedfilter color-info">Output Result: </b>Below are the output for the search performed</p>
+
+        <table class="table table-info" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <p>MSE Details(SNE ID)</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will Display SNE ID of the 7750-SR-12 device</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Card Details</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the Level 2 card name</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Free Port Details</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the Port name position(eg: 602232:/shelf=1/slot=9/sub_slot=2/subsub_slot=8/port=1)</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Card Status</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the inventory status of the card (Installed, Planed)</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td valign="top">
+                        <p>Diversity Group name</p>
+                    </td>
+                    <td valign="top">
+                        <p>It will display the Diversity group name for the Level 2 card</p>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <p>
+            <b class="selectedfilter color-info">Below are the Scenarios, used to fetch the forecast report:</b>
+        </p>
+
+        <h2 class="linka">
+            <a name="_Toc18068798">1.1 Scenario_01</a>
+        </h2>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused Port (Phase Sync-Enabled/Capable) against the Diversity Group port forecast Input Provided
+                    by Planners:</u>
+            </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter"> Input Example for the Forecast process:</b>
+        </p>
+
+        <p class="p-list"> N = No of ports--(10)</p>
+
+        <p class="p-list"> DG = Diversity group name. Ex: BTRAN-LON-01</p>
+
+        <p class="p-list"> 1141 code = Location-( IH---IPSWICH)</p>
+
+        <p>
+            <b class="selectedfilter">Sequence steps Performed: </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">SNE Level Filter&gt;&gt;</b>
+        </p>
+
+        <p>1) Is this DG (BTRAN-LON-01) already present at this PoP (IPSWICH)?</p>
+
+        <p>2) System will scan all database &amp; Sort out MSE device Which contain Diversity Group Name as BTRAN-LON-01, </p>
+
+        <p>3) Create the list of MSE those having this diversity Group name.</p>
+
+        <p>4) MSE Level Filter &gt;&gt;MSE Should have :</p>
+
+        <p>
+            <b class="info-padding">Location (1141 Code)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Tod Phase: Enabled (MSE SNE Level Attribute) </b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Diversity Group Name: BTRAN-LON-01</b>
+        </p>
+
+        <p>
+            <b class="info-padding">Card Filter (2
+                <sup>nd</sup> Level card)&gt;&gt;</b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Enabled) Port from Installed State Level 2 cards </u>
+            </b>
+        </p>
+
+        <p> 5) So once system Created list Of MSE, Second stage is to Sorted out for the Cards or add list of Cards in that MSE
+            which belongs to Input Diversity Group as BTRAN-LON-01.</p>
+
+        <p>
+            <b class="selectedfilter">6) 2
+                <sup>nd</sup> Level Card should have :</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status = Installed </b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_ToD Phase = Enabled (Level 2 Card Attribute Value is Y) </b>
+        </p>
+
+        <p>7) Once List of Level two Card is created Then Sort out card in Ascending order which having Fewest Free10GigE Port
+            on that card . (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 1 should be First Priority
+            in List) .</p>
+
+        <p>8) Then proceed to check on Level 3 card.</p>
+
+        <p>
+            <b class="selectedfilter">9) So on Level 3 cards(Ports)which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD-Ph Sync == capable (Port Level Attribute)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Ethernet Access (Usage Flag). </b>
+        </p>
+
+        <p>10) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>11) Show result in Output in GUI Screen = Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>12) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Installed State Level 2 cards </u>
+            </b>
+        </p>
+
+        <p>1) Once system Created list Of MSE, Second stage is Sorted out for the Cards or add list of Card in that MSE which
+            is belongs to Input Diversity Group BTRAN-LON-01.</p>
+
+        <p>
+            <b class="selectedfilter">2) 2
+                <sup>nd</sup> Level Card only those have :</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status = Installed</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_ToD Phase =compatible (Level 2 Card). </b>
+        </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Fewest Free 10GigE Port
+            on that card . (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 1 should be First Priority
+            in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards(Ports) which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== Incapable or Blank or null (Port Level Attribute)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Ethernet Access (Usage Flag). </b>
+        </p>
+
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>7) Show result in Output in GUI Screen = Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>8) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Planned State Level 2 cards:</u>
+            </b>
+        </p>
+
+        <p>1) Once system Created list Of MSE, Second stage is sorted out for the Card or add list of Card in that MSE which
+            is belongs to Input Diversity Group BTRAN-LON-01.</p>
+
+        <p>
+            <b class="selectedfilter">2) 2
+                <sup>nd</sup> Level Card only those have :</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status = Planned </b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_ToD Phase=compatible (Level 2 Card). </b>
+        </p>
+
+        <p>3) Once Created List of Level two Card, Then Sort out card in ascending order which having Fewest Free 10GigE Port
+            Free on that card. (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 1 should be First
+            Priority in List) .</p>
+        <p>4) Then proceed to check on Level 3 Card.</p>
+
+        <p>
+            <b class="selectedfilter">5) On Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD-Ph Syn == Incapable or Blank or null (Port Level Attribute)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Blank (Usage Flag). </b>
+        </p>
+
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>7) Show result in Output in GUI Screen = Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>8) If Required Number of 10GigE Port Countis not found Then system need to Search for Scenario 2</p>
+
+        <h2 class="linka">
+            <a name="_Toc18068799">1.2 Scenario_02</a>
+        </h2>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused Port (Phase Sync-Enabled/Capable) against the Diversity Group port forecast Input Provided
+                    by Planners: </u>
+            </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">Input Example for the Forecast process:</b>
+        </p>
+
+        <p class="p-list"> N = No of ports--(10)</p>
+
+        <p class="p-list"> DG = Diversity group name. Ex: BTRAN-LON-01</p>
+
+        <p class="p-list"> 1141 code = Location-( IH---IPSWICH)</p>
+
+        <p>
+            <b class="selectedfilter color-info">
+                For each MSE device at this PoP (IH---IPSWICH) that already supports this DG (BTRAN-LON-01)
+                    <br /> Allocate ports to the line card(s) in the MSEs that support any DGs (BTRAN-MAN-01 , BTRAN-CARD-01) for
+                    this region(LONDON).Allocate ports to the line card with the most (&gt;0) available ports first .
+            </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter color-info">
+                Note: region (LONDON) should be Excluded &amp; DG should be like BTRAN-MAN-01, BTRAN_CARDIFF_01 that mean
+                    DG name must not contain the region (LONDON).
+            </b>
+        </p>
+
+        <table class="table table-info" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td nowrap="" valign="top">
+                        <p>Region = region extracted from user input DG name;</p>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td nowrap="" rowspan="2" valign="top">
+                        <p>DG(BTRAN-LON-01) &amp; region " LONDON "</p>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        <p>
+            <b class="selectedfilter">Sequence steps Performed: </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">SNE Level Filter&gt;&gt;</b>
+        </p>
+
+        <p>1) Create/Add List of MSE which is present at PoP (Ipswitch) &amp; DG name must not contain the region (LONDON) that
+            is requested in the input.</p>
+
+        <p>2) Add the list of 2
+            <sup>nd</sup> Level Line which has a DG (
+            <s>BTRAN-LON-01 , </s>(BTRAN-MANCHESTER-01 , BTRAN-CARDIFF-01 ) name and that DG name must not contain the region
+            (LONDON) that is requested in the input</p>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Enabled) Port from Installed State Level 2 cards &amp; Diversity
+                    Grout Name is null or not present:</u>
+            </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">Card Filter (2nd Level card)&gt;&gt;</b>
+        </p>
+
+        <p>1) Search for cards (Level 2 card) without region DGs, Installed, and Enabled</p>
+
+        <p>
+            <b class="info-padding">DGs of Card = BTRAN-MANC-01 (Any Thing like this name) </b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status=Installed</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD_Phase =Enabled</b>
+        </p>
+
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with Highest free port card First. </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 2 should be First
+            Priority in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== capable (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Ethernet Access (Usage Flag). </b>
+        </p>
+
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>7) Show result in Output in GUI Screen = Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>8) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+
+        <p>
+            <b class="selectedfilter">
+                <u> Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Installed State Level 2 cards &amp;
+                    Diversity Grout Name is null or not present:</u>
+            </b>
+        </p>
+
+        <p>1) Search for cards (Level 2 card) without region DGs, Installed, and Capable/Compatible.</p>
+
+        <p>
+            <b class="info-padding">DGs of Card = BTRAN-MANC-01 (Any Thing like this name)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status=Installed</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD_Phase =Compatible (Those Card Which can support ToD_Phase_Enable)</b>
+        </p>
+
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with Highest free port card First. </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 2 should be First
+            Priority in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== Incapable or Blank or null (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Ethernet Access (Usage Flag). </b>
+        </p>
+
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>7) Show result in Output in GUI Screen = Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>8) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Planned State Level 2 cards &amp;
+                    Diversity Grout Name is null or not present:</u>
+            </b>
+        </p>
+
+        <p>1) Search for cards (Level 2 card) without region DGs, Planned, and Capable/Compatible.</p>
+
+        <p>
+            <b class="info-padding">DGs of Card = BTRAN-MANC-01 (Any Thing like this name)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card Status=Planned</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> ToD_Phase =Compatible (Those Card Which can support ToD_Phase_Enable)</b>
+        </p>
+
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with most Highest free port card First . </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports &amp; Card 2 having 3 free Ports then Card 2 should be First
+            Priority in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== Incapable or Blank or null (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+
+        <p>
+            <b class="info-padding"> Card_port_CUF == Blank (Usage Flag). </b>
+        </p>
+
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+
+        <p>7) Show result in Output in GUI Screen if Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>
+            <b class="selectedfilter">8) If No Then Raise Capacity Shortfall, System need to show Error &#34;Not enough capacity&#34; with Found 10GigE
+                Port Details.</b>
+        </p>
+
+        <p>Description: Suppose Required Count is 10 Port and System Will Find Only 5 port till this Stage then instead only
+            showing Error Message. System will also show port which they Found during this Algorithm Journey &amp; top of
+            that there is POP Error Message &#39; Not enough Capacity &#39;</p>
+
+        <h2 class="linka">
+            <a name="_Toc18068799">1.3 Scenario_03 </a>
+        </h2>
+
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused Port (Phase Sync-Enabled/Capable) against the Diversity Group port forecast Input Provided
+                    by Planners:</u>
+            </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">Input Example for the Forecast process:</b>
+        </p>
+
+        <p class="p-list"> N = No of ports--(10)</p>
+
+        <p class="p-list"> DG = Diversity group name. Ex: BTRAN-LON-01</p>
+
+        <p class="p-list"> 1141 code = Location-( IH---IPSWICH)</p>
+
+        <p>
+            <b class="selectedfilter">Sequence steps Performed: </b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">SNE Level Filter</b>
+        </p>
+
+        <p>
+            <b class="selectedfilter">1) Now suppose we haven&#39;t found Single MSE from Diversity Group "BTRAN-LON-01" is not present at Location
+                "IPSWITCH" Then...Scenario Number 3 is Need to Progress.</b>
+        </p>
+
+        <p>
+            2) Create (Sort Out) List of MSE within region (Landon) which is having fewest DG first (Any Diversity Group Name).
+        </p>
+
+        <p>
+            <b>3) </b>Now in case if system find MSE which having DGs within the region are equal then Create/Sort out List
+            if MSE which is having fewest Ethernet service 10GigE ports used by its Level 2 Card.</p>
+
+        <p>
+            <b>4) </b>System will scan all database Sort out MSE Which contain any Diversity Group Name </p>
+        <p>
+            <b>5) </b>Create the list of MSE those having any Diversity Group Name Location (1141 Code) is IPSWITCH.</p>
+
+        <p>
+            <b>6) </b>MSE Level Filter MSE should have:</p>
+        <p>
+            <b class="info-padding">Location (1141 Code): IPSWITCH</b>
+        </p>
+        <p>
+            <b class="info-padding"> Tod Phase: Enabled (MSE SNE Level Attribute) </b>
+        </p>
+        <p>
+            <b class="info-padding"> Diversity Group Name: Any Diversity Group Name for the same region/Blank (eg: LON should be there in the DG name
+                in this case)</b>
+        </p>
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Enabled) Port from Installed State Level 2 cards: </u>
+            </b>
+        </p>
+        <p>
+            <b class="selectedfilter">Card Filter (2nd Level card)</b>
+        </p>
+
+        <p>1) Search for cards (Level 2 card) with any Diversity Group Name or Null , Installed and Phase Sync Enabled</p>
+        <p>
+            <b class="info-padding">DGs of Card = Any Diversity Group Name</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card Status=Installed</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD_Phase =Enabled</b>
+        </p>
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with Highest free port card First. </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports Card 2 having 3 free Ports then Card 2 should be First Priority
+            in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card_port_Speed == 10G</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== capable (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+        <p>
+            <b class="info-padding"> card_port_CUF == Ethernet Access</b>
+        </p>
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+        <p>7) Show result in Output in GUI Screen if Fulfilled Required 10 GigE Port Count.</p>
+        <p>8) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Installed State Level 2 cards: </u>
+            </b>
+        </p>
+        <p>1) Search for cards (Level 2 card) with any Diversity Group Name or Null , Installed, and Phase Sync-Capable/Compatible</p>
+        <p>
+            <b class="info-padding">DGs of Card = Any Diversity Group Name</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card Status=Installed</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD_Phase =Compatible (Those Card Which can support ToD_Phase)</b>
+        </p>
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with Highest free port card First. </p>
+
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having Highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports Card 2 having 3 free Ports then Card 2 should be First Priority
+            in List) .</p>
+
+        <p>4) Then proceed to check on Level 3 Card.</p>
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+        <p>
+            <b class="info-padding">Card_port_Speed == 10G</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== Incapable or Blank or null (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card_port_CUF == Ethernet Access (Usage Flag). </b>
+        </p>
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+        <p>7) Show result in Output in GUI Screen if Fulfilled Required 10 GigE Port Count.</p>
+
+        <p>8) If not Found Required Number 10GigE Port Count Then Again searches for Next Stage.</p>
+        <p>
+            <b class="selectedfilter">
+                <u>Find Free/Unused 10GigE Port (Phase Sync-Capable/Compatible) Port from Planned State Level 2 cards: </u>
+            </b>
+        </p>
+        <p>1) Search for cards (Level 2 card) with any Diversity Group Name or Null , Installed, and Phase Sync-Capable/Compatible</p>
+        <p>
+            <b class="info-padding">DGs of Card = "Any Diversity Group Name" </b>
+        </p>
+        <p>
+            <b class="info-padding"> Card Status=Planned</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card ToD_Phase =Compatible (Those Card Which can support ToD_Phase)</b>
+        </p>
+        <p>2) Sort Ascending=Sort the list of cards (Level 2) with Highest free port card First. </p>
+        <p>3) Once Created List of Level two Card Then Sort out card in Ascending order which having highest Free10GigE Port
+            Free on that card . (e.g. Card1 having 2 Free Ports Card 2 having 3 free Ports then Card 2 should be First Priority
+            in List) .</p>
+        <p>4) Then proceed to check on Level 3 Card.</p>
+        <p>
+            <b class="selectedfilter">5) So on Level 3 cards which is Already listed as part of Level two card in 2nd stage need to check</b>
+        </p>
+        <p>
+            <b class="info-padding">Card_port_Speed == 10G</b>
+        </p>
+        <p>
+            <b class="info-padding"> ToD-Ph Sync== Incapable or Blank or null (Port Level Attribute- ToD-Ph Sync)</b>
+        </p>
+        <p>
+            <b class="info-padding"> Card_port_CUF == Blank (Usage Flag). </b>
+        </p>
+        <p>6) Record this Kind of 10GigE Port List Only.</p>
+        <p>7) Show result in Output in GUI Screen if Fulfilled Required 10 GigE Port Count.</p>
+        <p>
+            <b class="selectedfilter">8) If No Then Raise Capacity Shortfall, System need to show Error &#34;Not enough capacity&#34; with Found 10GigE
+                Port Details.</b>
+        </p>
+        <p>Description: Suppose Required Count is 10 Port and system Will Find Only 5 port till this Stage then Instead only
+            showing Error Message , system will also show port which they Found during this Algorithm Journey top of that
+            there is POP Error Message &#39;Not enough Capacity&#39;.</p>
+    </div>
+</p-dialog>

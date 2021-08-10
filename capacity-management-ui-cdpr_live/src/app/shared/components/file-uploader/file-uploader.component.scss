@@ -1,0 +1,71 @@
+:host {
+    width: 56%;
+}
+
+.custom-file {
+    margin-top: 9px;
+
+    input {
+        display: none;
+
+        &:focus {
+            outline: none !important;
+        }
+
+        &:focus~.custom-file-label {
+            border-color: #c8c8c8;
+            box-shadow: none;
+        }
+    }
+
+    .custom-file-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+
+        &:after {
+            background-color: #640daa;
+            color: white;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}:host {
+    width: 56%;
+}
+
+.custom-file {
+    margin-top: 9px;
+
+    input {
+        display: none;
+
+        &:focus {
+            outline: none !important;
+        }
+
+        &:focus~.custom-file-label {
+            border-color: #c8c8c8;
+            box-shadow: none;
+        }
+    }
+
+    .custom-file-label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+
+        &:after {
+            background-color: #640daa;
+            color: white;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

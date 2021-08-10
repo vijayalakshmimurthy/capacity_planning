@@ -1,0 +1,83 @@
+[
+    {
+        "message": "Recover Sne View Status Response",
+        "data": {
+            "orderId": 796,
+            "view_data": [
+                {
+                    "recover_sne_id": 695,
+                    "sne_id": 20784704,
+                    "holder": "5/1",
+                    "recovery_type": "Card",
+                    "scheme_number": null,
+                    "capacity_required_date": null,
+                    "plan_id": null,
+                    "stage": null,
+                    "error_code": null,
+                    "error_description": null,
+                    "last_update_time": "06-03-2021 19:36:56",
+                    "srims_status": "SRIMS_DETAILS_REQUESTED",
+                    "pacs_status": "PACS_SERVICE_REQUESTED",
+                    "bert_status": null,
+                    "fist_Project_No": null,
+                    "creation_date": null,
+                    "trs_area": null,
+                    "scheme_status": null,
+                    "physical_connector_removal": "N",
+                    "rack_recovery": "N",
+                    "auto_progression": "N",
+                    "network_change": "N",
+                    "remarks": null,
+                    "cp_number": null,
+                    "project_id": null,
+                    "device": "20784704",
+                    "plan_type": null,
+                    "scheme_Driver": null,
+                    "scheme_notes": null
+                }
+            ]
+        }
+    },
+    {
+        "message": "Recover Sne View Status Response",
+        "data": {
+            "orderId": 831,
+            "view_data": [
+                {
+                    "recover_sne_id": 736,
+                    "sne_id": 20784704,
+                    "holder": "5/2",
+                    "recovery_type": "Card",
+                    "scheme_number": null,
+                    "capacity_required_date": null,
+                    "plan_id": null,
+                    "stage": null,
+                    "error_code": null,
+                    "error_description": null,
+                    "last_update_time": "06-03-2021 19:37:49",
+                    "srims_status": "SRIMS_DETAILS_REQUESTED",
+                    "pacs_status": "PACS_SERVICE_REQUESTED",
+                    "bert_status": null,
+                    "fist_Project_No": null,
+                    "creation_date": null,
+                    "trs_area": null,
+                    "scheme_status": null,
+                    "physical_connector_removal": {
+                        "name": "N",
+                        "value": "N"
+                    },
+                    "rack_recovery": "N",
+                    "auto_progression": "N",
+                    "network_change": "N",
+                    "remarks": null,
+                    "cp_number": null,
+                    "project_id": null,
+                    "device": "20784704",
+                    "plan_type": null,
+                    "scheme_Driver": null,
+                    "scheme_notes": null
+                }
+            ]
+        }
+    }
+]

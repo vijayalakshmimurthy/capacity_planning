@@ -1,0 +1,57 @@
+<div class="row filterheading1">
+  <div class="heading-main" [ngClass]="enableNOCardMoveWorkflow ? 'col-md-3 col-sm-3' : 'col-md-4 col-sm-4'">
+    <div class ="row">
+      <div class="col-md-2 col-sm-2" *ngIf='enableNOCardMoveWorkflow || enableRecoveryWorkflow'>
+        <a (click)="redirectToHomePage()">
+          <img src='assets/images/home.svg' class='home-icon' />
+        </a>
+      </div>
+      <div class="col-md-9 col-sm-9" [ngClass]="enableNOCardMoveWorkflow || enableRecoveryWorkflow ? 'padding10' : ''">
+        <h1 class="margin10 header">360 Site Viewer</h1>
+    </div>
+  </div>
+  </div>
+  <div class="heading-main" style='margin-top: 6px;' [ngClass]="workflowenable || enableNOCardMoveWorkflow || enableRecoveryWorkflow? 'col-md-0' : 'col-md-4'">
+    <div id='setheight' class="inline-block-class" *ngIf="deltaEnable">
+      <h5 class="inline-block-class vertivlealign">Delta</h5>
+      <div class="inline-block-class vertivlealign" id="delatval">
+        <ul>
+          <li *ngFor="let x of deltavalue"><span>{{x.deltaLabel}}</span> <span
+              [ngClass]="x.deltaValue >= 0 ? 'positive' : 'negative'">{{x.deltaValue}}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='workflowenable' [ngClass]="workflowenable ? 'col-md-4' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;' *ngIf='workflowenable'>
+      <app-cardmove-workflow></app-cardmove-workflow>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='enableNOCardMoveWorkflow' [ngClass]="enableNOCardMoveWorkflow ? 'col-md-5' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;' *ngIf='enableNOCardMoveWorkflow'>
+      <app-nocardmove-workflow [prevvalue]='prevvalue'></app-nocardmove-workflow>
+    </div>
+  </div>
+  <div class="heading-main" *ngIf='enableRecoveryWorkflow' [ngClass]="enableRecoveryWorkflow ? 'col-md-4' : 'col-md-0'">
+    <div class="col-md-12 col-sm-12" style='height: 75px;margin: 7px 0px;' *ngIf='enableRecoveryWorkflow'>
+      <app-device-recovery-workflow [prevvalue]='prevvalue'></app-device-recovery-workflow>
+    </div>
+  </div>
+  <div class="text-align-end" [ngClass]="enableNOCardMoveWorkflow ? 'col-md-4 col-sm-4' : 'col-md-4 col-sm-4'">
+    <ul class="list-inline pull-right marb10">
+      <!-- <li>
+          <p-multiSelect [options]="dropdown" defaultLabel="Sneid List" (onChange)="selectedColumnChange($event)"  optionLabel="name"
+          display="chip"></p-multiSelect>
+      </li> -->
+      <li class='totalcount' *ngIf='totalnumberofDevice'>
+      Device Loaded : {{counter}}/{{totalnumberofDevice}}
+      </li>
+      <li class="form-group search-tab_360 li-right">
+        <app-auto-suggestions [filterData]="filterData" [placeHolder]="searchBoxPlaceHolder"
+          [disableField]="disablesearchnput" (searchStr)="onkeyPressSearch($event)" 
+          (selectStr)="onselectSearch($event)" (validateInputData)="validateInputData($event)">
+        </app-auto-suggestions>
+      </li>
+    </ul>
+  </div>
+</div>

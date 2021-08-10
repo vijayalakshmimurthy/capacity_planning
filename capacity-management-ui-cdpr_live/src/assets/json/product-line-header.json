@@ -1,0 +1,158 @@
+[{
+	"id": 186,
+	"field": "siteName",
+	"header": "Site",
+	"fixed": true,
+	"type": "null",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": false
+	},
+	"visible": true
+}, {
+	"id": 187,
+	"field": "exCode",
+	"header": "1141 Code",
+	"fixed": true,
+	"type": "null",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": false
+	},
+	"visible": true
+}, {
+	"id": 188,
+	"field": "broadband1g",
+	"header": "1G Broadband",
+	"fixed": false,
+	"type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 189,
+	"field": "broadband10g",
+	"header": "10G Broadband",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 190,
+	"field": "ethernetFaste",
+	"header": "FastE Ethernet",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 191,
+	"field": "ethernet1gHe",
+	"header": "1G HE Ethernet",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 192,
+	"field": "ethernet10gHe",
+	"header": "10G HE Ethernet",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 193,
+	"field": "ethernet10gWmcApolloTef",
+	"header": "10G WMC Apollo TEF",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 194,
+	"field": "ethernet100gAccess",
+	"header": "100G Access Ethernet",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 195,
+	"field": "backhaul10g",
+	"header": "10G Backhaul",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 196,
+	"field": "backhaul100g",
+	"header": "100G Backhaul",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+		"editable": true
+	},
+	"visible": true
+}, {
+	"id": 197,
+	"field": "action",
+	"header": "Action",
+	"fixed": false,
+    "type": "text",
+	"properties": {
+		"gpId": 186,
+		"gid": "186",
+		"sort": false,
+        "editable": true,
+        "action": true
+	},
+	"visible": true
+}]

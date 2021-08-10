@@ -1,0 +1,109 @@
+<div class="container-fluid containerwidth">
+  <app-loader *ngIf="showLoader"></app-loader>
+  <app-chassis-header [showLoader]="showLoader" [clearActionListArray]="clearActionListArray"
+    [showToggle]="rightPanelStatusList.length > 0" (load3dDataBySNE)="load3dDataBySNE($event)"
+    [snePrevNext]="snePrevNext" (modeChange)="modeChange($event)" [sneId]="sneId"
+    [deviceChangeEvent]="deviceChangeEvent" (resetImgvalues)="resetImgvalues()"
+    (saveApiforPlan)='saveApiforPlan($event)' [workflowenable]='workflowenable' [editMode]='editMode'
+    [disableinputfield]='disableinputfield' [actiondisable]='actiondisable' [enablenextbutton]='enablenextbutton'
+    [enableplanwindow]='enableplanwindow' [selectionDetails]='selectionDetails' [requestData]='requestData'
+    [planvalue]='planvalue' [clearAllplanvalue]='clearAllplanvalue' [planBtn]='planBtn' [siteName]="siteName"
+    [deltaEnable]='deltaEnable' [deltavalue]='deltavalue' (workfowapi)='workfowapi()' (closeplanwind)='closeplanwind()'
+    (cufpopup)='cufpopup($event)' (workflow2emit)='activatenextstatus($event)' (planInCardmove)='planInCardmove($event)'
+    [cardmoverequest]='cardmoverequest' [defaultInfo]="defaultInfo" [cardmoveedit]='cardmoveedit'
+    [deviceInfo]="deviceInfo" [cardInfillFlow]="cardInfillFlow" [selectedPlanDetails]="selectedPlanDetails"
+    [showEthernet]="showEthernet" [demandId]="demandId" [productType]='productType'
+    [originaldeltavalue]='originaldeltavalue' [originalDelta]='originalDelta' [activeObjects]="activeObjects"
+    [savedplanincardinfill]='savedplanincardinfill' [SASPlan]="SASPlan" [CPMType]="CPMType"
+    [deviceVersion]="deviceVersion" [enableNOCardMoveWorkflow]='enableNOCardMoveWorkflow'
+    [previousvalue]='previousvalue' [emailId]="emailId" (nextCardmoveWorkflow)="nextCardmoveWorkflow($event)"
+    [enableRecoveryWorkflow]="enableRecoveryWorkflow" [opencufinflightpopup]="opencufinflightpopup"
+    [showhidecuf]='showhidecuf' (showEmailPopup)="showEmailPopupForRecovery()" (enablenxtrecovery)='enablenxtrecovery()'
+    [enableapicall]='enableapicall' [disablenext]='disablenext' (emitNextBtnPortMove)="emitNextBtnPortMove()" [deviceportdetailsdownload]='deviceportdetailsdownload'>
+  </app-chassis-header>
+  <div class="row">
+    <div class="col-md-12" style='z-index: 99;'>
+      <hr class="hrclass">
+    </div>
+  </div>
+  <div class="row" *ngIf="deviceData">
+    <div class="left-panel" [ngClass]="resizeLeftPanel ? 'col-md-8' : 'col-md-3.3'">
+      <app-chassis-left-panel [leftPanelInfo]="leftPanelInfo" [lagGroupno]="lagGroupno"
+        [selectNodeBasedonIds]="selectNodeBasedonIds" [workflowenable]='workflowenable'
+        [leftPanelTitle]="leftPanelTitle" [showclearAllBtn]="showclearAllBtn" [tree]="navigatorData"
+        (expandLeftPanel)="expandLeftPanel($event)" [getServiceData]="getServiceData"
+        (ejectDeviceSelection)="ejectDeviceSelection($event)" (resetImgvalues)="resetImgvalues()"
+        [showLoader]="showLoader" [changecountvalue]='changecountvalue' (emitDeviceIndex)="loadChassisByIndex($event)"
+        [errorMsgService]="errorMsgService" [toggleIndex]="toggleIndex" [modeChangeValue]="modeChangeValue">
+      </app-chassis-left-panel>
+    </div>
+    <div class="visualizer" [hidden]="resizeLeftPanel" [ngClass]="resizeLeftPanel ? 'col-md-0' : 'col-md-5'">
+      <BT-device-visualizer-3d #visualizer *ngIf="enable3dData" [deviceData]='visualizerData'
+        [deviceConfiguration]='options' (listenToEvents)='listenToEvents($event)'>
+      </BT-device-visualizer-3d>
+      <div class="chevron-up-down" [hidden]="editMode">
+        <button data-html="true" data-toggle="tooltip" data-placement="top" title="{{this.prevSne}}"
+          (click)="changeSneID('prev')" [disabled]="isUpDisabled || showLoader" class="prev-next-btn">
+          <i class="fas fa-chevron-circle-up updownicon"></i>
+        </button>
+        <button data-html="true" data-toggle="tooltip" data-placement="bottom" title="{{this.nextSne}}"
+          (click)="changeSneID('next')" [disabled]="isDownDisabled || showLoader" class="prev-next-btn">
+          <i class="fas fa-chevron-circle-down updownicon"></i>
+        </button>
+      </div>
+    </div>
+    <div class="right-panel col-md-3.5">
+      <app-chassis-right-panel [rightPanelInfo]="rightPanelInfo" [rightPanelStatusList]="rightPanelStatusList"
+        [rightPanelSpeedList]='rightPanelSpeedList' [rightPanelProductList]="rightPanelProductList"
+        [changedsneid]='changedsneid' [disableinputfield]='disableinputfield'
+        (modifyColorParmater)="modifyColorParmater($event)" (redirectto360page)="redirectto360page($event)"
+        [tooltipdata]='tooltipdata'>
+
+      </app-chassis-right-panel>
+    </div>
+  </div>
+  <div class="row search-sne" *ngIf="!deviceData">
+    <h1 class="col-md-12 filterheader text-center"> Search SNE for 3D View </h1>
+  </div>
+</div>
+<p-dialog header="Email address" [modal]="true" [baseZIndex]="10000" [(visible)]="emailPopup" [width]="400"
+  [contentStyle]="{'height': '600' }" class="addcancelpopup" [baseZIndex]="10000">
+  <p-header>
+    <img class="help-icon" alt="help" src="assets/images/question.svg"
+      pTooltip="Users can add multiple email address separated by semicolon(;)" tooltipPosition="bottom"
+      tooltipStyleClass="help-tooltip" />
+  </p-header>
+  <div class="modal-body">
+    <input type="text" name="email" class="emailtext" [(ngModel)]="emailIds">
+    <span class="errorMsg" *ngIf="errorMsg">Please Enter a EmailId</span>
+  </div>
+  <span>
+    <button type="submit" class="btn btnYes btnYes-updated marginright5" (click)="redirectToOverviewPage()">
+      Yes</button>
+  </span>
+  <span>
+    <button type="submit" class="btn btnNo btnYes-updated  marginright5" (click)="closeEmailPopup()">No</button>
+  </span>
+  <p-footer class="footer footerNoBorder">
+
+  </p-footer>
+</p-dialog>
+
+<p-dialog header="Confirmation" [modal]="true" [baseZIndex]="10000" [(visible)]="cufpopupopen" [width]="600"
+  [contentStyle]="{'height': '900' }" class="addcancelpopup" [baseZIndex]="10000">
+  <div style=" text-align: center;margin:20px 0px">
+    <p style=" text-align: center ;margin-bottom: 10px;">CUF is requested to be updated on Inflight Port. Proceed Ahead?
+    </p>
+
+  </div>
+  <p-footer>
+    <span>
+      <button type="submit" class="btn btncufYes marginright5" (click)="openleftpanel()"> Yes</button>
+    </span>
+    <span>
+      <button type="submit" class="btn btncufYes marginright5" (click)="closecufpopup()">No</button>
+    </span>
+
+
+  </p-footer>
+</p-dialog>

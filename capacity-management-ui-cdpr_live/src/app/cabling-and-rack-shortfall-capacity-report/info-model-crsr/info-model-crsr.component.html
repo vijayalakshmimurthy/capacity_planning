@@ -1,0 +1,132 @@
+<p-dialog header="Cabling and Rack Shortfall Capacity Report" [(visible)]="display" (onHide)="onClose()" [style]="{width: '1200px'}" class="info info_cdpr"
+    [baseZIndex]="10000" [responsive]="true" [modal]="true">
+    <div class="modal-body info">
+        <p>The Report provide per site capacity shortfall summary for 7750 SR-12 Device with user selected product 
+          type of Ethernet giving a count of Total number of ports, Used ports, Reserved ports, Free ports, cabled,
+           Delta, Free VU spaces of Adva Rack and forecast in read only format. </p>
+        <p><span class="selectedfilter">Site:</span> Name of the Network site</p>
+        <p><span class="selectedfilter">1141 Code:</span> 1141 code of the Network site</p>
+        <p><span class="selectedfilter">Total Available Capacity:</span> Total number Free and Reserved Ports</p>
+        <p><span class="selectedfilter">Reserved Ports:</span> Total number of reserved ports per site which is reserved for selected product type.</p>
+        <p><span class="selectedfilter">Free Ports:</span> Total number of free ports per site which can be used for Planning. Meaning it should not 
+          count any faulty ports.</p>
+         <p> Sub Category for 10G Port Speed – 10G HE (All Ports with Ethernet Access flag), 10G WMC – Total free ports on card with diversity + Ethernet Access Flag.
+        </p>
+        <p><span class="selectedfilter">Product Line Forecast:</span> It should show total count of port based on the product line forecast data upload by accounting user and the filter selection on port speed.</p>
+        <p><span class="selectedfilter">Port Build so far:</span> It should show the count of total ports which has inventory status as “In-service” and should be free/reserved for current financial year</p>
+        <p><span class="selectedfilter">Ports Cabled:</span> Total Ports connected to a patch panel (IBW) and is free</p>
+        <p><span class="selectedfilter">Free Rack Spaces:</span> Total free VU rack spaces.</p>
+        <p><span class="selectedfilter">Sub-category:</span> EAD,OSA,OSA-FC, Small Cells.</p>
+        <p><span class="selectedfilter">EAD:</span> Ethernet Access Direct offers permanently connected, point-to-point high speed data circuits that provide a secure and un-contended access service for Communications Providers.</p>
+        <p><span class="selectedfilter">OSA:</span> Optical Spectrum Access, A range of Openreach Optical DWDM (Dense Wavelength Division Multiplexing) products provided to Communication Providers.</p>
+        <p><span class="selectedfilter">OSA-FC:</span> Optical Spectrum Access-Filter Connect.</p>
+        <p><span class="selectedfilter">Rack VU free space Calculation</span></p>
+        <ul class="info-list">
+            <li>Find out free ports on 7750</li>
+            <li>Find out if there is a PhysicalConnection/Conductor on it with specname as ‘IBW’</li>
+            <li>Traverse and find out the PP where it is connected and get the 1141 code of the RACK where that PP is located</li>
+            <li>Match the Rack1141 code of PP with the Rack 1141 code from Bert sheet </li>
+            <li>If matched, check the number of free Vu spaces on the those rack and display on the report</li>
+         </ul> 
+         <p></p>
+        <p><span class="selectedfilter">Ports To-be Cabled:</span> It should display total number of ports = Total available capacity – Ports cabled</p>
+        <p><span class="selectedfilter">Card Details:</span> Below Cards are in filter option to filter out the required data.</p>
+  
+        <table class="table table-info">
+          <thead>
+            <tr class="head">
+              <th>Card Model</th>
+              <th>Card Version</th>
+              <th>Friendly card name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100GE Multicore IMM 2Pt Lic</td>
+              <td>(2Pt)</td>
+              <td>IMM2 x 100G</td>
+            </tr>
+            <tr>
+              <td>100GE Multicore IMM Module</td>
+              <td>(1Tb)</td>
+              <td>IMM 1 x 100G</td>
+            </tr>
+            <tr>
+              <td>100GE Multicore IMM Module 2Pt</td>
+              <td>(2Pt)</td>
+              <td>IMM2 x 100G</td>
+            </tr>
+            <tr>
+              <td>10GE Multicore IMM Module</td>
+              <td>(20Pt)</td>
+              <td>IMM20</td>
+            </tr>
+            <tr>
+              <td>10GE Multicore IMM Module</td>
+              <td>(12Pt Lic)</td>
+              <td>IMM12</td>
+            </tr>
+            <tr>
+              <td>10GE Multicore IMM Module</td>
+              <td>(5Pt Lic)</td>
+              <td>IMM12(5)</td>
+            </tr>
+            <tr>
+              <td>10GE Multicore IMM Module</td>
+              <td>(5Up Lic)</td>
+              <td>IMM12</td>
+            </tr>
+            <tr>
+              <td>10GE Multicore IMM Module</td>
+              <td>(1Tb)</td>
+              <td>IMM12</td>
+            </tr>
+            <tr>
+              <td>I/O Module</td>
+              <td>(N/A)</td>
+              <td>IOMv1</td>
+            </tr>
+            <tr>
+              <td>I/O Module</td>
+              <td>(v3)</td>
+              <td>IOMv3</td>
+            </tr>
+            <tr>
+              <td>I/O Module</td>
+              <td>(Rev C - v3)</td>
+              <td>IOMv3c</td>
+            </tr>
+            <tr>
+              <td>I/O Module</td>
+              <td>(v4)</td>
+              <td>HSQ</td>
+            </tr>
+            <tr>
+              <td>I/O Module</td>
+              <td>(v4e)</td>
+              <td>IOMv4e</td>
+            </tr>
+            <tr>
+              <td>IMM Module</td>
+              <td>(N/A)</td>
+              <td>IMM5</td>
+            </tr>
+            <tr>
+              <td>IOM3-XP</td>
+              <td>(N/A)</td>
+              <td>IOMv3</td>
+            </tr>
+            <tr>
+              <td>SAS 1/10GE 48 port T</td>
+              <td>(N/A)</td>
+              <td>SAS48</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p-footer>
+        <div class="modal-foot">
+                   <button type="button" class="btn btn-modal" (click)="onClose()">Close</button>
+               </div>
+           </p-footer>
+</p-dialog>

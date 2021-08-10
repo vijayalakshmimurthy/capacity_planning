@@ -1,0 +1,406 @@
+<p-dialog header={{headerName}} [(visible)]="display" (onHide)="onClose()" [style]="{width: '1200px'}" class="info info_cdpr"
+    [baseZIndex]="10000" [responsive]="true" [modal]="true">
+    <div class="modal-body">
+        <p>This report provides per site capacity summary for Edge Rt -7750 SR-12; 7750SR- 7s, Satellite shelf and Core Rt – 7750 SR-7s, 7750SR-14s and 7950Devices.</p>
+        <p>For Edge Rt  capacity summary will be based on user selected product-type of Broadband, Ethernet and Backhaul and gives
+             a count of Total number of ports, used ports, reserved ports, Free ports, Inflight Ports and Free slots. </p>
+             <p>For Core Rt Capacity summary will be based on user selected Optic-type of SR4, SR10, LR4, DD-SR4 and DD-LR4 and gives a count of Total number of ports, used ports (Access ports and Network Ports),
+                  reserve ports, Free Ports, Inflight Ports and Free Slots.</p>
+                  <p>Below are the definitions for the column displayed in the report:</p>
+        <p><span class="selectedfilter">Site:</span> It is the name for the Network Site (Locality) or Exchange</p>
+        <p><span class="selectedfilter">1141 Code:</span> 1141 code for the respective Network Site (Locality) or Exchange</p>
+        <p *ngIf="pageName === 'CDPR'"><span class="selectedfilter">SAU ID:</span> SAU ID for the respective Network Site (Locality) or Exchange</p>
+        <p><span class="selectedfilter">Total Ports:</span> It will display the total count of the ports per exchange which adds up the used ports +Free Ports + Reserved Ports + Inflight Ports</p>
+        <img src="assets/images/port.png">
+        <p><span class="selectedfilter">Used Ports:</span> It will display total number of used ports for a site which has any service on it or connectivity
+            or conductor. Basically used ports means the ports which can’t be used to plan for any new service as it is being
+            used by means in the network. The port which has connection status as Connected Ok in PACs</p>
+        <img class="spaceMargin" src="assets/images/usedports.png">
+        <p>For Core Rt Used Ports will be sum of Access ports and Network ports. Access ports are ones which are terminating on /connected to IPP, PlusNet, RCN and RSN sites and all other ports will be network
+             ports which will be terminated/connected to MSC, EEA, IEA, MSE, FPE etc.</p>
+        <p><span class="selectedfilter">Reserved Ports:</span> It will display total number of reserved ports for a site which has been reserved in PACS
+            and LIMS and set with Reservation flag and capacity usage flag( To indicate the purpose of reserving the port
+            for Ethernet or Broadband etc.) . </p>
+        <p><span class="selectedfilter">Free Ports:</span> It will display total number of free ports for a site for which Connection status in PACs
+            is other than “Connected Ok” or Reservation on it.</p>
+        <p>Below are the different combination on the status of ports to derive the correct port status, Please Check and confirm
+            on the same.</p>
+        <table class="table table-info">
+            <thead>
+                <tr class="head">
+                    <th>Used</th>
+                    <th>Free</th>
+                    <th>Reserved</th>
+                    <th>Inflight</th>
+                    <th>Calculated as</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tbodybackground">
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>Used Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>Inflight Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>Free Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>Reserved Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>Inflight Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Inflight Port</td>
+                </tr>
+                <tr class="tbodybackground">
+                    <td>1</td>
+                    <td> </td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Inflight Port</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="selectedfilter">Free Slots:</span> It will display total number of free slots for a site and the calculation for the free slots
+            is as below:
+            <p>It will display total number of free slots for a site and the calculation for the free slots per SNE is as below:
+                <br>Free slot = Sum (Total slot in Device  – Total number of L1 slots, which has card installed for a Chassis).</p>
+            <p>Total number of slot for 7750 SR-12 is 12 including electrical port and Excluding Fan and Power Cards.
+            </p>
+            <p>
+                <span class="selectedfilter">New Ports Inflight:</span> It will display total number of Inflight Ports for a site which has Inventory
+                status as ‘PropPlanning’ or ’Planned’ or ‘PropCommissioning’. This will not include the ports for which project
+                of inflight is not uploaded in WFMT.</p>
+                <p>
+                    <span class="selectedfilter">Optic Type:</span>
+                    <br> Currently there are different optic types defined for Core Rt Namely 
+                    – SR4, SR10, LR4, DD-SR4, DD-LR4. Capacity summary data displayed is based on
+                     corresponding Optic Type for
+                     selected port speed for that Device Model ( either 7750 SR-7s ,14s or 7950)
+                </p>
+
+            <p>
+                <span class="selectedfilter">Product Type:</span>
+                <br> Currently we have Ethernet, Broadband and Backhaul options in the filter and at a time only one type can
+                be selected to see the summary report.
+                <br> Backhaul selection for product type will display aggregated count for both Ethernet and Broadband. Later
+                once the scope for backhaul is finalized then it will display count for all the columns specific for backhaul.
+            </p>
+            <ul class="info-list">
+                <li>
+                    <span class="selectedfilter">Ethernet:</span> It will display total count for all the columns where it has Ethernet services or Capacity
+                    usage flag is Ethernet Access. For free Ethernet Ports it will be identified based on Capacity usage
+                    flag.</li>
+                <li>
+                    <span class="selectedfilter">Free Ethernet ToD and Non ToD Ports:
+                        <br> </span> Time of the day phase Enabled, requires that the card is given appropriate physical timing
+                    feeds, and that the cards are enabled for P&B
+                    <br> These columns will display the data for free Ethernet ports with port speed as GigE and 10GigE and ToDPhEnabled
+                    = Y as Ethernet ToD ports and ToDPhEnabled = N for Ethernet Non ToD ports.
+                    <br> Logic implemented at Level 2 card ToDPhEnabled attribute , For free Ethernet ports If it is Y then mark
+                    all underlying port as ToD if it is N then mark all underlying port as Non ToD.
+                </li>
+            </ul>
+            <ul class="info-list">
+                <li>
+                    <span class="selectedfilter">Broadband:</span> It will display total count for all the columns where it has Broadband services or
+                    Capacity usage flag is MDA Broadband. For free Broadband Ports it will be identified based on Capacity
+                    usage flag.</li>
+                <li>
+                    <span class="selectedfilter">Broadband COLO and REM:</span>It will display total count of COLO and REM for a particular site. </li>
+                <li>
+                    <span class="selectedfilter">Backhaul</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">Voice</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">P2PE</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">PRTC</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">DNC</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">Infrastructure</span>
+                </li>
+                <li>
+                    <span class="selectedfilter">Blocked</span>
+                </li>
+            </ul>
+            <p>
+                <span class="selectedfilter">Logic derived for the Product Type:</span>
+            </p>
+            <p>
+                <span class="selectedfilter">Broadband: Used Port</span>
+                <br>Check If service type = Broadband then count that port under used port of broadband product type
+                <br>Else if service type = null then
+                <br>Check if Capacity usage flag = MDA Broadband/ Broadband Standby then Port will be BB.
+                <br> Else if Capacity usage flag is blank then need to check on card type as below Table name: “Card combination
+                for deriving capacity usage flag”</p>
+            <p>
+                <span class="selectedfilter">Broadband: Free/Reserved/Inflight Ports</span>
+                <br>If Capacity usage flag = MDA Broadband/ Broadband Standby then Port will be BB. Else if Capacity usage flag
+                is blank then need to check on card type as below:</p>
+            <table class="table table-info">
+                <thead>
+                    <tr class="head">
+                        <th>Friendly Card Name</th>
+                        <th>Card Model</th>
+                        <th>Card Version</th>
+                        <th>Card Type</th>
+                        <th>Product Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tbodybackground">
+                        <td>HSQ</td>
+                        <td>I/O Module</td>
+                        <td>(v4)</td>
+                        <td>10x10GE MDA-e</td>
+                        <td>BB</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3</td>
+                        <td>I/O Module</td>
+                        <td>(v3)</td>
+                        <td>HS-MDA,HS-MDA2</td>
+                        <td>BB</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3c</td>
+                        <td>I/O Module</td>
+                        <td>(Rev C - v3)</td>
+                        <td>HS-MDA,HS-MDA2</td>
+                        <td>BB</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3c</td>
+                        <td>I/O Module</td>
+                        <td>(Rev C - v3)</td>
+                        <td>20-port GE MDA-XP,
+                            <br>1 x 10GB MDA, 2 x 10GB MDA,
+                            <br> [1 x 10GB MDA], 10 x 1G MDA</td>
+                        <td>Need to check on CUF for all the ports on any XP-MDAs (up to two) parented off the same IOMv3c
+                        </td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3</td>
+                        <td>I/O Module</td>
+                        <td>(v3)</td>
+                        <td>20-port GE MDA-XP,
+                            <br>1 x 10GB MDA, 2 x 10GB MDA,
+                            <br> [1 x 10GB MDA], 10 x 1G MDA</td>
+                        <td>Ethernet</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>Table 6: Card combination for deriving capacity usage flag</span>
+            <p>
+                <span class="selectedfilter">For MDA-XP Card:</span>
+                <br>If any ports are marked “Ethernet Access” => Ethernet
+                <br> If no ports are marked at all => Ethernet
+                <br>If at least one port marked “MDA Broadband” (AND none are marked Ethernet) = > BB</p>
+            <p>
+                <span class="selectedfilter">For Broadband Colo and Broadband REM for Broadband free ports:</span>
+                <br>Per Exchange if Device usage flag = *MSE then the Port is BB Colo
+                <br>Else if Device usage flag = *EES, *EEA and *IEA then Port is BB REM</p>
+            <div *ngIf="pageName === 'CDPR'">
+                <p>
+                    <span class="selectedfilter">Ethernet:</span>
+                </p>
+                <p>
+                    <span class="selectedfilter">Ethernet: Used Ports</span>
+                    <br>Check If service type = Ethernet then count that port under used port of Ethernet product type
+                    <br>Else if service type = null
+                    <br> Check if Capacity usage flag = Ethernet access/none then mark the port as Ethernet
+                    <br>If Capacity usage flag is empty then mark all the ports as Ethernet which does not fall under above card
+                    combination of Broadband Category.</p>
+                <p>
+                    <span class="selectedfilter">Ethernet: Free/Reserved/Inflight Ports</span>
+                    <br>If Capacity usage flag = Ethernet access/none then mark the port as Ethernet
+                    <br>If Capacity usage flag is empty then mark all the ports as Ethernet which does not fall under above card
+                    combination of Broadband Category.</p>
+            </div>
+            <p> <span class="selectedfilter">Card Details:</span> Below Cards are in filter option to filter out the required data.</p>
+            <table class="table table-info">
+                <thead>
+                    <tr class="head">
+                        <th>Card</th>
+                        <th>Card Model</th>
+                        <th>Card Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tbodybackground">
+                        <td>IMM1 </td>
+                        <td>100GE Multicore IMM Module</td>
+                        <td>(1Tb)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM2</td>
+                        <td>100GE Multicore IMM Module 2Pt</td>
+                        <td>(2Pt P Rtr LSR)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM2</td>
+                        <td>100GE Multicore IMM Module 2Pt</td>
+                        <td>(2Pt)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM12(5)</td>
+                        <td>10GE Multicore IMM Module</td>
+                        <td>(5Pt Lic)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM12</td>
+                        <td>10GE Multicore IMM Module</td>
+                        <td>(12Pt Lic)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM12(Up)</td>
+                        <td>10GE Multicore IMM Module</td>
+                        <td>(5Up Lic)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM20</td>
+                        <td>10GE Multicore IMM Module</td>
+                        <td>(20Pt)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM12</td>
+                        <td>10GE Multicore IMM Module</td>
+                        <td>(1Tb)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IMM5</td>
+                        <td>IMM Module</td>
+                        <td>(N/A)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv1</td>
+                        <td>I/O Module</td>
+                        <td>(N/A)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3</td>
+                        <td>I/O Module</td>
+                        <td>(v3)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>IOMv3c</td>
+                        <td>I/O Module</td>
+                        <td>(Rev C - v3)</td>
+                    </tr>
+                    <tr class="tbodybackground">
+                        <td>HSQ</td>
+                        <td>I/O Module</td>
+                        <td>(v4)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>- As of now satellite shelf will not be included for the report unless the scope is finalised.</p>
+            <p>- Faulty Port would not be displayed in summary report for any of the Ports column.</p>
+            <p>
+                <span class="selectedfilter">&#9900; Product Line Forecast:</span> Forecast of the number of ports (for each specified product type and
+                speed) for the current financial year. This may be updated during the year under change control, but is still
+                considered to be the annual forecast against which the capacity of the network will be compared.</p>
+            <div *ngIf="pageName === 'CDPR'">
+                <p>
+                    <span class="selectedfilter">&#9900; Potential BB/Eth Ports: </span> Potential additional 10GE port count from unfilled slots in 2T (or
+                    2T capable) chassis that may be used for either BB or Ethernet (allocated to one or other in blocks of 20).
+                    </p>
+                <p>
+                    <span class="selectedfilter">&#9900; Potential Eth Ports: </span> Potential additional 10GE port count from unfilled slots in 2T (or 2T
+                    capable) chassis that may be used for Ethernet.</p>
+                <p>
+                    <span class="selectedfilter">&#9900; Further description: </span> We consider spare slots only in eligible chassis, and convert these
+                    into equivalent numbers of 10GE ports. (Eligible means MSEs which are either running with 2T chassis speed,
+                    or which contain no cards that limit speed below 2T). We assume a BT rule that limits the number of HSQ cards
+                    in any chassis to ONE (this is a slight simplification that doesn’t consider REM solution).
+                    <br> So if there is already an installed HSQ in a chassis, any spare ports can only be used for Ethernet, so
+                    are “Potential Eth Ports” If there is not already an installed HSQ, the first spare slot could be used for
+                    either BB or Eth (both not both!), so is counted as “Potential BB/Eth ports”, while any additional free slots
+                    can be counted only as “Potential Eth Ports”
+                </p>
+                <p>
+                    <span class="selectedfilter"> &#9900; Port build and consumed ports: </span>‒ Delta = Sum of (Free Ports for an exchange + Inflight Port
+                    for an exchange)
+                </p>
+            </div>
+            <p>– Product Line forecast, Delta value will be changed based on the filter selection and forecast data. Applicable
+                port speed are: FastE, GigE and 10GigE for Ethernet and 10GigE for Broadband.</p>
+            <div *ngIf="pageName === 'CDPR'">
+                <p> ‒ Port planned so far = Display the count of total ports which has inventory status as “Inflight” for Current
+                    financial year (1st April to 31 March of every year)</p>
+                <p> ‒ Port Build so far = Display the count of total ports which has inventory status as “In-service” and should
+                    be free for current financial year.</p>
+                <p> ‒ Port consumed so far should display the count of total ports which has inventory status as “In-service” and
+                    should be consumed as part of any service or connectivity for current financial year.
+                </p>
+                <p> ‒ The count will include only FE,GE and 10GE port unless forecast starts for 100GE port</p>
+                <p> ‒ Data for all these columns will be reset at the end of current financial year and new count should start from
+                    next 1st April for every year.</p>
+            </div>
+            <img class="spaceMargin" src="assets/images/Info_PLF.png">
+            <div *ngIf="pageName === 'CDPR'">
+                <p>
+                    <span class="selectedfilter">Consumed Ports: </span> Ports used for Services or connectivity for the current F.Y</p>
+                <p>
+                    <span class="selectedfilter">Delta: </span> Difference between Planned + Free - Forecast count.</p>
+                <p>
+                    <span class="selectedfilter">Delta ToD: </span> This display the delta for 10G Ethernet ToD port where the inflight ports has also categorized
+                    as ToD(If Chassis has ToD flag then all inflight ports on that chassis becomes Inflight ToD ) for Delta calculation
+                    on site level.</p>
+                <p>
+                    <span class="selectedfilter">Delta Non-ToD: </span> This display the delta for 10G Ethernet Non-ToD port where the inflight ports has
+                    also categorized as Non-ToD(If Chassis doesn’t have ToD flag then all inflight ports on that chassis becomes
+                    Inflight Non-ToD ) for Delta calculation on site level.</p>
+            </div>
+            <div *ngIf="pageName === 'FMR'">
+                <p>
+                    <span class="selectedfilter">Delta: </span>Difference between Planned + Free - Forecast count.
+                </p>
+                <p>
+                    <span class="selectedfilter">Trend and Forecast: </span>Automated /Machine learning Forecast of the number of ports (for each specified product type and speed) for the current financial year.
+                </p>
+                <p>
+                    <span class="selectedfilter">Final Forecast: </span>Currently defaulted to ‘0’ until algorithm/multiplier/logic is defined.
+                </p>
+            </div>
+    </div>
+    <p-footer>
+        <div class="modal-foot">
+                   <button type="button" class="btn btn-modal" (click)="onClose()">Close</button>
+               </div>
+           </p-footer>
+</p-dialog>

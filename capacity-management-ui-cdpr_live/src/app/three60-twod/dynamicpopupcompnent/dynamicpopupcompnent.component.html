@@ -1,0 +1,23 @@
+<div class="container">
+    <div id='loader-wrapper' [ngClass]="loaderpopup ? 'displayblock' : 'displaynone'">
+        <div class="spinner">
+            <img src="assets/images/loader_white.gif" alt="loader">
+        </div>
+      </div>
+  <div *ngIf = 'deviceperload === 0' class="triple enabledivOneimg">
+    <div class='col' style="z-index:9999">
+      <BT-device-visualizer-2d *ngIf='deviceData && deviceConfiguration' #visualizer [deviceData]='deviceData'
+        [deviceConfiguration]='deviceConfiguration'>
+      </BT-device-visualizer-2d>
+    </div>
+  </div>
+  <div *ngIf = 'deviceperload !== 0' class="triple enablecanvas" >
+    <div class='col' style="z-index:9999">
+      <BT-device-visualizer-2d *ngIf='deviceData && deviceConfiguration' #visualizer [deviceData]='deviceData'
+        [deviceConfiguration]='deviceConfiguration'>
+      </BT-device-visualizer-2d>
+    </div>
+  </div>
+</div>
+
+

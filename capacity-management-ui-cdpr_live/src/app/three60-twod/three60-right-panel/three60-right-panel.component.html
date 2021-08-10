@@ -1,0 +1,209 @@
+<div class=" right-panel-status-bar" id="sbeidtab1">
+  <p-table #sbeidtab1 [value]="rightPanelInfo" class="mytable" [scrollable]="true" scrollHeight="80px"
+    [responsive]="true" [resizableColumns]="true">
+    <ng-template pTemplate="caption">
+      <h1 id='sitenamealign'><span class="applyclrd">{{rightPanelnfoSiteName | titlecase }}</span></h1>
+    </ng-template>
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col style="width:60px">
+        <col style="width:60px">
+        <col style="width:40px">
+        <col style="width:40px">
+        <col style="width:50px">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th class="header-height">
+          SNE ID
+        </th>
+        <th class="header-height ">
+          Usage
+        </th>
+        <th class="header-height ">
+          Phase
+        </th>
+        <th class="header-height ">
+          CPM
+        </th>
+        <th class="header-height ">
+          Speed
+        </th>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columnShow">
+      <tr #tabRow class="" [ngClass]="{'devicesneid':rowData['sneId'] == devicesneid}">
+        <td class="cust-height">{{rowData['sneId']}}</td>
+        <td class="cust-height">{{rowData['deviceUsage']}}</td>
+        <td class="cust-height">{{rowData['phaseEnabled']}}</td>
+        <td class="cust-height">{{rowData['cpmType']}}</td>
+        <td class="cust-height">{{rowData['chassisSpeed']}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class=" right-panel-status-bar mrgintop" id="sbeidtab2">
+  <p-table #sbeidtab2 [value]="rightPanelInfo" class="mytable" [scrollable]="true" scrollHeight="80px"
+    [responsive]="true" [resizableColumns]="true">
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col style="width:36px">
+        <col style="width:75px">
+        <col style="width:40px">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+
+        <th class="header-height">
+          Market
+        </th>
+        <th class="header-height ">
+          Timos
+        </th>
+        <th class="header-height ">
+          Pre-2008
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columnShow">
+      <tr #tabRow class="" [ngClass]="{'devicesneid':rowData['sneId'] == devicesneid}">
+
+        <td class="cust-height">{{rowData['market']}}</td>
+        <td class="cust-height">{{rowData['timosVersion']}}</td>
+        <td class="cust-height">{{rowData['pre2008']}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="right-panel-status-bar mrgintop">
+  <p-table [value]="rightPanelTotalportcount" class="mytable">
+    <ng-template pTemplate="colgroup">
+      <colgroup>
+        <col [style.width]="'55%'" colspan="2">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th colspan="3" class="header-height">
+          <span>Total port count</span>
+        </th>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-table [value]="rightPanelTotalportcount" class="mytable bodytable">
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td class="cust-height">{{rowData['groupName']}}</td>
+        <td class="cust-height">{{rowData['totalPorts']}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="table-height right-panel-status-bar">
+  <div class="d-flex right-panel-status-barr">
+    <div class="status-bar">
+      <span class="product-bar-list">
+        <ul class="product-type">
+          <span class='headingfilter'>Product Type</span>
+          <li class="product-list" *ngFor="let product of changesitename">
+            <label class="product-checkbox" for="0">
+              <input type="checkbox" name="allProducts" id="0" [value]="rightPanelProductList"
+                (click)="checkAllProducts($event)" class="product_status" checked>
+              <span class="checkmark"></span>
+              <span>All</span>
+            </label>
+          </li>
+
+          <li class="product-list" *ngFor="let product of rightPanelProductList">
+            <label class="product-checkbox" for="{{product.uniqueName}}">
+              <input type="checkbox" name="product" id="{{product.uniqueName}}" [value]="product.uniqueName"
+                (click)='selectedFilters()' class="product_status" checked>
+              <span class="checkmark"></span>
+              <span>{{product.displayName}}</span>
+            </label>
+          </li>
+        </ul>
+      </span>
+      <span class="status-bar-list">
+        <ul class="status-info">
+          <span class='headingfilter'>Port status</span>
+          <li *ngFor="let product of changesitename">
+            <label class="status-checkbox" for="1">
+              <input type="checkbox" name="allStatus" id="1" [value]="rightPanelStatusList"
+                (click)="checkAllStatus($event)" class="filter_status" checked>
+              <span class="checkmark"></span>
+              <span>All</span>
+            </label>
+          </li>
+          <ng-container *ngFor="let status of rightPanelStatusList let i = index">
+            <ng-container *ngIf='status.statusName == "Free" else othertype'>
+              <li>
+                <label class="status-checkbox">
+                  <input type="checkbox" name="status" checked id="{{status.statusName}}" value="{{i}}"
+                    class="filter_status" (click)='checkFree($event)'>
+                  <span class="checkmark {{status.statusName}}"></span>
+                  <span>{{status.statusName}}</span>
+                  <ul class="substatus-info subli">
+                    <li><label class="status-checkbox">
+                        <input type="checkbox" name="substatus" checked id="Cabled Up" value="4"
+                          class="filter_status" (click)='selectedFilters()'>
+                        <span class="checkmark Cabled Up"></span>
+                        <span>Cabled to PP</span>
+                      </label>
+                    </li>
+                    <li><label class="status-checkbox">
+                      <input type="checkbox" name="substatus" checked id="Un-Cabled" value="5"
+                        class="filter_status" (click)='selectedFilters()'>
+                      <span class="checkmark Un-Cabled"></span>
+                      <span>Un-Cabled to PP</span>
+                    </label>
+                  </li>
+                  </ul>
+                </label>
+              </li>
+            </ng-container>
+  
+            <ng-template #othertype>
+              <li *ngIf = 'status.statusName !== "Cabled Up" &&  status.statusName !== "Un-Cabled"'>
+                <label class="status-checkbox">
+                  <input type="checkbox" name="status" checked id="{{status.statusName}}" value="{{i}}"
+                    class="filter_status" (click)='selectedFilters()'>
+                  <span class="checkmark {{status.statusName}}"></span>
+                  <span>{{status.statusName}}</span>
+                </label>
+              </li>
+            </ng-template>
+  
+          </ng-container>
+        </ul>
+      </span>
+      <span class="speed-bar-list">
+        <ul class="speed-type">
+          <span class='headingfilter'>Port Speed</span>
+          <li *ngFor="let product of changesitename">
+            <label class="speed-checkbox" for="2">
+              <input type="checkbox" name="allspeed" id="2" [value]="rightPanelSpeedList"
+                (click)="checkAllSpeed($event)" class="filter_speed" checked>
+              <span class="checkmark"></span>
+              <span>All</span>
+            </label>
+          </li>
+          <li *ngFor="let speed of rightPanelSpeedList let i = index">
+            <label class="speed-checkbox">
+              <input type="checkbox" name="speed" id="{{speed.displayName}}" value="{{speed.uniqueName}}" class="filter_speed"
+                (click)='selectedFilters()' checked>
+              <span class="checkmark {{speed.displayName}}"></span>
+              <span>{{speed.displayName}}</span>
+            </label>
+          </li>
+        </ul>
+      </span>
+    </div>
+  </div>
+
+</div>

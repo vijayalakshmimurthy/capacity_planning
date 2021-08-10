@@ -1,0 +1,52 @@
+.btn-custom {
+    min-width: 80px;
+    text-align: center;
+}
+
+.btn-save-custom {
+    background: red !important;
+}
+.btn-cdmove {
+    min-height: 41px;
+}
+
+button[disabled] {
+    opacity: 0.5;
+    background: #d9bae7 !important;
+    cursor: not-allowed !important;
+}
+
+.disableExportBtn {
+    opacity: 0.5;
+    background: #d9bae7 !important;
+    cursor: not-allowed !important;
+}
+
+.enableExportBtn {
+    background: #6400aa !important;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-move-upload .home-icon {
+    vertical-align: baseline;
+    margin-right: 10px;
+    border-right: 1px solid #6400aa;
+    padding: 0 10px 0 0;
+}
+
+.home-icon {
+    cursor: pointer;
+}
+
+.card-move-upload {
+    margin-top: 10px;
+}
+
+.header-title {
+    display: contents;
+}
+
+.filterheading {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

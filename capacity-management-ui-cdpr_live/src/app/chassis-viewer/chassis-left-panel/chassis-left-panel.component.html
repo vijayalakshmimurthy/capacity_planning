@@ -1,0 +1,80 @@
+<div class="left-panel left-panel-active">
+    <div class="collpase-left-panel">
+        <div class="left-panel-button-navig">
+            <ul class="nav nav-tabs side_nav" role="tablist">
+                <li *ngFor="let navtabs of navTabsName" role="presentation" class="accounts_li"
+                    [class.active]="selectedwallet === navtabs">
+                    <a [ngClass]="navtabs.disable ? 'listDisable':''" (click)="selectedwallet = navtabs;"
+                        aria-controls="one" role="tab" data-toggle="tab">{{navtabs.name}}</a>
+                </li>
+                <li *ngIf="showclearAllBtn">
+                    <i _ngcontent-eio-c12="" (click)="clearImgvalues()" aria-hidden="true" class="fa fa-window-close"
+                      id="closeicn"></i>
+                  </li>
+                <li class="expan-infoicon" (click)="expandPanel()"><img _ngcontent-rwx-c1=""
+                        src="assets/images/expand.png" style="cursor: pointer;"></li>
+            </ul>
+        </div>
+        <div class="bodyArea tab-content">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="one">
+                    <!-- Information -->
+                    <div [hidden]="selectedwallet !== navTabsName[0]">
+                        <div class="panel-header text-left">
+                            <h1>{{leftPanelTitle}}</h1>
+                        </div>
+                        <ul class="keyValList">
+                            <li *ngFor="let info of leftPanelInfo?.info  | keyvalue : returnZero">
+                                <div class="key">{{info.key}} :</div>
+                                <div class="value">{{info.value}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane active navigator" id="two">
+                    <!-- Navigator -->
+                    <div class="navi-info-section" [hidden]="selectedwallet !== navTabsName[1]">
+                        <div *ngIf="tree">
+                            <div class="panel-header text-left">
+                                <h1>Navigator</h1>
+                            </div>
+                            <BT-srims-navigator #navigator [treeData]="tree?.navigator?.nodes" [settings]="treeSettings"
+                                (listenToEvents)="listenToNavigator($event)">
+                            </BT-srims-navigator>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane active" id="three">
+                    <!-- Get Service -->
+                    <div class="navi-info-section" [hidden]="selectedwallet !== navTabsName[2]">
+                    <div class="panel-header text-left">
+                        <h1>Get service</h1>
+                    </div>
+                    <span class="errormessage">{{errorMsgService}}</span>
+                   <div class='tree-navigator getservice' *ngIf='enablegetservice'> 
+                        <p-tree [value]="nodes">
+                            <ng-template let-node pTemplate="default">
+                              <p
+                                [class.leaf-style]="node.children == null"
+                                [class.no-leaf-style]="node.children != null"
+                              >
+                                {{node.label}}
+                              </p>
+                              <p></p
+                            ></ng-template>
+                          </p-tree></div>
+
+                    <!-- <BT-srims-navigator #servicenavigator [treeData]="getServiceData?.navigator?.nodes" [settings]="treeSettings">
+                    </BT-srims-navigator> -->
+                    <!-- <ul class="keyValList">
+                        <li>
+                            <div class="key">Lag Group No :</div>
+                            <div class="value">{{lagGroupno}}</div>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

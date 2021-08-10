@@ -1,0 +1,76 @@
+.filterheading {
+    font-size: 28px;
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+.margin10 {
+    margin-top: 10px;
+}
+
+.hrclass {
+    margin-top: 0rem;
+}
+
+.card-dashboard {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 6px;
+
+    h2 {
+        position: absolute;
+        color: #6400aa;
+        font-size: 20px;
+        top: 16px;
+        font-weight: 400;
+
+        a {
+            font-size: 16px;
+        }
+    }
+
+    h1 {
+        color: #6400aa;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 9px;
+        margin-bottom: 10px;
+    }
+
+}
+
+.keyNetwork {
+    // width: 19%;
+    display: inline-block;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.margin-bottom {
+    margin-bottom: 40px;
+}
+
+.card-modal-table {
+    @extend .card-dashboard,
+    h2;
+    position: inherit !important;
+    padding: 0px !important;
+    margin-bottom: 10px !important;
+
+}
+
+.float {
+    float: right;
+    cursor: pointer;
+}
+
+.tableheight {
+    margin-bottom: 0px;
+    height: 100px;
+}
+
+.min-height-key {
+    height: 99%;
+}

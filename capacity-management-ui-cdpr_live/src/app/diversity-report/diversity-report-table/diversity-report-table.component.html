@@ -1,0 +1,82 @@
+<div class=" col-md-12 tableclass" *ngIf="tableResponse.length > 0">
+        <ng-container *ngFor="let row of tableResponse; let i = index">
+            <div *ngIf="row.diversityGroupForecastList.length > 0">
+                <p-table sortField="sneId" sortMode="single" (onSort)="onSort(row.diversityGroupForecastList)" [value]="row.diversityGroupForecastList" editMode="row">
+                    <ng-template pTemplate="header" *ngIf="i === 0">
+                        <tr>
+                            <th class="blue-border">MSE(SNE ID)</th>
+                            <th class="blue-border">Card Detail</th>
+                            <th class="green-border">Card Status</th>
+                            <th class="green-border">Diversity Group Name</th>
+                            <th class="green-border">Free Port Detail</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-editing="editing">
+                        <tr class="ui-widget-header" *ngIf="rowIndex === 0 ">
+                            <td class="tdsearch" colspan="5">
+                                <span style="font-weight:bold; color:#6400aa">Search {{i + 1}} -</span>
+                                <span style="color:#6400aa">{{row.search}}</span>
+                                <span class="notcapacity">{{row.portAvailablity}}</span>
+                            </td>
+                        </tr>
+                        <tr [pEditableRow]="rowData">
+                            <td *ngIf="rowGroupMetaList[i][rowData.sneId].index === rowIndex"
+                                [attr.rowspan]="rowGroupMetaList[i][rowData.sneId].size">
+                                {{rowData.sneId}}
+                            </td>
+                            <td *ngIf=" rowGroupDataList[i][rowData.cardDetail  + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].index === rowIndex"
+                                [attr.rowspan]="rowGroupDataList[i][rowData.cardDetail + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].size">
+                                {{rowData.cardDetail}}</td>
+                            <td *ngIf="rowGroupDataList[i][rowData.cardDetail  + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].index === rowIndex"
+                                [attr.rowspan]="rowGroupDataList[i][rowData.cardDetail + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].size">
+                                {{rowData.cardStatus}}</td>
+                            <td *ngIf="rowGroupDataList[i][rowData.cardDetail  + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].index === rowIndex"
+                                [attr.rowspan]="rowGroupDataList[i][rowData.cardDetail + rowData.cardStatus + rowData.diversityGroupName + rowData.sneId].size">
+                                <p-cellEditor>
+                                    <ng-template pTemplate="input">
+                                        <span class="pos-rel" *ngIf="rowData.cardStatus === 'Installed'">
+                                            <span *ngFor="let a of rowData.newab">
+                                                <span class="box margin" *ngIf="a">{{a}}
+                                                    <span class="cross_save" (click)="removeDGNameFromTable(rowData,i,a)"> X </span>
+                                                </span>
+                                            </span>
+                                            <span style="display: block;">
+                                                <select id="country" class="form-control dropdown-geo dropdown-data"
+                                                    [(ngModel)]="rowData.dropdown" (ngModelChange)="getdropdown(rowData,rowIndex, i , $event)">
+                                                    <option [ngValue]="null" disabled>Prefix</option>
+                                                    <option *ngFor="let prefix of prefixLocation" [ngValue]="prefix">
+                                                        {{ prefix }}</option>
+                                                </select>
+                                                <p-autoComplete *ngIf="rowData.dropdown" [(ngModel)]="rowData.dgname" (completeMethod)="onCompleteGroupName($event,rowData.dropdown)" class="diversityTable" [size]="30"
+                                                [suggestions]="groupData" maxlength="15" (onSelect)="onSelectSearchAdd($event, rowData, rowIndex, i)" (keypress)="keyPressAdd($event)" (ngModelChange)="editRow(rowData,rowIndex, i , $event)" placeholder="Enter DG Name *">
+                                                </p-autoComplete>
+                                                <button type="button" class="btnRight" *ngIf="rowData.dgname" (click)="addValue($event,rowData, rowIndex, i)">Add</button>
+                                            </span>
+                                        </span>
+                                        <span *ngIf="rowData.cardStatus !== 'Installed'">
+                                            {{rowData.diversityGroupName}}
+                                        </span>
+                                    </ng-template>
+                                    <ng-template pTemplate="output">
+                                        {{rowData.diversityGroupName}}
+                                    </ng-template>
+                                </p-cellEditor>
+                            </td>
+                            <td>{{rowData.freePortDetail}}</td>
+                            <td class="displayStyle">
+                                <input *ngIf="!editing" type="text" id="autoEdite" pInitEditableRow>
+                                <input *ngIf="editing" type="text" id="updatedTable"  pSaveEditableRow>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div *ngIf="row.diversityGroupForecastList.length === 0">
+                <div class="nodatafield">
+                    <span style="font-weight:bold; color:#6400aa">Search {{i + 1}} -</span> <span style="color:#6400aa">
+                        {{row.search}} </span> <span class="notcapacity">{{row.portAvailablity}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+

@@ -1,0 +1,75 @@
+<div class="container-fluid containerwidth">
+    <div class="row filterheading">
+        <div class="col-md-5 col-sm-5 list-inline">
+            <h2 class="margin10 header">Detailed Reservation Report Site
+            </h2>
+        </div>
+
+        <div class="col-md-7 col-sm-7 text-right">
+            <ul class="nav navbar navbar-left d-flex d-inline-flex padding0">
+                <li class="nav-item d-inline-flex marginright25">
+                    <app-auto-suggestions [filterData]="filterData" [type]="type" (searchStr)="onkeyPressSearch($event)"
+                        (selectStr)="onselectSearch($event)" [placeHolder]="searchBoxPlaceHolder"
+                        (dataKeyEnter)="onManageSearchData($event)" (resetSearchClear)="OnResetSearchInput($event)">
+                    </app-auto-suggestions>
+                </li>
+                <li class=" exportdropdown ">
+                    <div class="d-inline-block">
+                        <button class="btn btn-custom drrbutton marginleft10" *ngIf="extendButton"
+                            (click)="openSearch()">
+                            <span>Extend Expiry Date</span>
+                        </button>
+                        <button class="btn btn-custom drrbutton marginleft10" *ngIf="!extendButton" (click)="confirm()">
+                            <span>Submit</span>
+                        </button>
+                        <button class="btn btn-custom drrbutton marginleft10" *ngIf="!extendButton"
+                            (click)="cancelOpenSearch()">
+                            <span>Cancel Extend</span>
+                        </button>
+                    </div>
+                </li>
+                <li class=" exportdropdown">
+                    <div class="d-inline-block">
+                            <button class="btn btn-custom drrbutton marginleft10"  *ngIf="searchVisible"
+                            (click)="cancelSearch()">
+                            <span>Cancel Search</span>
+                        </button>
+                      </div>  
+                </li>
+                <li class=" exportdropdown  marginleft10">
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-custom drr-download" data-hover="dropdown" id="dropdownBasic2"
+                            ngbDropdownToggle aria-expanded="true">
+                            <app-svg icon="Capa_10-export_icon"> </app-svg>
+                            <span> Export </span>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                            <p class="p-padding" ngbDropdownItem (click)="exportData()">Export as XLSX</p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <p class="alert-success success-msg col-md-3" *ngIf='successMsg'>{{successMsgText}}</p>
+        <hr class="hrclass">
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="row detail-site-table extendexpiryColumnsText">
+                <div class="col-md-12">
+                    <app-table [settings]="tableSettings" (selectedPageNo)="getSelectedPageNo($event)"
+                    (listRowSelect)="getlistRowSelect($event)"(setExpiryDateAllColumnValue)="setExpiryDateAllColumnValue($event)"                     (setExpiryDateColumnValue)="setExpiryDateColumnValue($event)"
+                        [noRecordError]="'No Record Found'" (customSortRecord)="customSort($event)" (exportParam)="getFilterData($event)" [clearAllDrrData]="clearfilterData">
+                    </app-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-modal-popup [display]="display" [commonModelProperties]='commonModelProperties'
+    (submitData)="submitDataApi()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>

@@ -1,0 +1,86 @@
+<div class="margin-bottom">
+  <div class="linecharts">
+    <div class="chart-container">
+      <ul class="list-inline">
+        <li class="" *ngFor="let a of data?.datasets">
+          <p>
+            <span class="circle-dot" [ngStyle]="{'background-color': a.borderColor}"></span> {{a.label}} </p>
+        </li>
+      </ul>
+      <ul>
+        <li ngbDropdown class="d-inline-block">
+          <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle>
+            <span class="icon-line ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 16 8">
+                <defs>
+                  <style>
+                    .a {
+                      fill: #6400aa;
+                    }
+                  </style>
+                </defs>
+                <path class="a" d="M18,4V5H2V4ZM2,8.5H18v-1H2ZM2,12H18V11H2Z" transform="translate(-2 -4)" />
+              </svg>
+            </span>
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <li *ngIf="type == 'line'" id= "{{elementId}}">
+              <a ngbDropdownItem>
+                <span (click)="downloadCSVLine(elementId)">Download XLS</span>
+              </a>
+            </li>
+            <li>
+              <a ngbDropdownItem appPNGDownload [elementId]="elementId" [downloadImageName]="downloadImageName">
+                <span>Download PNG</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <app-chart [type]="type" [data]="data" [options]="options" [height]="'300px'"></app-chart>
+    </div>
+  </div>
+</div>
+<!-- <div class="margin-bottom" *ngIf="trendArray">
+  <div class="linecharts">
+    <div class="chart-container">
+      <ul class="list-inline">
+        <li class="" *ngFor="let a of data?.datasets">
+          <p>
+            <span class="circle-dot" [ngStyle]="{'background-color': a.borderColor}"></span> {{a.label}} </p>
+        </li>
+      </ul>
+      <ul>
+        <li ngbDropdown class="d-inline-block">
+          <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle>
+            <span class="icon-line ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 16 8">
+                <defs>
+                  <style>
+                    .a {
+                      fill: #6400aa;
+                    }
+                  </style>
+                </defs>
+                <path class="a" d="M18,4V5H2V4ZM2,8.5H18v-1H2ZM2,12H18V11H2Z" transform="translate(-2 -4)" />
+              </svg>
+            </span>
+          </a>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <li *ngIf="type == 'line'">
+              <a ngbDropdownItem>
+                <span (click)="downloadCSVLine()">Download XLS</span>
+              </a>
+            </li>
+            <li>
+              <a ngbDropdownItem appPNGDownload [elementId]="elementId" [downloadImageName]="downloadImageName">
+                <span>Download PNG</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <app-chart [type]="type" [data]="data" [options]="options" [height]="'300px'"></app-chart>
+    </div>
+  </div>
+</div> -->

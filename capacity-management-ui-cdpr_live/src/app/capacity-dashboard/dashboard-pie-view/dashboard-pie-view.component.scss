@@ -1,0 +1,40 @@
+.piechart{
+    text-align: center;
+    margin-top: 30px;
+    li p{
+        @media only screen and (min-width:900px) and  (max-width: 1400px) {
+            font-size: 12px;
+            top: 27%;
+        }
+    }
+}
+.pie{
+    margin-top: 60px;
+}
+.totalports {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    @media only screen and (min-width: 990px) and (max-width: 1400px) {
+        top: 51%;
+        font-size: 12px;
+    }
+    @media only screen and (min-width: 900px) and (max-width: 1160px) {
+        top: 51%;
+        //  font-size: 12px;
+    }
+}
+.circle-dot{
+    width: 10px;
+height: 10px;
+display: inline-block;
+border-radius: 50%;
+}
+.list-inline {
+    display: -webkit-inline-box;
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}

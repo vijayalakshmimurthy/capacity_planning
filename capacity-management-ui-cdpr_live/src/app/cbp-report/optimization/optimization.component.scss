@@ -1,0 +1,26 @@
+.delete-row {
+    cursor: pointer;
+
+    padding: {
+        right: 6px;
+    }
+
+
+    border-right: 2px solid #e2dddd;
+
+    margin: {
+        right: 8px;
+    }
+}
+
+.edit-row {
+    cursor: pointer;
+}
+
+.green-color {
+    color: #5cb85c;
+}
+
+.red-color {
+    color: red;
+}

@@ -1,0 +1,41 @@
+<p-dialog header={{commonModelProperties?.header}} [(visible)]="_display" (onHide)="onClose()"
+    [style]="{width: commonModelProperties?.width ? commonModelProperties?.width :'1200px'}" class="info info_cdpr"
+    [baseZIndex]="10000" [responsive]="true" [modal]="true">{{commonModelProperties?.popuptype}}
+    <div class="modal-body" *ngIf="commonModelProperties?.popupType === 'confirmationPopup'">
+        <img class="center" src={{commonModelProperties?.image}}>
+        <p class="content">{{commonModelProperties?.bodyContent}}</p>
+    </div>
+    <div class="modal-body" *ngIf="commonModelProperties?.popupType === 'informationPopup'">
+        <div class="row">
+            <div class="col-md-12 rowtop">
+                <p-table [columns]="commonModelProperties?.popSettings?.headers"
+                    [value]="commonModelProperties?.popSettings?.data"
+                    scrollHeight="{{commonModelProperties?.popSettings?.scrollHeight}}" [scrollable]="true">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <ng-template ngFor let-col [ngForOf]="columns">
+                                <th class="otherhd" [attr.ngvalue]="col.field">
+                                    {{col.header}}</th>
+                            </ng-template>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <ng-container *ngFor="let col of columns">
+                                <td class="columnData" [attr.ngvalue]="col.field">
+                                    {{rowData[col.field]}}
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <p-footer class="button-align" *ngIf="commonModelProperties?.footerButtons">
+        <ng-container *ngFor="let button of commonModelProperties?.dynamicButton">
+            <button type="button" class="btn" [ngClass]="button.class"
+                (click)=this[button.funcName]()>{{button.btnName}} </button>
+        </ng-container>
+    </p-footer>
+</p-dialog>

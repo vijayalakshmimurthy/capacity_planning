@@ -1,0 +1,52 @@
+<li *ngIf="!enableNOCardMoveWorkflow" ngbDropdown class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false" class="d-inline-block left-nav-li li-bottom">
+  <a class="btn-outline-primary userdropdown-toggle btn-action" id="dropdownBasic1" ngbDropdownToggle (click)='enabledropdown()'
+    [ngClass]="actiondisable ? 'disableaction' : ''"> Action
+    <span>
+      <i class="fa fa-angle-down fa-1" aria-hidden="true"></i>
+  </span>
+  </a>
+  <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" [ngClass]="actiondropdowndisable ? 'disabledropdownaction' : ''">
+    <li><button class="btn btn-icon-custom" type="info-button" [disabled]="!unReserveDashBtn"
+        (click)="showsidenav('unreservation')">Un-reserve</button></li>
+    <li><button class="btn btn-icon-custom" type="info-button" [disabled]="!reservationBtn"
+        (click)="showsidenav('reservation')">Reservation </button></li>
+    <li><button class="btn btn-icon-custom" type="info-button" [disabled]="!cufBtn"
+      (click)="opencuf()">Usage</button></li>
+    <li class="plan-header" *ngIf="!workflow"><button class="btn btn-icon-custom" type="info-button" [disabled]="!planBtn && !satelliteShelfPlan">Plan</button>
+        <i class="pi pi-chevron-right fa-1 pull-right-header" *ngIf="planBtn || satelliteShelfPlan" aria-hidden="true"></i>
+      <ul class="submenu-dropdown btn-icon-custom plan-submenu" *ngIf="planBtn || satelliteShelfPlan">
+        <li><button class="submenu-plan btn btn-icon-custom" type="info-button" [disabled]="!planBtn"
+            (click)="showsidenav('plan')">Card plan </button></li>
+        <li><button class="submenu-plan btn btn-icon-custom" type="info-button" [disabled]="!satelliteShelfPlan"
+          (click)="validateSatelliteShelfPort()">Satellite shelf </button></li>
+      </ul>
+    </li>
+    <li *ngIf="workflow"><button class="btn btn-icon-custom" type="info-button" (click)="showarmovenav(planname)"
+        [disabled]="!cardmoveplan">{{planname}}</button></li>
+  <!--  <li><button class="btn btn-icon-custom" type="info-button" [disabled]="!recoveryBtn"
+      (click)="showsidenav('recovery')">Recovery </button></li>-->
+  </ul>
+</li>
+
+<app-chassis-action-reservation (closeSideNav)="closeSideNav()" [userType]="userType" [display]="display"
+  *ngIf="showLeftPane === 'reservation'" (resetValue)="resetValues()" [portsAvailable]="portsAvailable"
+  [cardAvailable]="cardAvailable" [sneId]="sneId" [emailId]="emailId">
+</app-chassis-action-reservation>
+<app-chassis-action-unreservation (closeSideNav)="closeSideNav()" [userType]="userType" [display]="display"
+  *ngIf="showLeftPane === 'unreservation'" (closeUnreserve)='closeUnreserve()' [unReserve]="unReserve" [sneId]="sneId" (resetValue)="resetValues()">
+</app-chassis-action-unreservation>
+<app-chassis-action-usage (closeSideNav)="closeSideNav()" [userType]="userType" [display]="display"
+  *ngIf="showLeftPane === 'usage'" [portsAvailable]="portsAvailable" [physicalportcuf]='physicalportcuf' [cardAvailable]="cardAvailable" [sneId]="sneId"
+  [level3]="level3" (resetValue)="resetValues()" [emailId]="emailId"></app-chassis-action-usage>
+<app-chassis-action-plan (closeSideNav)="closeSideNav()" (emitSaveApi)='emitSaveApi($event)'
+  (editPlanCardmove)='editPlanCardmove($event)' *ngIf="showLeftPane === 'plan'" [display]="display" [deltavalue]='deltavalue'
+  [siteName]="siteName" [sneId]="sneId" [defaultInfo]="defaultInfo" [deviceInfo]="deviceInfo" [cardmoverequest]='cardmoverequest'
+  [requestData]='requestData' [clearAllplanvalue]='clearAllplanvalue' [selectionDetails]='selectionDetails'
+  [workflow]='workflow' [cardmoveleftpanel]='cardmoveleftpanel' [setleftnavheight]='setleftnavheight'
+  [enablemove]='enablemove' [cardmoveedit]='cardmoveedit' [cardInfillFlow]="cardInfillFlow" [selectedPlanDetails]="selectedPlanDetails"
+  [showEthernet]="showEthernet" [demandId]="demandId" (resetValue)="resetValues()"
+  [productType]='productType' [originaldeltavalue]='originaldeltavalue' [originalDelta]='originalDelta'
+  [savedplanincardinfill]='savedplanincardinfill' [SASPlan]="SASPlan" [portsAvailable]="portsAvailable"
+  (emitPlanData)="emitPlanData($event)" [enableNOCardMoveWorkflow]="enableNOCardMoveWorkflow"
+  (nextCardmoveWorkflow)="nextCardmoveWorkflow($event)"></app-chassis-action-plan>

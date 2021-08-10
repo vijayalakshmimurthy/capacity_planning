@@ -1,0 +1,106 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 list-inline">
+                <h1 class="margin10 header">Cable & Rack Capacity Report</h1>
+            </div>
+            <div class="col-md-6 col-sm-6 text-center">
+                <app-alert></app-alert>
+            </div>
+        </div>
+        <hr class="hrclass">
+        <div class="row padding-bottom1">
+            <div class="col-md-5 col-sm-5 margin-top6">
+                <ul class="nav navbar navbar-left d-flex d-inline-flex padding0 form-group">
+                    <li class="nav-item d-inline-flex marginright15">
+                        <button class="btn btn-custom" (click)="showFilterPopup()">
+                            <app-svg icon="Capa_1-filter_icon"></app-svg>
+                            <span> Filter </span>
+                        </button>
+                        <p-dialog header="Select Filter" [(visible)]="disPlayfilterPopup" [style]="{width: '50vw'}" [contentStyle]="{'max-height':'50vh'}"
+                            [baseZIndex]="10000" [responsive]="true" [modal]="true" class="info cdpr" (onHide)="closeallExpandDropdown()">
+                            <ng-template [ngIf]="filters.length > 0">
+                                <app-filter [filters]="filters" [expandAllFlag]="expandAllFlag" [collapsAlleFlag]="collapsAlleFlag" [viewType]="viewType"
+                                    [savedFilters]="savedFilters" (requestFilters)="updateFiltersFromChild($event)">
+                                </app-filter>
+                            </ng-template>
+                            <p-footer>
+                                <button type="button" class="btn btn-modal mr-auto" (click)="expandFilterResults()" data-dismiss="modal" id="changeButton">Expand All</button>
+                                <button type="button" class="btn btn-custom model-btn-custom-css" (click)="submitFilters()" data-dismiss="modal">Submit</button>
+                                <button type="button" class="btn btn-modal" (click)="clearFilters()" data-dismiss="modal">Clear All</button>
+                            </p-footer>
+                        </p-dialog>
+                    </li>
+                    <li class="nav-item d-inline-flex marginright15">
+                        <button type="button" class=" btn btn-success btn-suc" (click)="onSavePreference()">
+                            <app-svg icon="Group_63-save_icon"></app-svg>
+                            <span> Save Preference </span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-7 col-sm-7 text-right">
+                <ul class="nav navbar navbar-left d-flex d-inline-flex padding0 padding-bottom-custom ">
+                    <li class="nav-item d-inline-flex marginright15">
+                        <span class="datamsgs" *ngIf="errorMsg != ''">{{errorMsg}}</span>
+                        <app-auto-suggestions [type]="type" [filterData]="filterData" (searchStr)="onkeyPressSearch($event)" (selectStr)="onselectSearch($event)"
+                            [placeHolder]="searchBoxPlaceHolder" (dataKeyEnter)="onManageSearchData($event)" (resetSearchClear)="OnResetSearchInput($event)">
+                        </app-auto-suggestions>
+                    </li>
+                    <li class=" exportdropdown  marginleft10">
+                        <div ngbDropdown class="d-inline-block">
+                            <button [disabled]="tableSettings?.data.length === 0" class="btn btn-custom" data-hover="dropdown" id="dropdownBasic2"
+                                ngbDropdownToggle aria-expanded="true">
+                                <app-svg icon="Capa_10-export_icon"> </app-svg>
+                                <span> Export </span>
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                                <p class="p-padding" (click)="convert('pdf')" ngbDropdownItem>Export as PDF</p>
+                                <p class="p-padding" (click)="convert('csv')" ngbDropdownItem>Export as CSV</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="exportdropdown  export  cdprShow marginleft10">
+                        <i class="pi pi-eye-slash eye_icon_added">
+                            <p-multiSelect [options]="columnList"  [showToggleAll]="false" [displaySelectedLabel]="false"  [(ngModel)]="selectedColumns"
+                                (onChange)="selectedColumnChange($event)"  optionLabel="header" selectedItemsLabel="{0} columns selected"
+                                defaultLabel="Show/Hide Column">
+                            </p-multiSelect>
+                        </i>
+                    </li>
+                    <li class="marginleft10">
+                        <button type="info-button" class="btn btn-custom" (click)="showBasicDialoginfo()">
+                            <app-svg icon="Capa_11-info_icon"></app-svg>
+                            <span> Info </span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 moveselected">
+    <div class="list-inline select-filter-block1">
+        <p class="selectedfilter">Selected Filter -
+            <ng-container *ngFor="let x of getSelectedFilters()">
+                <span class="ComaTest">
+                    <span class="select-colhead">{{x.filterName}}</span> :
+                    <ng-container *ngFor="let y of x.values">
+                        <ng-container *ngIf="y.selected">
+                            <span class="select-colresult"> {{y.value}}
+                            </span>
+                            <span class="removeComa">,</span>
+                        </ng-container>
+                    </ng-container>
+                </span>
+            </ng-container>
+        </p>
+    </div>
+</div>
+<div class="col-md-12 cableRackReport" [ngClass]="noRecords ? 'borderRight' : 'noBorderRight'">
+    <app-table [settings]="tableSettings" (selectedPageNo)="getSelectedPageNo($event)" (listRowSelect)="getlistRowSelect($event)"
+        (updatedHeaders)="getUpdatedHeaders($event)" (navigateUrl)="navigateUrl($event)" (customSortRecord)="customSort($event)" [noRecordError]="noRecordError">
+    </app-table>
+</div>
+
+<app-info-model-crsr [display]="display" (displayChange)="onDialogClose($event)"></app-info-model-crsr>

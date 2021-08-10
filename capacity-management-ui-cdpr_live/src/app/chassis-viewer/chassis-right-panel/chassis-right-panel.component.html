@@ -1,0 +1,208 @@
+<div class="right-panel-chassis-info">
+  <div class="chassis-info">
+    <div class="panel-header" [ngClass]="disableinputfield ? 'disableactionsitename' : ''">
+      <h1 (click)='redirectto360()' id="cursoricn">{{rightPanelInfo?.siteName}}</h1>
+    </div>
+    <div>
+      <div class="d-flex flex-row flex-wrap">
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:0:4">
+          <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          <span class="chassis-info-text" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+      </div>
+      <div class="d-flex flex-row chassis-block2 flex-wrap">
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:4:14">
+          <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          <span class="chassis-info-text" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+        <span class="chassis-info-block">
+        </span>
+        <span class="chassis-info-block">
+        </span>
+      </div>
+      <div class="d-flex flex-row chassis-block2 flex-wrap">
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:14:15">
+          <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          <span class="chassis-info-text" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+        <!-- <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:15:17"
+          (mouseenter)="onMouseover(chassisInfo.value,chassisInfo.title,$event)" (mouseleave)='hideoverlay($event)'>
+          <ng-container *ngIf='tooltipdata.showTable === "Yes" else cellvalue'>
+            <span class="chassis-info-text-bold" title="Click Here">Click Here</span>
+          </ng-container>
+          <ng-template #cellvalue>
+            <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          </ng-template>
+          <span class="chassis-info-text" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span> -->
+
+
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:15:16"
+          (mouseenter)="onMouseover(chassisInfo.value,chassisInfo.title,$event)" (click)="onMouseover(chassisInfo.value,chassisInfo.title,$event)" (mouseleave)='hideoverlay($event)'>
+          <ng-container *ngIf='tooltipdata.message=== "Success" else cellvalue'>
+            <span *ngIf='tooltipdata.showTable === "Yes"' class="chassis-info-text-bold-heading"
+              title="Click Here">Click Here</span>
+            <span *ngIf='tooltipdata.showTable === "No"' class="chassis-info-text-bold"
+              title="{{phasedate}}">{{phasedate}}</span>
+          </ng-container>
+          <ng-template #cellvalue>
+            <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          </ng-template>
+          <span class="chassis-info-text-bold-content" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:16:17"
+          (mouseenter)="onMouseover(chassisInfo.value,chassisInfo.title,$event)"  (click)="onMouseover(chassisInfo.value,chassisInfo.title,$event)" (mouseleave)='hideoverlay($event)'>
+          <ng-container *ngIf='tooltipdata.message=== "Success" else cellvalue'>
+            <span *ngIf='tooltipdata.showTable === "Yes"' class="chassis-info-text-bold-heading"
+              title="Click Here">Click Here</span>
+            <span *ngIf='tooltipdata.showTable === "No"' class="chassis-info-text-bold"
+              title="{{phasestatus}}">{{phasestatus}}</span>
+          </ng-container>
+          <ng-template #cellvalue>
+            <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          </ng-template>
+          <span class="chassis-info-text-bold-content" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+        <span class="chassis-info-block">
+        </span>
+
+      </div>
+      <div class="d-flex flex-row flex-wrap">
+        <span class="chassis-info-block" *ngFor="let chassisInfo of rightPanelInfo?.deviceDetails | slice:17:24">
+          <span class="chassis-info-text-bold" title="{{chassisInfo.value}}">{{chassisInfo.value}}</span>
+          <span class="chassis-info-text" title="{{chassisInfo.title}}">{{chassisInfo.title}}</span>
+        </span>
+        <span class="chassis-info-block">
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex right-panel-status-bar">
+  <div class="status-bar">
+    <span class="product-bar-list">
+      <ul class="product-type">
+        <span class='headingfilter'>Product Type</span>
+        <li class="product-list">
+          <label class="product-checkbox" for="0">
+            <input type="checkbox" name="allProducts" id="0" [value]="rightPanelProductList"
+              (click)="checkAllProducts($event)" class="product_status">
+            <span class="checkmark"></span>
+            <span>All</span>
+          </label>
+        </li>
+
+        <li class="product-list" *ngFor="let product of rightPanelProductList let i = index">
+
+          <label class="product-checkbox" for="{{product.uniqueName}}">
+            <input type="checkbox" name="product" checked id="{{product.uniqueName}}" [value]="product.uniqueName"
+              (click)='selectedFilters()' class="product_status">
+            <span class="checkmark"></span>
+            <span>{{product.displayName}}</span>
+          </label>
+        </li>
+
+
+      </ul>
+    </span>
+    <span class="status-bar-list">
+      <ul class="status-info">
+        <span class='headingfilter'>Port status</span>
+        <li>
+          <label class="status-checkbox" for="1">
+            <input type="checkbox" name="allStatus" id="1" [value]="rightPanelStatusList"
+              (click)="checkAllStatus($event)" class="filter_status">
+            <span class="checkmark"></span>
+            <span>All</span>
+          </label>
+        </li>
+        <ng-container *ngFor="let status of rightPanelStatusList let i = index">
+          <ng-container *ngIf='status.statusName == "Free" else othertype'>
+            <li>
+              <label class="status-checkbox">
+                <input type="checkbox" name="status" checked id="{{status.statusName}}" value="{{i}}"
+                  class="filter_status" (click)='checkFree($event)'>
+                <span class="checkmark {{status.statusName}}"></span>
+                <span>{{status.statusName}}</span>
+                <ul class="substatus-info subli">
+                  <li><label class="status-checkbox">
+                      <input type="checkbox" name="substatus" checked id="Cabled Up" value="4"
+                        class="filter_status" (click)='selectedFilters()'>
+                      <span class="checkmark Cabled Up"></span>
+                      <span>Cabled to PP</span>
+                    </label>
+                  </li>
+                  <li><label class="status-checkbox">
+                    <input type="checkbox" name="substatus" checked id="Un-Cabled" value="5"
+                      class="filter_status" (click)='selectedFilters()'>
+                    <span class="checkmark Un-Cabled"></span>
+                    <span>Un-Cabled to PP</span>
+                  </label>
+                </li>
+                </ul>
+              </label>
+            </li>
+          </ng-container>
+
+          <ng-template #othertype>
+            <li *ngIf = 'status.statusName !== "Cabled Up" &&  status.statusName !== "Un-Cabled"'>
+              <label class="status-checkbox">
+                <input type="checkbox" name="status" checked id="{{status.statusName}}" value="{{i}}"
+                  class="filter_status" (click)='selectedFilters()'>
+                <span class="checkmark {{status.statusName}}"></span>
+                <span>{{status.statusName}}</span>
+              </label>
+            </li>
+          </ng-template>
+
+        </ng-container>
+
+      </ul>
+    </span>
+    <span class="speed-bar-list">
+      <ul class="speed-type">
+        <span class='headingfilter'>Port Speed</span>
+        <li>
+          <label class="speed-checkbox" for="2">
+            <input type="checkbox" name="allspeed" id="2" [value]="rightPanelSpeedList" (click)="checkAllSpeed($event)"
+              class="filter_speed">
+            <span class="checkmark"></span>
+            <span>All</span>
+          </label>
+        </li>
+        <li *ngFor="let speed of rightPanelSpeedList let i = index">
+          <label class="speed-checkbox">
+            <input type="checkbox" name="speed" checked id="{{speed.displayName}}" [value]="speed.uniqueName"
+              class="filter_speed" (click)='selectedFilters()'>
+            <span class="checkmark {{speed.displayName}}"></span>
+            <span>{{speed.displayName}}</span>
+          </label>
+        </li>
+      </ul>
+    </span>
+  </div>
+</div>
+<p-overlayPanel #apollopopup [style]="{width: '330px'}">
+  <p-table [columns]="cols" [value]="datatopopup" styleClass="p-datatable-striped">
+    <ng-template pTemplate="colgroup" let-columns>
+      <colgroup>
+        <col *ngFor="let col of cols" [style.width]="col.width">
+      </colgroup>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th class="otherhd" *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</p-overlayPanel>

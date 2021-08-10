@@ -1,0 +1,66 @@
+.hrclass {
+    border-color: #e2dddd;
+    margin-right: 30px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+.custom-file-upload .custom-file-upload1 {
+    display: inline-block;
+    padding: 11px;
+    cursor: pointer;
+    background: #10a4d8;
+    color: #fff;
+    height: 40px;
+    border-radius: 0px 6px 6px 0px;
+}
+.margin {
+    position: absolute;
+    margin-left: 10px;
+}
+.chooseFile {
+    display: inline-block;
+    min-width: 160px;
+    max-width: 70%;
+    margin-bottom: 1px;
+    height: 40px;
+    background: #fff;
+    vertical-align: middle;
+    margin-top: -5px;
+    padding: 8px;
+    border: 1px solid #b7b7b7;
+    border-radius: 6px;
+    margin-right: -3px;
+    color: gray;
+}
+
+.padding-li {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.pull-right {
+    float: right !important;
+}
+h3 {
+    font-size: 17px;
+}
+.padding10 {
+    padding-top: 10px;
+}
+.padding13 {
+    padding-top: 16px;
+}
+
+.fileUpload-li-width {
+      width: 75%;
+}
+
+.marginleft15 {
+    margin-left: 15px;
+}

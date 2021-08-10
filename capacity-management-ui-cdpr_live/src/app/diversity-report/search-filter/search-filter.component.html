@@ -1,0 +1,84 @@
+<p-dialog header="Search Filter" [(visible)]="display" (onHide)="onClose()" [style]="{width: '850px'}" class="info diversity"
+    [baseZIndex]="10000" [responsive]="true" [modal]="true" [contentStyle]="{'min-height':'30vh'}">
+    <div class="modal-body">
+        <form [formGroup]="diversityForm" (ngSubmit)="onSubmitFrom()">
+
+            <div class="row col-md-12">
+                <ul class="list-inline diversityInput search-tab">
+                    <li>
+                        <p-autoComplete class="diversityInput" [(ngModel)]='newcode' required formControlName='code' [suggestions]="popData" (completeMethod)="onCompleteSiteCode($event)"
+                            (onSelect)="onSelectSearch($event, 'code')" [size]="40" required placeholder="Select PoP Location *"
+                            (keypress)="keyPressPopLocation($event)" [autoHighlight]="true"></p-autoComplete>
+                        <span class="required2" *ngIf="flagCode !== '' && newcode !== flagCode">Please select the PoP Location from Suggestion List</span>
+                        <span class="saveSpan" *ngIf="popLocation"> {{popLocation}}
+                            <span class="cross_save" (click)="removeCode()">X </span>
+                        </span>
+                        <span *ngIf="errorcallDGnameSearch" class="alert-danger alertPop">System is unable to add, As Total 5 DG name can be added on a card</span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <ul class="nav navbar navbar-left d-flex d-inline-flex form-group padding0 paddingTop search-tab">
+                        <li class="nav-item marginright15">
+                            <p-autoComplete class="diversityInput diversityInputPort" [(ngModel)]='newport' required formControlName='ports' field="ports"
+                                [suggestions]="popData" [size]="20" required placeholder="Enter No of Ports *" (keypress)="keyPressPort($event)"
+                                [dropdown]="false"></p-autoComplete>
+                            <span class="required" *ngIf="diversityForm.get('ports').invalid && newport">Invalid number of ports requested</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <ul class="nav navbar navbar-left d-flex padding0 list-inline search-tab">
+                        <li class="dropdownli" style="padding-right: 0px !important;">
+                            <select id="country" class="form-control dropdown-geo" formControlName="geocode">
+                                <option [ngValue]="null" disabled>Location</option>
+                                <option *ngFor="let prefix of prefixLocation" [ngValue]="prefix">{{ prefix }}</option>
+                            </select>
+                        </li>
+                        <li class="listdropdown" *ngIf="diversityForm.get('geocode').value !== null">
+                            <p-autoComplete class="diversityInput diversityInputGroup" [suggestions]="groupData" [(ngModel)]='newgroup' (keypress)="keyPressAdd($event)" (completeMethod)="onCompleteGroupName($event)"
+                                formControlName='groupName' (onSelect)="onSelectSearch($event, 'groupName')" [size]="30" maxlength="15"
+                                required placeholder="Enter Diversity Group Name *"></p-autoComplete>
+                            <span class="required" *ngIf="diversityForm.get('groupName').invalid && newgroup">Please select the Diversity group name from Suggestion List</span>
+                            <span class="required" *ngIf="checkflag">You have entered a new DG name, please make sure that it is correct.</span>
+                        </li>
+                        <li>
+                            <button type="submit" [disabled]="!diversityForm.valid" class="btn btn-custom-empty position">Add</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 diversityFilter">
+                <span style="color:red;" *ngIf="checkflaglength">Length should be less then 15.</span>
+                <span style="color:red;" *ngIf="selectDrop">Select proper value from drop down</span>
+                <ul *ngIf="portsarray.length !== 0" class="nav navbar navbar-left d-flex d-inline-flex form-group saveInput">
+                    <li *ngFor="let portGroupAraay of portsarray; let i = index; ">
+                        <span class="">{{portGroupAraay}}
+                            <span class="cross_save" (click)="removeGroup(portGroupAraay, i)">X </span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <p-footer>
+        <div class="row form-group">
+            <ul class="nav navbar navbar-left d-flex d-inline-flex padding0 form-group">
+                <li class="pull-left textStyle">
+                    <span style="color: #6400AA">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    </span>You can add multiple values for Diversity group name and ports
+                </li>
+                <li class="paddingLeft">
+                    <button type="submit" class="btn btn-custom-empty" (click)="searchOnGroupValue()" data-dismiss="modal" [disabled]="dispSearchbtn === false">Search</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-modal" data-dismiss="modal" (click)="resetFilterAll()">Clear All</button>
+                </li>
+            </ul>
+        </div>
+    </p-footer>
+</p-dialog>

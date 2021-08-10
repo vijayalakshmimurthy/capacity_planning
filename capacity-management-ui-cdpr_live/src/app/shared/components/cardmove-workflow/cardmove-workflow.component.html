@@ -1,0 +1,63 @@
+<div class="board-inner" id="status-buttons">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="workflow disabled" (click)="navtigateyourl('three60-twod',1)">
+                <a data-toggle="tab" class="tooltips">
+                    <span class="round-tabs one">
+                    </span>
+                    <span class="tooltiptext">
+                        <p>SNE ID: {{sourcesneid}}</p>
+                    </span>
+                    <span class='workflowname'>Source Device</span>
+                </a>
+            </li>
+    
+      <!-- <base href="./"> -->
+      <base href="/srimsCapacityPlanning/"> 
+            <li class="workflow disabled" (click)="navtigateyourl('chassis-viewer',2)">
+                <a data-toggle="tab" class="tooltips">
+                    <span class="round-tabs two">
+                    </span>
+                    <span class="tooltiptext">
+                        <p>Card Name : {{sourceCardName}}</p>
+                        <p></p>
+                    </span>
+                    <span class='workflowname'>Source Card</span>
+                </a>
+            </li>
+    
+    
+            <li class="workflow disabled" (click)="navtigateyourl('three60-twod',3)">
+                <a data-toggle="tab" class="tooltips">
+                    <span class="round-tabs three">
+                    </span>
+                    <span class="tooltiptext">
+                        <p>SNE ID: {{destinationsneid}}</p>
+                    </span>
+                    <span class='workflowname'>Destination Device </span>
+                </a>
+            </li>
+    
+            <!-- circular ok icon -->
+            <li class="workflow disabled" (click)="navtigateyourl('chassis-viewer',4)">
+                <a data-toggle="tab" class="tooltips">
+                    <span class="round-tabs four">
+                    </span>
+                    <span class="tooltiptext">
+                        <p>Card Name : {{desCardName}} </p>
+                    </span>
+                    <span class='workflowname'>Destination Card</span>
+                </a>
+            </li>
+    
+            <li class="workflow" [ngClass]="enablecarddes ? 'disabled' : ''" (click)="navtigateyourl('chassis-viewer',5)">
+                <a data-toggle="tab" class="tooltips">
+                    <span class="round-tabs four">
+                    </span>
+                    <span class="tooltiptext">
+                        <p>Card-Infill Type : {{cardInfillType}}</p>
+                    </span>
+                    <span class='workflowname'>Confirm Plan</span>
+                </a>
+            </li>
+        </ul>
+    </div>

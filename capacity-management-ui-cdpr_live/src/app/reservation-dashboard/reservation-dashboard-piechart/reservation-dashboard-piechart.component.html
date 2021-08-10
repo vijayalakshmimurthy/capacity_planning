@@ -1,0 +1,39 @@
+<h1 class="card-dashboard">{{headerName}}</h1>
+<div class="port-speed-download">
+    <ul>
+        <li ngbDropdown class="d-inline-block">
+            <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle> <span
+                class="imageBackground"><img src="assets/images/image_download.png" class="exportpadding" width="20" height="10" > </span>
+            </a>
+            <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <li appPNGDownload [elementId]="elementId" [downloadImageName]="downloadImageName"><a
+                        ngbDropdownItem><span>Download PNG Image</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-8">
+                <app-chart  [type]="type" [data]="data" [options]="options"  [height]="300"></app-chart>                            
+            </div>
+            <div class="col-sm-4"> 
+                <ul class="pull-right list-inline color-dot-ul">                                   
+                    <li class="row"  *ngFor = "let x of labels; let i = index;">                                        
+                        <span class="circle-dot" [ngStyle]="{'background-color': data.datasets[0].backgroundColor[i]}" ></span>
+                        <span class="dataFont1"> {{x}}</span>                                        
+                    </li>                                              
+                </ul>
+             </div>
+        </div>  
+    </div>
+    <div class="col-sm-2">
+        <ul class="list-inline color-dot-ul">                          
+            <li *ngFor = "let y of chartData">
+                <span class="dataFont1"> {{y}}</span>
+            </li>            
+        </ul>
+    </div>
+</div>
+                

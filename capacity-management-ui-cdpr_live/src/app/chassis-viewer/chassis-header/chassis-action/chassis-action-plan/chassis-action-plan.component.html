@@ -1,0 +1,280 @@
+<div class="sidebar_dashboard plan">
+  <p-sidebar [(visible)]="display" blockScroll="true" [dismissible]="false">
+    <div class="dashboard_left plandash" *ngIf="plandash">
+      <div *ngIf='enablemove' class="">
+        <div class="col-md-12 no-padding-left">
+          <h4 class="heading">Plan <span class="pi pi-times plancross ee" (click)="sidenavClosed()"></span></h4>
+        </div>
+      </div>
+      <div class='setscroll'>
+        <div *ngIf='enablemove' style='margin-bottom:10px'>
+          <div class="row fields">
+            <div id="planleftnav">
+              <div class="col-md-12">
+                <p>Selection Details</p>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered">
+                    <tbody>
+                      <tr *ngFor="let info of selectionDetails | keyvalue: originalOrder">
+                        <td> {{info.key}}</td>
+                        <td *ngIf="info.key !== 'Port Numbers'"> {{info.value}}</td>
+                        <td *ngIf="info.key === 'Port Numbers'">
+                          <ul class="selectionDetails">
+                            <li *ngFor="let value of info.value">{{value}}</li>
+                          </ul>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <form [formGroup]="planform">
+                <div class="col-md-12 mart10 marb10" *ngIf='showEthernet && !SASPlan'>
+                  <div style="border-bottom: 3px solid #6994f9;">
+                    <span class="font-weight">Select Demand</span>
+
+                    <div class="js-accordion-content accordion__content filters__accordion-content radio-set">
+                      <div class="js-filters-site-status-list-container">
+                        <label class="checkbox checkbox--small" id="radioId" *ngFor="let user of planselectdemans">
+                          <input type="radio" class="customRadioButton js-filters-checkbox radio__input" name="user"
+                            [checked]="user.value" [value]="user.title" (change)="changeRadio(user.id)">
+                          <span class="radio__label">
+                            {{user.title}}
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 relative">
+                  <p>Select Plan :</p>
+                  <app-svg icon="Capa_14-search_icon" class="search"> </app-svg>
+                  <p-dropdown id="float-input" [autoDisplayFirst]="true" placeholder="Select" [options]="planList"
+                    [(ngModel)]="selectedPlan" [disabled]="disableDropdown" (onChange)="changeDevice($event)"
+                    formControlName="planselect" autoWidth="false" [style]="{'width':'100%'}">
+                  </p-dropdown>
+                  <div *ngIf="SASPlan">
+                    <label> SAS Template: <sup style="color:red">*</sup></label>
+                    <p-dropdown id="float-input" [autoDisplayFirst]="true" formControlName="planSASselect"
+                      placeholder="Select" optionLabel="name" (onChange)="ChangingValue($event)"
+                      [options]="sasTemplateList" [ngModel]="selectedSASPlan" [disabled]="disableDropdownSASTemp"
+                      autoWidth="false" [style]="{'width':'100%'}"></p-dropdown>
+                  </div>
+                  <div class="dropdowm-margin" *ngIf="showChildCardList">
+                    <label> Select Child Card Model: <sup style="color:red">*</sup></label>
+                    <p-dropdown [options]="childCardList" placeholder="Select" autoWidth="false"
+                      [style]="{'width':'100%'}" (onChange)="OnSelect($event,'ChildCard')"
+                      [disabled]="disableChildCardList" optionLabel="name" [ngModel]="selectedPlan"
+                      [ngModelOptions]="{standalone: true}">
+                    </p-dropdown>
+                  </div>
+                  <div class="dropdowm-margin" *ngIf="showWindowList">
+                    <label> Select Window: <sup style="color:red">*</sup></label>
+                    <p-dropdown [options]="windowList" placeholder="Select" autoWidth="false" [style]="{'width':'100%'}"
+                      (onChange)="OnSelect($event,'Windows')" [disabled]="disableWindowList" optionLabel="name"
+                      [ngModel]="selectedPlan" [ngModelOptions]="{standalone: true}">
+                    </p-dropdown>
+                  </div>
+                  <div class="dropdowm-margin" *ngIf="showUsageList">
+                    <label> Usage List: <sup style="color:red">*</sup></label>
+                    <p-dropdown [options]="usageList" placeholder="Select" autoWidth="false" [style]="{'width':'100%'}"
+                      optionLabel="label" (onChange)="OnSelect($event,'UsageList')" [disabled]="disableUsageList"
+                      [ngModel]="selectedPlan" [ngModelOptions]="{standalone: true}">
+
+                    </p-dropdown>
+                  </div>
+
+                  <div class="dropdowm-margin" *ngIf="SASPlan">
+                    <label> Port Mapping: <sup style="color:red">*</sup></label>
+                    <div>
+                      <table class="table table-striped table-bordered">
+                        <thead>
+                          <td class='headstyle'>7750 Uplink Port </td>
+                          <td class='headstyle'>7210 Satellite Port </td>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor='let portid of selectedports'>
+                            <td width="45%">
+                              {{portid}}
+                            </td>
+                            <td width="50%">
+                              <p-dropdown placeholder="Select" [options]="satelliteport" optionLabel="label"
+                                [disabled]="disableportdropdown" formControlName="portselect"
+                                (onChange)="OnSasselect(selectedPlan,'portlist',portid,$event.value.label)"
+                                autoWidth="false" [style]="{'width':'100%'}">
+                              </p-dropdown>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>                
+                  </div>
+                  <!-- <div class="done" *ngIf="SASPlan">
+                    <label class="donestatus" for="done">
+                      <input type="checkbox" id="done" name="Done" (click)='portlistvalidation($event)'>
+                      <span class="checkmark"></span><span>Done</span></label>                    
+                  </div> -->
+                </div>
+              </form>
+            </div>
+            <p class="tokenvalue">{{tokenvalue}}</p>
+          </div>
+          <div *ngIf="selectDemandArray && selectDemandArray.length > 0" class="header-height">
+            <span class="font-weight">All saved options</span>
+            <span class="clearall" (click)="clearAllPlan()">Clear All</span>
+          </div>
+          <div class="planstyle" *ngFor='let detail of selectDemandArray; let i =index'>
+            <span class="sneidcls">{{detail.sneId}}</span>
+            <!-- *ngIf="detail.cardInfillType !== 'New 7210 SAS'" -->
+            <!-- <span class="sneidcls" *ngIf="detail.cardInfillType === 'New 7210 SAS'">{{detail.portId}}</span> -->
+            <span *ngIf="!SASPlan" class="plancls">{{detail.cardInfillType}}</span>
+            <span *ngIf="SASPlan" class="plancls">{{selectPlan}}</span>
+            <span class='planarrow' (click)="toggle(i)">
+              <i class="fa fa-1" [ngClass]="opened===i ? 'fa-angle-up' : 'fa-angle-down'"  aria-hidden="true"></i>
+            </span>
+            <span class="editbn"><input type="image" [ngClass]="editBtn===i ? 'displaynone' :'displayblock '"
+                (click)="onEdited(i);" src="assets/images/edit_icon.png"></span>
+            <span class="pi pi-times closebtn" (click)=removePlan(i)></span>
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered" *ngIf="opened===i">
+                <tbody>
+                  <tr>
+                    <td>Rack ID</td>
+                    <td> {{detail.rackId}}</td>
+                  </tr>
+                  <tr>
+                    <td>Rack Position</td>
+
+                    <td> {{detail.rackPosition}}</td>
+                  </tr>
+                  <tr *ngIf=' this.selectPlan !== "New 7210 SAS" &&  detail.cardInfillType !== "New 7210 SAS"'>
+                    <td>SNE ID</td>
+                    <td> {{detail.sneId}}</td>
+                  </tr>
+                  <tr *ngIf='this.selectPlan !== "New 7210 SAS" &&  detail.cardInfillType !== "New 7210 SAS"'>
+                    <td>Slot Number</td>
+                    <td> {{detail.slotNumber}}</td>
+                  </tr>
+                  <tr *ngIf='this.selectPlan !== "New 7210 SAS" &&  detail.cardInfillType !== "New 7210 SAS"'>
+                    <td>Child Card</td>
+                    <td> {{detail.childCardModel}}</td>
+                  </tr>
+                  <tr *ngIf='detail.windows && this.selectPlan !== "New 7210 SAS" &&  detail.cardInfillType !== "New 7210 SAS"'>
+                    <td>Window</td>
+                    <td> {{detail.windows}}</td>
+                  </tr>
+                  <tr *ngIf='detail.usageType && this.selectPlan !== "New 7210 SAS" &&  detail.cardInfillType !== "New 7210 SAS"'>
+                    <td>Usage List</td>
+                    <td> {{detail.usageType}}</td>
+                  </tr>
+                  <tr *ngIf='detail.cardInfillType === "New 7210 SAS"'>
+                    <td>SAS Template</td>
+                    <td> {{detail.sasTemplateName}}</td>
+                  </tr>
+                  <tr [hidden]='detail.cardInfillType !== "New 7210 SAS" || this.selectPlan !== "New 7210 SAS"' >
+                    <td class='headstyle' colspan='2'>
+                      Uplink Port Mapping
+                    </td>
+                  </tr>
+                  <tr *ngFor="let item of detail.sassIdmap | keyvalue" [hidden]='detail.cardInfillType !== "New 7210 SAS" || this.selectPlan !== "New 7210 SAS"'>
+                    <td>{{item.key}}</td>
+                    <td> {{item.value}}</td>
+                  </tr>
+                
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf='setleftnavheight' class=''>
+          <!-- <div *ngIf='enablemove' class="">
+                <div class="col-md-12 no-padding-left">
+                  <h4 class="heading">Plan <span class="pi pi-times plancross ee" (click)="sidenavClosed()"></span></h4>
+                </div>
+              </div> -->
+          <div class="row">
+            <div class="col-md-12">
+              <h4 class="heading">Move <span *ngIf='!enablemove' class="pi pi-times plancrossmove"
+                  (click)="sidenavClosed()"></span></h4>
+            </div>
+          </div>
+          <div class='srcdetails'>
+            <div *ngFor='let detail of cardmovedPlanDetails; let i =index'>
+              <h1 class='srcheadstyle'>Source Card</h1>
+              <table class="table srctblstyle table-striped table-bordered ">
+                <tbody>
+                  <tr class='thbold'>
+                    <td style="width:18%">SNE ID</td>
+                    <td style="width:35%"> Card Model</td>
+                    <td style="width:47%">Slot</td>
+                  </tr>
+                  <tr class='tdbold'>
+                    <td style="width:18%"> {{detail.sourceSneId}}</td>
+                    <td style="width:35%"> {{detail.sourceCardName}}</td>
+                    <td style="width:47%"> {{detail.sourceCardMtosiName}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngFor='let detail of cardmovedPlanDetails; let i =index'>
+              <h1 class='srcheadstyle'>Destination Card</h1>
+              <table class="table srctblstyle table-striped table-bordered">
+                <tbody>
+                  <tr class='thbold'>
+                    <td style="width:18%">SNE ID</td>
+                    <td style="width:35%">Card Model</td>
+                    <td style="width:47%">Slot</td>
+                  </tr>
+                  <tr class='tdbold'>
+                    <td style="width:18%"> {{detail.destinationSneId}}</td>
+                    <td style="width:35%"> {{detail.destinationCardName}}</td>
+                    <td style="width:47%"> {{detail.destinationCardMtosiName}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row bottom">
+          <div class="col-md-12 button-set">
+            <ul class="list-inline">
+              <!--with plan-->
+              <li class="list-inline-item" *ngIf='enablemove && !enableNOCardMoveWorkflow'>
+                <button type="info-button" class="btn btn-plan" [disabled]='saveBtnDisable'
+                  (click)="savePlan()">Save</button>
+              </li>
+              <li class="list-inline-item" *ngIf='enablemove && !enableNOCardMoveWorkflow'>
+                <button type="info-button" class="btn btn-plan btnplan" (click)="previewClick()">Preview</button>
+              </li>
+               <!--CPNO plan-->
+               <li class="list-inline-item" *ngIf='enablemove && enableNOCardMoveWorkflow'>
+                <button type="info-button" class="btn btn-plan" [disabled]='saveBtnDisable'
+                  (click)="nextWorkflow()">Next</button>
+              </li>
+              <!--without plan-->
+              <li class="list-inline-item" *ngIf='!enablemove'>
+                <button type="info-button" class="btn btn-plan" [disabled]='disablesaveforcardmove'
+                  (click)="confirmwithoutplan()">Save</button>
+              </li>
+              <li class="list-inline-item" *ngIf='!enablemove'>
+                <button type="info-button" class="btn btn-plan btnplan"
+                  (click)="confirmwithoutplanpreview()">Preview</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-sidebar>
+</div>
+<app-modal-popup [display]="displayConfirmationModalOnPreview" [commonModelProperties]='commonModelProperties'
+  (submitData)="previewSubmit()" (cancelData)="previewCancel()">
+</app-modal-popup>
+<app-modal-popup [display]="displayConfirmationModalOnClose" [commonModelProperties]='commonModelProperties'
+  (submitData)="savePlan()" (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>
+<app-modal-popup [display]="displayTimeoutPopup" [commonModelProperties]='commonModelProperties'
+  (cancelData)="cancelLayerdPopup()">
+</app-modal-popup>

@@ -1,0 +1,88 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1 class="margin10">Capacity Dashboard</h1>
+            </div>
+        </div>
+        <hr class="hrclass">
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="card-dashboard card-dash-page" *ngIf="showNetworkStatistics; else noShowData"
+                id="nodeTypeGraph">
+                <h2>Network Capacity Trend</h2>
+                <app-dashboard-chart-view [totalNetworkTrend]="totalNetworkTrend" [elementId]="'nodeTypeGraph'"
+                    (downloadCSV)="downloadCSVProduct($event)"></app-dashboard-chart-view>
+            </div>
+            <ng-template #noShowData>
+                <h2 class="card-dashboard chooseMsg"> Data not available </h2>
+            </ng-template>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 col-sm-12">
+            <div class="card-dashboard min-height-key" #mainScreen>
+                <h1> Key Network Statstics (Strategic 10G Port)</h1>
+                <div *ngFor=" let key of keyStatsticsdata" class="keyNetwork" [ngStyle]="{'width': viewWidth}">
+                    <app-key-statstics [productType]="key.productType" [color]="key.borderColor"
+                        [totalPorts]="key.totalPorts" [freePorts]="key.freePorts"></app-key-statstics>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12" *ngIf="showPieChart">
+            <div class="card-dashboard min-height-key" [ngStyle]="{height: viewHeight}">
+                <h2> Capacity Distribution </h2>
+                <div class="" id="donut">
+                    <app-dashboard-pie-view [pieChartData]="capacityDistribution">
+                    </app-dashboard-pie-view>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showTableData">
+        <div class="col-md-12 col-sm-12">
+            <div class="card-dashboard">
+                <h2 class="card-modal-table">7750 SR-12 Device Summary
+                    <div class="float" (click)="downloadCSVProduct('device')">
+                        <app-svg icon="Capa_10-export_icon"> </app-svg>
+                        <a>Download XLSX</a>
+                    </div>
+                </h2>
+                <div class="tableheight">
+                    <app-table [settings]="tableSettingsDevice" [noRecordError]="'No Record Found'">
+                    </app-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="showTableData">
+        <div class="col-md-12 col-sm-12">
+            <div class="card-dashboard">
+                <h2 class="card-modal-table">7750 SR-12 Card Summary
+                    <div class="float" (click)="downloadCSVProduct('card')">
+                        <app-svg icon="Capa_10-export_icon"> </app-svg>
+                        <a>Download XLSX</a>
+                    </div>
+                </h2>
+                <div class="tableheight">
+                    <app-table [settings]="tableSettingsCard" [noRecordError]="'No Record Found'">
+                    </app-table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="showProductGraph">
+        <div class="row" *ngFor="let data of totalProductTrend">
+            <div class="col-md-12 col-sm-12">
+                <div class="card-dashboard card-dash-page" id="{{data.typeName}}">
+                    <h2 *ngIf="data.typeName!=='Total Capacity'">{{data.typeName + ' Capacity Trend'}}</h2>
+                    <h2 *ngIf="data.typeName==='Total Capacity'">{{data.typeName + ' Trend'}}</h2>
+                    <app-dashboard-chart-view *ngIf="data" [ProductNetworkTrend]="data" [elementId]="data.typeName"
+                        (downloadCSV)="downloadCSVProduct($event)"></app-dashboard-chart-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

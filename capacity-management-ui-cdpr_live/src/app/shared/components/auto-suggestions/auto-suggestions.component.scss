@@ -1,0 +1,10 @@
+.margin15 {
+//    padding: 10px 0px;
+}
+
+.marginleft15 {
+    margin-left: 15px;
+    @media only screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        margin-right: 228px;
+    }
+}

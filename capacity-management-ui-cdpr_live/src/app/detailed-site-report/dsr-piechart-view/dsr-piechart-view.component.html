@@ -1,0 +1,41 @@
+<h2 class="port-name">{{headerName}}</h2>
+<div class="port-speed" *ngIf="showPieGraphData">
+  <select [(ngModel)]="selectedPortSpeed" (change)="loadPieChartByPortSpeed(selectedPortSpeed)">
+    <option *ngFor="let portType of pieChartData" value="{{portType.option}}">{{portType.option}}</option>
+  </select>
+</div>
+<div class="port-speed-download">
+  <ul>
+    <li ngbDropdown class="d-inline-block">
+      <a class=" btn-outline-primary userdropdown-toggle " id="dropdownBasic1" ngbDropdownToggle> <span class=""><svg
+            xmlns="http://www.w3.org/2000/svg" width="20" height="10" viewBox="0 0 16 8">
+            <defs>
+              <style>
+                .a {
+                  fill: #6400aa;
+                }
+
+              </style>
+            </defs>
+            <path class="a" d="M18,4V5H2V4ZM2,8.5H18v-1H2ZM2,12H18V11H2Z" transform="translate(-2 -4)" />
+          </svg></span>
+      </a>
+      <ul ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <li appPNGDownload [elementId]="elementId" [downloadImageName]="downloadImageName"><a
+            ngbDropdownItem><span>Download PNG</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="pie">
+  <app-chart [type]="type" [data]="data" [options]="options" [height]="'143px'"></app-chart>
+  <p class="totalports">{{data?.totalPort}} <span>Ports</span></p>
+  <ul class="list-inline piechart">
+    <li class="" *ngFor="let a of dynamiclegends">
+      <p><span class="circle-dot" [ngStyle]="{'background-color': a.color}"></span> {{a.label}} </p>
+    </li>
+  </ul>
+</div>
+<div style='text-align:center'>
+    {{siteName}}
+</div>

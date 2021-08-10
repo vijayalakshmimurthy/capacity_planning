@@ -1,0 +1,108 @@
+.hrclass {
+    border-bottom: 1px solid #e2dddd;
+    width: 98%;
+    right: 20px;
+    margin-top: -10px;
+    margin-bottom: 0 !important;
+}
+
+.search-sne {
+    margin: 10%;
+}
+
+.filterheader {
+    font-size: 30px;
+}
+
+.search-icon {
+    background: url(/assets/images/search_purple.png) center no-repeat;
+    height: 85px;
+    background-size: contain;
+}
+
+@media screen and (min-width: 760px) and (max-width: 1640px) {
+    #hideleftpad {
+        padding: 0px;
+    }
+}
+
+/* Next Prev Chevron icons */
+.chevron-up-down {
+    position: absolute;
+    right: 3%;
+    bottom: 7%;
+    color: #e60050;
+    opacity: 0.7;
+    font-size: 32px;
+    cursor: pointer;
+    width: 14px;
+    float: right;
+}
+
+.prev-next-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+}
+
+.updownicon {
+    color: #e60050;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.btnYes {
+    background: #6400aa !important;
+    border-color: #6400aa !important;
+    color: #ffffff !important;
+    float: right;
+    margin-left: 20px;
+}
+.btnYes-updated  {
+    margin-left: 0px !important;
+    margin-top: 2%;
+    padding-bottom: 2%;
+}
+.footerNoBorder {
+    border:  none !important;
+}
+.btnNo {
+    background: #ffffff !important;
+    border-color: #6400aa !important;
+    color: #6400aa !important;
+    float: right;
+    margin-left: 20px;
+}
+.btncufYes {
+    background: #ffffff !important;
+    border-color: #6400aa !important;
+    color: #6400aa !important;
+}
+
+.marginright5 {
+    margin-right: 5px;
+}
+.emailtext {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 1px;
+    height: 70px;
+}
+.ui-dialog .ui-dialog-footer {
+    height: 60px;
+    margin-left: 15px;
+}
+.help-icon {
+    height: 15px;
+    margin-left: 15px;
+}
+.errorMsg {
+    color: red;
+    font-size: 14px;
+}

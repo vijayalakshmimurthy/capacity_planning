@@ -1,0 +1,95 @@
+.card-dashboard {
+    padding: 20px;
+    background: #fff;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+.listpadding {
+    margin-left: 30px;
+
+    li {
+        padding: 6px 16px;
+        cursor: pointer;
+        display: inline-block;
+    }
+}
+
+.td-color {
+    color: #6400aa;
+}
+
+.activeClass {
+    color: #fff !important;
+    background: #6400aa;
+    border-radius: 5px;
+}
+
+.chart-container {
+    height: 300px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.linecharts {
+    position: relative;
+    padding-top: 20px;
+    .icon-line {
+        position: absolute;
+        top: -18px;
+        right: 10px;
+        left: 25px;
+    }
+    ul {
+        position: absolute;
+        right: 50px;
+        top: -45px;
+        .circle-dot {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    }
+    .dropdown-menu {
+        top: 3px !important;
+        left: 31px !important;
+    }
+    a {
+        cursor: pointer;
+    }
+    h2 {
+        font-size: 14px;
+        color: #6400aa;
+    }
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}
+.bar-type{
+    position: relative;
+    top: -6px;
+    width: 60px;
+    span {
+        font-size: 10px;
+        position: absolute;
+        top: 22px;
+        left: -4px;
+        color: #6d00a7;
+    }
+}

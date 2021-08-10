@@ -1,0 +1,53 @@
+{
+    "cardTotalCapacity": null,
+    "chassisActualCapacity": 2000,
+    "chassisPotentialCapacity": 2000,
+    "chassisConsumedCapacity": 130,
+    "availActualCapacity": 1870,
+    "availPotentialCapacity": 1870,
+    "isPlanPresent": "0",
+    "valueList": [
+        {
+            "actionName": "New 7210 SAS",
+            "productType": "Ethernet",
+            "brfProduct": [
+                "IMM Cards"
+            ],
+            "parentCardType": [
+                "Traffic"
+            ],
+            "parentCardModel": [
+                "10GE Multicore IMM Module"
+            ],
+            "parentCardVersion": [
+                "(12Pt Lic)"
+            ],
+            "subCardType": [
+                "Virtual"
+            ],
+            "subCardModel": [
+                "Dummy IMM Module"
+            ],
+            "subCardVersion": [
+                "(1Tb)"
+            ],
+            "childCardType": [
+                "10GigE SFP"
+            ],
+            "childCardModel": [
+                "10GigE LR SFP+"
+            ],
+            "childCardVersion": [
+                "(1Tb)"
+            ],
+            "windows": [
+                "LR"
+            ],
+            "portCountData": {
+                "portSpeed": "10G",
+                "portCount": 12
+            }
+        }
+    ],
+    "cufList": null
+}

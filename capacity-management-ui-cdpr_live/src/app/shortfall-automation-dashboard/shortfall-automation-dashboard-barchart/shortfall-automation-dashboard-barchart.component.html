@@ -1,0 +1,18 @@
+<div class="margin-bottom">
+    <div class="linecharts">
+      <div class="chart-container">
+        <ul class="list-inline">
+          <li class="" *ngFor="let a of data?.datasets">
+            <p>
+              <span class="circle-dot" [ngStyle]="{'background-color': a.borderColor}"></span> {{a.label}} </p>
+          </li>
+        </ul>
+        <ul>
+          <li ngbDropdown class="d-inline-block">
+          </li>
+        </ul>
+        <app-chart [type]="type" [data]="data" [options]="options" [height]="'300px'"></app-chart>
+      </div>
+    </div>
+  </div>
+                

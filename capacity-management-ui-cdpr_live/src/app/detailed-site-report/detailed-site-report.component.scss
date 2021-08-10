@@ -1,0 +1,162 @@
+.filterheading {
+    font-size: 28px;
+    .sitenamefont {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+}
+
+.search {
+    position: absolute;
+    top: 10px;
+    fill: gray;
+    left: 20px;
+
+    @media only screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        position: absolute;
+
+        fill: gray;
+        left: 20px;
+    }
+}
+
+.search-tab {
+    position: relative;
+    // top: 20px;
+    padding-right: 0px;
+
+    @media only screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        //   top: 20px;
+    }
+
+    input {
+        width: 275px;
+        height: 40px;
+        border-radius: 5px;
+        padding-left: 15px;
+    }
+
+    .btn {
+        height: 40px;
+        position: absolute;
+        top: 0px;
+        left: 233px;
+        border-radius: 0px 5px 5px 0px;
+        float: left;
+    }
+
+    .form-control {
+        display: inline-block;
+    }
+}
+
+.btn-bottom {
+    margin-bottom: 3px !important;
+}
+
+.search-tab:focus,
+.search-tab:active,
+.search-tab:hover {
+    outline: none !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+.hrclass {
+    border-bottom: 1px solid #e2dddd;
+    width: 98%;
+    right: 20px;
+    margin-top: 0rem;
+}
+
+.margin10 {
+    margin-top: 10px;
+}
+
+.padding0 {
+    padding: 0px;
+}
+
+.datamsgs {
+    font-size: 17px;
+    color: red;
+    vertical-align: sub;
+    float: right;
+    margin-top: 15px;
+}
+
+.margin15 {
+    padding: 10px 10px;
+   // margin-bottom: 15px;
+   padding-top: 15px;
+}
+
+.card-dashboard {
+    padding: 20px;
+    background: #fff;
+    margin-top: 25px;
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    position: relative;
+
+    h2 {
+        color: #6400aa;
+        font-size: 20px;
+        top: 16px;
+        font-weight: 400;
+
+        @media only screen and (min-width: 990px) and (max-width: 1400px) {
+            //   top: 39%;
+            font-size: 16px !important;
+        }
+    }
+
+    h1 {
+        color: #6400aa;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 9px;
+        margin-bottom: 10px;
+    }
+
+    li {
+        padding: 6px 16px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .listpadding {
+        margin-left: 30px;
+    }
+}
+.chooseMsg {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 150px;
+}
+
+.detail-site-table {
+    padding-bottom: 20px;
+}
+
+.margintop5 {
+    margin-top: -5px;
+}
+
+.noLineData {
+    h1 {
+        color: #6400aa;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 9px;
+        padding: 20px;
+        background: #fff;
+    }
+}
+.margntop{
+    margin-top:25px;
+}

@@ -1,0 +1,40 @@
+{
+	"message":"Success",
+	"showTable": "Yes",
+	"Phase_Planned_Date": [{
+		"Project_ID": "C24TT",
+		"Phase Planned date": "2020-07-28T11:14:29",
+		"Job_Type": "MSE/PRTC Project Creation"
+		
+	},
+	{
+		"Project_ID": "C24TT",
+		"Phase Planned date": "2020-07-28T11:14:29",
+		"Job_Type": "MSE/PRTC Project Creation XYZ"
+		
+	},
+	{
+		"Project_ID": "C24XX",
+		"Phase Planned date": "2020-07-28T11:14:29",
+		"Job_Type": "PRTC Project Creation XYZ"
+		
+	}],
+	"Phase_Status": [{
+		"Project_ID": "C24TT",
+		"Project_Status": "Open",
+		"Job_Type": "MSE/PRTC Project Creation"
+		
+	},
+	{
+		"Project_ID": "C24TT",
+		"Project_Status": "Closed",
+		"Job_Type": "PRTC Project Creation XYZ"
+	
+	},
+	{
+		"Project_ID": "C24XX",
+		"Project_Status": "Open",
+		"Job_Type": "PRTC Project Creation XYZ"
+		
+	}]
+}

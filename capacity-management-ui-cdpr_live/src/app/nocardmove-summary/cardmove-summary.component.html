@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="cbp-header-wrapper clearfix center">
+        <div class="col-md-4 col-sm-4 card-move-upload">
+            <a (click)="redirectToHomePage()">
+                <img src='assets/images/home.svg' class='home-icon' />
+            </a>
+        <h1 class="margin10 header header-title">{{pageName}}</h1>
+       </div>        
+       <div class="pull-right clearfix fix">
+            <div class="right-side-nav pull-left">
+                <div ngbDropdown class="d-inline-block">
+                    <a _ngcontent-plt-c2="" aria-disabled="true" class="btn btn-custom" role="button" tabindex="-1" 
+                    href="{{portMoveDataUrl}}" ><app-svg icon="Capa_10-export_icon"> </app-svg>
+                    <span>Export</span></a>
+                </div>
+            </div>
+            <div class="right-side-nav pull-left btnbackground" >
+                <button type="button" class="btn btn-icon-custom" (click)="back()">Back</button>
+                </div>
+        </div>
+    </div>
+    <div class="Tabswitchs">
+        <p-tabView class="custom-tab-summary"  (onChange)="tabChange($event)">
+            <p-tabPanel header="Configurations">
+                <div class="cbp-table">
+                    <app-table [settings]="tableSettingsConfiguration">
+                    </app-table>
+                </div>
+            </p-tabPanel> 
+            <p-tabPanel header="Connectivity">
+                <div class="cbp-table">
+                    <app-table [settings]="tableSettingsConnectivity">
+                    </app-table>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Services">
+                <div class="cbp-table">
+                    <app-table [settings]="tableSettingsServices">
+                    </app-table>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+</div>

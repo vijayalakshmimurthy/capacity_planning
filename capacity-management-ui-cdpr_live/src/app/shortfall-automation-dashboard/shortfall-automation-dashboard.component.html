@@ -1,0 +1,318 @@
+<div class="container-fluid containerwidth body">
+    <div class="row filterheading">
+        <div class="col-md-7 col-sm-7 list-inline">
+            <h2 class="margin10 header">Shortfall Automation Dashboard</h2>
+        </div>
+        <div class="col-md-5 col-sm-5 text-right">
+            <ul class="lnav navbar navbar-left d-flex d-inline-flex padding0">
+                <li class="nav-item d-inline-flex marginleft10 exportdropdown margin-top23px export">
+                    <div class="drclass mv">
+                        <p-dropdown placeholder="Weekly" [options]="planList" class="left-drop" [ngModel]="selectedPlan"
+                            (onChange)="changeDropdown($event)"></p-dropdown>
+                    </div>
+                    <div class="move" *ngIf="dayCalendar">
+                        <p-calendar [minDate]="minDate" [maxDate]="maxDate" [showIcon]="true"
+                            styleClass="calender-style" panelStyleClass="panel-calander" [(ngModel)]="dateValue"
+                            (ngModelChange)="changeCalendar($event)" dataType="string" dateFormat="dd/mm/yy"
+                            [inputStyle]="{'width':'70%'}"></p-calendar>
+                    </div>
+                    <div class="move" *ngIf="weekCalendar">
+                        <p-calendar [minDate]="minDate" [maxDate]="maxDate" [showIcon]="true" [showWeek]="true"
+                            styleClass="calender-style" panelStyleClass="panel-calander" [(ngModel)]="weekValue"
+                            (ngModelChange)="changeCalendar($event)" dataType="string" dateFormat="dd/mm/yy"
+                            [yearNavigator]="false" [monthNavigator]="false" [inputStyle]="{'width':'70%'}">
+                        </p-calendar>
+                    </div>
+                    <div class="move" *ngIf="monthCalendar">
+                        <p-calendar [minDate]="minMonthDate" [showIcon]="true" styleClass="calender-style"
+                            panelStyleClass="panel-calander" [(ngModel)]="monthValue"
+                            (ngModelChange)="changeCalendar($event)" view="month" dataType="string" dateFormat="mm/yy"
+                            [yearNavigator]="false" [inputStyle]="{'width':'70%'}">
+                        </p-calendar>
+                    </div>
+                    <div class="move next" *ngIf="yearCalendar">
+                        <p-dropdown [options]="yearList" class="left-drop" [ngModel]="yearValue"
+                            (onChange)="changeCalendarYear($event)"></p-dropdown>
+                    </div>
+                    <div ngbDropdown class="d-inline-block">
+                        <button class="btn btn-custom buttonc nw wc" data-hover="dropdown" id="dropdownBasic2"
+                            ngbDropdownToggle aria-expanded="true">
+                            <app-svg icon="Capa_10-export_icon"> </app-svg>
+                            <span> Export </span>
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic2" class="exportdrop">
+                            <p class="p-padding" (click)="exportFile()" ngbDropdownItem>Export as XLSX</p>
+                            <p class="p-padding" ngbDropdownItem appPNGDownload [elementId]="'reservationChart1'"
+                                [downloadImageName]="downloadImageName">Download as PNG</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row space">
+        <div class="col-md-12 col-sm-12">
+            <div class="row justify-content-end">
+                <div class="col-md-3 pull-right">
+                    <a [routerLink]="['/shortfall-automation-detailed-report']">
+                        <h5 class="margin10 header navlinkDetailedReport"> Shortfall Automation Detailed Report</h5>
+                    </a>
+
+                </div>
+            </div>
+            <div *ngIf="showChart" class="card-dashboard" id="reservationChart1">
+                <app-shortfall-automation-dashboard-barchart [barChartData]="reservationData?.shorfallGrapData">
+                </app-shortfall-automation-dashboard-barchart>
+                <div class="row cl">
+                    <div class="col-md-10 col-sm-10">
+                        <button class="btn btn-dark left-arrow" [disabled]="leftArr" (click)="leftClick('true')">
+                            <i class="fa fa-arrow-left pointer blk" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        <button class="btn btn-dark right-arrow" [disabled]="rightArr" (click)="rightClick('false')">
+                            <i class="fa fa-arrow-right pointer blk" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="chartNoData" class="no-data card-dashboard">
+                No Data Available
+                <div class="row cln">
+                    <div class="col-md-10 col-sm-10">
+                        <button class="btn btn-dark left-arrow" [disabled]="leftArr" (click)="leftClick('true')">
+                            <i class="fa fa-arrow-left pointer blk" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-1 col-sm-1">
+                        <button class="btn btn-dark right-arrow" [disabled]="rightArr" (click)="rightClick('false')">
+                            <i class="fa fa-arrow-right pointer blk" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 tableborderbottom space-remove">
+            <p-table class="table" [columns]="columns" [scrollable]="true" [responsive]="true" [resizableColumns]="true"
+                [value]="customers" sortField="representative.representative" sortMode="single" (onSort)="onSort()"
+                class="shortfalldashboard">
+                <ng-template pTemplate="header" let-columns>
+                    <tr class="top-headers">
+                        <th style="background-color: #e0ccff;" colspan="2" rowspan="2">&nbsp; {{reportType}} &nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th class="center-header" style="background-color: #e0ccff;" colspan="5">{{headerWeek1}}</th>
+                        <th class="center-header" style="background-color: #e0ccff;" colspan="5">{{headerWeek2}}</th>
+                        <th class="center-header" style="background-color: #e0ccff;" colspan="5">{{headerWeek3}}</th>
+                        <th class="center-header" style="background-color: #e0ccff;" colspan="5">{{headerWeek4}}</th>
+                        <th class="center-header" style="background-color: #e0ccff;" colspan="5">{{headerWeek5}}</th>
+                    </tr>                    
+                    <tr *ngFor="let col of columns">
+                        <th colspan="2">Shortfall Category</th>
+                        <th>{{col.total}}</th>
+                        <th>{{col.handled}}</th>
+                        <th>{{col.handledPercentage}}</th>
+                        <th>{{col.inflightIdentified}}</th>
+                        <th>{{col.capacityPlanned}}</th>
+                        <th>{{col.total}}</th>
+                        <th>{{col.handled}}</th>
+                        <th>{{col.handledPercentage}}</th>
+                        <th>{{col.inflightIdentified}}</th>
+                        <th>{{col.capacityPlanned}}</th>
+                        <th>{{col.total}}</th>
+                        <th>{{col.handled}}</th>
+                        <th>{{col.handledPercentage}}</th>
+                        <th>{{col.inflightIdentified}}</th>
+                        <th>{{col.capacityPlanned}}</th>
+                        <th>{{col.total}}</th>
+                        <th>{{col.handled}}</th>
+                        <th>{{col.handledPercentage}}</th>
+                        <th>{{col.inflightIdentified}}</th>
+                        <th>{{col.capacityPlanned}}</th>
+                        <th>{{col.total}}</th>
+                        <th>{{col.handled}}</th>
+                        <th>{{col.handledPercentage}}</th>
+                        <th>{{col.inflightIdentified}}</th>
+                        <th>{{col.capacityPlanned}}</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
+                    <tr *ngIf="rowGroupMetadata[customer.representative.representative].index === rowIndex">
+                        <td colspan="27" style="background-color: #dadada;text-align: left;padding-left: 29px;">
+                            <span style="color: #7115d6;font-size: 13px;"
+                                class="text-bold p-ml-2">{{customer.representative.representative}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            {{customer.shortfallSubType}}
+                        </td>
+                        <td>
+                            {{customer.totalTableOne}}
+                        </td>
+                        <td>
+                            {{customer.handledTableOne}}
+                        </td>
+                        <td>
+                            {{customer.handledPercentageTableOne}}
+                        </td>
+                        <td>
+                            {{customer.inflightIdentifiedTableOne}}
+                        </td>
+                        <td>
+                            {{customer.capacityPlannedTableOne}}
+                        </td>
+                        <td>
+                            {{customer.totalTableTwo}}
+                        </td>
+                        <td>
+                            {{customer.handledTableTwo}}
+                        </td>
+                        <td>
+                            {{customer.handledPercentageTableTwo}}
+                        </td>
+                        <td>
+                            {{customer.inflightIdentifiedTableTwo}}
+                        </td>
+                        <td>
+                            {{customer.capacityPlannedTableTwo}}
+                        </td>
+                        <td>
+                            {{customer.totalTableThree}}
+                        </td>
+                        <td>
+                            {{customer.handledTableThree}}
+                        </td>
+                        <td>
+                            {{customer.handledPercentageTableThree}}
+                        </td>
+                        <td>
+                            {{customer.inflightIdentifiedTableThree}}
+                        </td>
+                        <td>
+                            {{customer.capacityPlannedTableThree}}
+                        </td>
+                        <td>
+                            {{customer.totalTableFour}}
+                        </td>
+                        <td>
+                            {{customer.handledTableFour}}
+                        </td>
+                        <td>
+                            {{customer.handledPercentageTableFour}}
+                        </td>
+                        <td>
+                            {{customer.inflightIdentifiedTableFour}}
+                        </td>
+                        <td>
+                            {{customer.capacityPlannedTableFour}}
+                        </td>
+                        <td>
+                            {{customer.totalTableFive}}
+                        </td>
+                        <td>
+                            {{customer.handledTableFive}}
+                        </td>
+                        <td>
+                            {{customer.handledPercentageTableFive}}
+                        </td>
+                        <td>
+                            {{customer.inflightIdentifiedTableFive}}
+                        </td>
+                        <td>
+                            {{customer.capacityPlannedTableFive}}
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer" let-total>
+                    <tr>
+                        <td colspan="2">
+                            {{shortfallSubTypeGrandTotal}}
+                        </td>
+                        <td>
+                            {{total1}}
+                        </td>
+                        <td>
+                            {{total2}}
+                        </td>
+                        <td>
+                            {{total3}}
+                        </td>
+                        <td>
+                            {{total4}}
+                        </td>
+                        <td>
+                            {{total5}}
+                        </td>
+                        <td>
+                            {{total6}}
+                        </td>
+                        <td>
+                            {{total7}}
+                        </td>
+                        <td>
+                            {{total8}}
+                        </td>
+                        <td>
+                            {{total9}}
+                        </td>
+                        <td>
+                            {{total10}}
+                        </td>
+
+                        <td>
+                            {{total11}}
+                        </td>
+                        <td>
+                            {{total12}}
+                        </td>
+                        <td>
+                            {{total13}}
+                        </td>
+                        <td>
+                            {{total14}}
+                        </td>
+                        <td>
+                            {{total15}}
+                        </td>
+                        <td>
+                            {{total16}}
+                        </td>
+                        <td>
+                            {{total17}}
+                        </td>
+                        <td>
+                            {{total18}}
+                        </td>
+                        <td>
+                            {{total19}}
+                        </td>
+                        <td>
+                            {{total20}}
+                        </td>
+                        <td>
+                            {{total21}}
+                        </td>
+                        <td>
+                            {{total22}}
+                        </td>
+                        <td>
+                            {{total23}}
+                        </td>
+                        <td>
+                            {{total24}}
+                        </td>
+                        <td>
+                            {{total25}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            <!-- <div *ngIf="noData" class="no-data card-dashboard">
+                No Data Available
+            </div> -->
+        </div>
+    </div>
+</div>

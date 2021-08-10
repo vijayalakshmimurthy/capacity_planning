@@ -1,0 +1,148 @@
+.margin10 {
+    margin-top: 10px;
+}
+
+.filterheading {
+    font-size: 28px;
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+.btn-secondary {
+    background-color: #ababab;
+    color: white;
+    height: 32px;
+    padding: 1px 8px;
+}
+
+.list-action {
+    display: inline-flex;
+    list-style: none;
+}
+
+.li-margin {
+    margin-right: 10px;
+}
+
+.action-btn {
+    margin-top: 7%;
+    float: right;
+}
+
+.action-btn-search {
+    margin-top: 3%;
+    float: right;
+}
+
+.margintopmin2percent {
+    margin-top: -20px;
+    margin-right: -30px;
+    margin-left: -30px;
+    margin-bottom: -20px;
+}
+
+.marginleftright {
+    margin-right: -30px !important;
+    margin-left: -30px !important;
+}
+
+.marginleft {
+    margin-left: -45px;
+}
+
+.margin15 {
+    padding: 10px 0px;
+}
+
+.error-msg {
+    color: red;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text {
+    text-align: center;
+    padding: 10px;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.failedResult {
+    color: #da2525;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.successResult {
+    color: #5eae31;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.siteResult {
+    color: #1fabe9;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-left: 20px;
+}
+
+.marginright20 {
+    margin-right: 20px;
+}
+
+.marginleft15px {
+    margin-left: 15px;
+}
+
+.cbp-table {
+    margin: {
+        top: 10px;
+    }
+}
+
+.paddingbtn {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 40px;
+}
+
+.error-msg {
+    font-size: 22px;
+    background: rgba(241, 178, 178, 0.64);
+    padding: 6px 12px;
+    color: #c10000;
+    margin-top: 0px;
+    z-index: 99999999;
+    display: inline-block;
+
+    span {
+        cursor: pointer;
+    }
+}
+ 
+.hrclass {
+    margin: 0 0 10px 0;
+}
+	
+.buttonPaddingLeft{
+    padding-left: 8px;
+  }
+  .addan{
+    padding-top: 14px;
+    }
+.add{
+    padding:0px 2rem;
+    margin-right: -35px;
+}
+.userlabel{	
+    float: right;	
+    font-size: 12px;	
+}

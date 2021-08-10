@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+  
+      <h3 style="padding: 10px 0px;"> {{upload}}</h3>
+      <ul class="list-inline">
+        <li class="list-inline-item padding-li fileUpload-li-width">
+          <p class="chooseFile"> {{uploadFileName}}</p>
+          <div class="custom-file-upload">
+            <label for="file-upload" class="custom-file-upload1">
+              <i class="fa fa-info-circle" style="margin-right: 2px;" aria-hidden="true"></i> Choose File
+            </label>
+            <input id="file-upload" #fileUpload (change)="incomingfile($event.target.files)" type="file" />
+            <button class="btn btn-custom-empty margin" [disabled]="disableButton" (click)="uploadDocuments()">Upload
+              file</button>
+  
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>

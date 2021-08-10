@@ -1,0 +1,415 @@
+<div class="row">
+  <div class="col-md-12 rowtop card-move-table">
+    <p-table #dt [columns]="settings?.headers" dataKey="{{settings?.editkey}}" [totalRecords]="settings?.totalRecords"
+      [value]="settings?.data" [paginator]="settings?.clientPagnination" [rows]="100" [showCurrentPageReport]="true"
+      currentPageReportTemplate="Item per page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{first} - {last} of {totalRecords}"
+      [rowsPerPageOptions]="[100,200,300]" (sortFunction)="customSort($event)" [customSort]="settings?.customSort"
+      [frozenColumns]="settings?.frozenColumns" scrollHeight="{{settings?.scrollHeight}}" [scrollable]="true"
+      frozenWidth="{{settings?.frozenWidth}}" editMode="row" [(selection)]="selectedRow" [(selection)]="selectedRow"
+      (onRowSelect)="rowSelect()" (onRowUnselect)="rowSelect()" (onFilter)="filterTableRecord($event)">
+      <ng-template pTemplate="colgroup" let-columns [ngIf]="settings?.frozenColumns?.length > 0">
+        <colgroup>
+          <col *ngFor="let col of frozenColumns"
+            [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings?.columnWidth  , 'height': settings?.columnHeight }">
+        </colgroup>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <ng-template ngFor let-col [ngForOf]="columns">
+            <th class="otherhd" [ngClass]="col?.properties?.sort? 'cursoradd':'cursorremove'" [attr.ngvalue]="col.field"
+              *ngIf="col?.visible" pResizableColumn
+              [pSortableColumn]="col?.properties?.sort && col.field !== 'actions' ? col.field : null"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'center' }">
+              <p-checkbox (onChange)="selectRow(e.checked)" #e value="val1" [(ngModel)]="selectedValues"
+                *ngIf="col?.properties?.fieldType === 'checkbox'"></p-checkbox>
+              <p-checkbox (onChange)="selectRowShowDatePicker(e.checked)" #e value="val1" [(ngModel)]="selectedValues"
+                *ngIf="col?.properties?.fieldTypeCheckboxHeader === 'checkbox' && settings.editkey === 'yes'"
+                class="header_checkbox">
+              </p-checkbox>
+              <span (click)="$event.stopPropagation()">
+                <i class="plus radius show" id="{{col.field}}_plus" (click)="appendColumn(col);"
+                  *ngIf="col?.child?.length > 0"> </i>
+                <i class="minus radius hide" id="{{col.field}}_minus" (click)="removeColumn(col)"
+                  *ngIf="col?.child?.length > 0"> </i>
+              </span>
+              {{col.header}}
+              <p-calendar
+                *ngIf="col?.properties?.fieldTypeCheckboxHeader === 'checkbox' && settings.editkey === 'yes' && showDatepciker"
+                [(ngModel)]="dateValuehd" dateFormat="dd/mm/yy" appendTo="body" dataType="string" showButtonBar="true"
+                (onSelect)="setExpiryDateAllColumn(dateValuehd)" [minDate]="minimumDate" [showIcon]="true"
+                inputId="icon" class="headerDatePicker">
+              </p-calendar>
+              <p-sortIcon *ngIf="col?.properties?.sort && col.field !== 'actions'" [field]="col.field"
+                ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order"
+                ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+              <!-- <i *ngIf="col?.properties?.filter && col.field !== 'actions'" class="pi pi-filter filter-icon-color"></i> -->
+            </th>
+          </ng-template>
+        </tr>
+        <tr *ngIf="getFilterFlag()">
+          <ng-template ngFor let-col [ngForOf]="columns">
+            <th pResizableColumn
+              *ngIf="col?.pageName !== 'trackprogress' && col?.properties?.filter && col?.properties?.filterType === 'text'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'center' }">
+              <input pInputText type="text" class="form-control" placeholder="Type to filter"
+                (input)="dt.filter($event.target.value, col.field, 'contains');"
+                (keyup)="userQuestionUpdate.next($event)">
+              <!-- <input *ngIf="col.field === filterItemcol" class="form-control" placeholder="Type to filter" [(ngModel)]="filterItem"
+                (input)="dt.filter($event.target.value, col.field, 'contains'); filterEmit()">
+            
+                <input *ngIf="col.field !== filterItemcol" class="form-control" placeholder="Type to filter" 
+                (input)="dt.filter($event.target.value, col.field, 'contains'); filterEmit()"> -->
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.pageName === 'trackprogress' && col?.properties?.filter && col?.properties?.filterType === 'text'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'center' }">
+              <input pInputText type="text" class="form-control" placeholder="Search..."
+                (input)="dt.filter($event.target.value, col.field, 'contains'); filterEmit()">
+            </th>
+            <th pResizableColumn *ngIf="!col?.properties?.filter"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'center' }">
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.pageName !== 'trackprogress' && col?.properties?.filter && col?.properties?.filterType === 'calendar' && col?.properties?.filterType !== 'shtfalldrrpage'">
+              <p-calendar [(ngModel)]="dateValue" placeholder="Type to filter"
+                *ngIf="col?.properties?.filter && col?.properties?.filterType === 'calendar'" dateFormat="dd/mm/yy"
+                appendTo="body" dataType="string" (onSelect)="dt.filter(dateValue, col.field, 'contains'); filterEmit()"
+                (onInput)="dt.filter(value, col.field, 'contains'); filterEmit()" showButtonBar="true"
+                (onClearClick)="dt.filter(value, col.field, 'contains')">
+              </p-calendar>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.pageName === 'trackprogress' && col?.properties?.filter && col?.properties?.filterType === 'calendar'" 
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight}">
+              <p-calendar [(ngModel)]="dateValue" placeholder="Search..."
+                *ngIf="col?.properties?.filter && col?.properties?.filterType === 'calendar'" dateFormat="dd/mm/yy"
+                appendTo="body" dataType="string" (onSelect)="dt.filter(dateValue, col.field, 'contains'); filterEmit()"
+                (onInput)="dt.filter(value, col.field, 'contains'); filterEmit()" showButtonBar="true"
+                (onClearClick)="dt.filter(value, col.field, 'contains')">
+              </p-calendar>
+            </th>
+            <th pResizableColumn *ngIf="col?.properties?.filter && col?.properties?.filterType === 'shtfalldrrpage'">
+              <p-calendar [(ngModel)]="dateValue1" placeholder="Type to filter"
+                *ngIf="col?.properties?.filter && col?.properties?.filterType !== 'calendar'" dateFormat="dd/mm/yy"
+                appendTo="body" dataType="string"
+                (onSelect)="dt.filter(dateValue1, col.field, 'contains'); filterEmit()"
+                (onInput)="dt.filter(value, col.field, 'contains'); filterEmit()" showButtonBar="true"
+                (onClearClick)="dt.filter(value, col.field, 'contains')">
+              </p-calendar>
+            </th>
+            <th pResizableColumn *ngIf="col?.properties?.filter && col?.properties?.filterType === 'drrpage'">
+              <p-calendar [(ngModel)]="dateValue2" placeholder="Type to filter"
+                *ngIf="col?.properties?.filter && col?.properties?.filterType !== 'calendar'" dateFormat="dd/mm/yy"
+                appendTo="body" dataType="string"
+                (onSelect)="dt.filter(dateValue2, col.field, 'contains'); filterEmit()"
+                (onInput)="dt.filter(value, col.field, 'contains'); filterEmit()" showButtonBar="true"
+                (onClearClick)="dt.filter(value, col.field, 'contains')">
+              </p-calendar>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field === 'cufValue'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+              <p-dropdown [options]="settings?.usageType" [style]="{'min-width':'98%', 'width': '100%'}" 
+                (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown">
+              </p-dropdown>
+            </th>
+            <th pResizableColumn
+            *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field === 'reservationProjectType'"
+            [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+            <p-dropdown [options]="settings?.reservationProjectType" [style]="{'min-width':'98%', 'width': '100%'}" 
+              (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+              styleClass="cbp-filter-dropdown">
+            </p-dropdown>
+          </th>
+          <th pResizableColumn
+            *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field === 'portSpeed'"
+            [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+            <p-dropdown [options]="settings?.portSpeedlist" [style]="{'min-width':'98%', 'width': '100%'}"
+              (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+              styleClass="cbp-filter-dropdown">
+            </p-dropdown>
+          </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field === 'status'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+              <p-dropdown [options]="settings?.status" [style]="{'min-width':'98%', 'width': '100%'}" 
+                (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown">
+              </p-dropdown>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field ==='currentStatus'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+              <p-dropdown [options]="settings?.currentStatus " [style]="{'min-width':'98%', 'width': '100%'}"
+                (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown">
+              </p-dropdown>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field ==='isInflightIdentified'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }" >
+              <p-dropdown [options]="settings?.status " [style]="{'min-width':'98%', 'width': '100%'}" 
+                (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown"  >
+              </p-dropdown>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field ==='shortfallType'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+              <p-dropdown [options]="settings?.shortfallType " [style]="{'min-width':'98%', 'width': '100%'}"
+                 (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown">
+              </p-dropdown>
+            </th>
+            <th pResizableColumn
+              *ngIf="col?.properties?.filter && col?.properties?.filterType === 'select' && col?.field ==='isNewCapacityPlanned'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': 'left' }">
+              <p-dropdown [options]="settings?.isNewCapacityPlanned " [style]="{'min-width':'98%', 'width': '100%'}"
+                 (onChange)="dt.filter($event.value, col.field, 'equals'); filterEmit()"
+                styleClass="cbp-filter-dropdown">
+              </p-dropdown>
+            </th>
+          </ng-template>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-editing="editing" let-rowIndex="rowIndex" let-columns="columns">
+        <ng-container *ngIf="settings?.rowGroupData?.groupColName">
+          <tr class="rowGroup" *ngIf="rowGroupMetadata[rowData.groupName].index === rowIndex">
+            <td [attr.colspan]="columns.length">
+              <span>{{rowData.groupName}}</span>
+            </td>
+          </tr>
+        </ng-container>
+
+        <tr [pEditableRow]="rowData">
+          <ng-container *ngFor="let col of columns">
+            <td class="ui-resizable-column" *ngIf="col?.properties?.fieldType === 'checkbox'"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': col?.fixed? 'left': 'center'}">
+              <p-tableCheckbox [value]="rowData"
+                [disabled]="rowData.status == 'Submitted' || rowData.status == 'Processing' || rowData.status == 'Delivery Completed' || rowData.status == 'Planning Completed' || rowData.status == 'Integration Completed' || rowData.status == 'Project Completed'">
+              </p-tableCheckbox>
+            </td>
+            <td class="ui-resizable-column"
+              *ngIf="col?.link && !(col?.properties?.fieldType === 'checkbox')  && !(col.header === 'Action') && col?.visible"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align': col?.fixed? 'left': 'center'}">
+              <span
+                *ngIf="(col.header == 'Delta' || col.header == 'Delta Non-TOD' || col.header == 'Delta TOD' 
+                                || col.header == 'Delta 1GE' || col.header == 'Delta 10GE' || col.header == 'Delta 1G HE' 
+                                || col.header == 'Delta 10G HE' || col.header == 'Delta 10G WMC' || col.header == 'Delta 100G HE' 
+                                || col.header == 'Delta FastE' || col.header == 'Delta 100GE' || col.header == '100GE Other'
+                                || col.header == '100GE SR4' ||  col.header == '10G LR4' ||col.header == '100GE SR10'||col.header == '100GE LR4' ||col.header == '100GE DD-SR4'
+                                || col.header == '100GE DD-LR4' || col.header == '10GE') && roleName !== 'PROD_CE_ADMIN'"
+                [ngClass]="{'deltaSiteValue' : rowData[col.field] >= 0, 'negativeValue' : rowData[col.field] < 0}"
+                [ngStyle]="{'color': col.colour}"
+                (click)="onClickNavigation(col.field,rowData[col.field],rowData)">{{rowData[col.field]}}</span>
+              <span
+                *ngIf="(col.header == 'Delta' || col.header == 'Delta Non-TOD' || col.header == 'Delta TOD' 
+                                || col.header == 'Delta 1GE' || col.header == 'Delta 10GE' || col.header == 'Delta 1G HE' 
+                                || col.header == 'Delta 10G HE' || col.header == 'Delta 10G WMC' || col.header == 'Delta 100G HE' 
+                                || col.header == 'Delta FastE' || col.header == 'Delta 100GE' || col.header == '100GE Other'
+                                || col.header == '100GE SR4' ||  col.header == '10G LR4' ||col.header == '100GE SR10'||col.header == '100GE LR4' ||col.header == '100GE DD-SR4'
+                                || col.header == '100GE DD-LR4' || col.header == '10GE') && roleName === 'PROD_CE_ADMIN'"
+                [ngClass]="{'deltaSiteValue' : rowData[col.field] > 0, 'siteLink': rowData[col.field] === 0, 'negativeLink' : rowData[col.field] < 0}"
+                [ngStyle]="{'color': col.colour}"
+                (click)="onClickNavigation(col.field,rowData[col.field],rowData)">{{rowData[col.field]}}</span>
+              <span *ngIf="col.header !== 'Delta' && col.header !== 'Delta Non-TOD' && col.header !== 'Delta TOD' 
+                                && col.header !== 'Delta 1GE'  && col.header !== 'Delta 10GE'  && col.header !== 'Delta 1G HE' 
+                                && col.header !== 'Delta 10G HE'  && col.header !== 'Delta 10G WMC' && col.header !== 'Delta 100G HE' 
+                                && col.header !== 'Delta FastE'  && col.header !== 'Delta 100GE' && col.header !== '100GE Other' && col.header !== '100GE SR4' && col.header !== '10G LR4' && col.header !== '100GE SR10'
+                                && col.header !== '100GE LR4' && col.header !== '100GE DD-SR4' && col.header !== '100GE DD-LR4' && col.header !== '10GE'"
+                [ngClass]="(rowData[col.field] === '-' || rowData[col.field] === '0' ||  rowData[col.field] === 0)?'siteValue':'siteLink'"
+                [ngStyle]="{'color': col.colour}" (click)="onClickNavigation(col.field,rowData[col.field],rowData)"
+                [hidden]="!col.visible">{{rowData[col.field]}}</span>
+            </td>
+            <td class="ui-resizable-column"
+              *ngIf="col?.pageName !== 'trackprogress' && !col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.link && !(col?.properties?.fieldType === 'checkbox') && !(col.header === 'Action')"
+              class="ui-resizable-column"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour }"
+              [hidden]="!col.visible">
+              <span
+                *ngIf="(col.header == 'Delta' || col.header == 'Delta Non-TOD' || col.header == 'Delta TOD' 
+                            || col.header == 'Delta 1GE' || col.header == 'Delta 10GE' || col.header == 'Delta 1G HE' 
+                            || col.header == 'Delta 10G HE' || col.header == 'Delta 10G WMC' || col.header == 'Delta 100G HE' 
+                            || col.header == 'Delta FastE' || col.header == 'Delta 100GE' || col.header == '100GE Other'
+                            || col.header == '100GE SR4' ||  col.header == '10G LR4' ||col.header == '100GE SR10'||col.header == '100GE LR4' ||col.header == '100GE DD-SR4'
+                            || col.header == '100GE DD-LR4' || col.header == '10GE') && roleName !== 'PROD_CE_ADMIN'"
+                [ngClass]="{'deltaSiteValue' : rowData[col.field] >= 0, 'negativeValue' : rowData[col.field] < 0}"
+                [ngStyle]="{'color': col.colour}">{{rowData[col.field]}}</span>
+
+              <span
+                *ngIf="(col.header == 'Delta' || col.header == 'Delta Non-TOD' || col.header == 'Delta TOD' 
+                            || col.header == 'Delta 1GE' || col.header == 'Delta 10GE' || col.header == 'Delta 1G HE' 
+                            || col.header == 'Delta 10G HE' || col.header == 'Delta 10G WMC' || col.header == 'Delta 100G HE' 
+                            || col.header == 'Delta FastE' || col.header == 'Delta 100GE' || col.header == '100GE Other'
+                            || col.header == '100GE SR4' ||  col.header == '10G LR4' ||col.header == '100GE SR10'||col.header == '100GE LR4' ||col.header == '100GE DD-SR4'
+                            || col.header == '100GE DD-LR4' || col.header == '10GE') && roleName === 'PROD_CE_ADMIN'"
+                [ngClass]="{'deltaSiteValue' : rowData[col.field] > 0,'negativeValue' : rowData[col.field] < 0}"
+                [ngStyle]="{'color': col.colour}">{{rowData[col.field]}}</span>
+              <span *ngIf="col.field !== 'status' && col.field !== 'dataName' && col.header !== 'Delta' && col.header !== 'Delta Non-TOD' && col.header !== 'Delta TOD' 
+                            && col.header !== 'Delta 1GE'  && col.header !== 'Delta 10GE'  && col.header !== 'Delta 1G HE' 
+                            && col.header !== 'Delta 10G HE'  && col.header !== 'Delta 10G WMC' && col.header !== 'Delta 100G HE' 
+                            && col.header !== 'Delta FastE'  && col.header !== 'Delta 100GE' && col.header !== '100GE Other' && col.header !== '100GE SR4' && col.header !== '10G LR4' && col.header !== '100GE SR10'
+                            && col.header !== '100GE LR4' && col.header !== '100GE DD-SR4' && col.header !== '100GE DD-LR4' && col.header !== '10GE'; else other_content">
+                {{rowData[col.field]}}
+              </span>
+              <ng-template #other_content>
+                <span *ngIf="rowData[col.field] !== 'Saved' && col.field !== 'dataName' && col.header !== 'Delta' && col.header !== 'Delta Non-TOD' && col.header !== 'Delta TOD' 
+                && col.header !== 'Delta 1GE'  && col.header !== 'Delta 10GE'  && col.header !== 'Delta 1G HE' 
+                && col.header !== 'Delta 10G HE'  && col.header !== 'Delta 10G WMC' && col.header !== 'Delta 100G HE' 
+                && col.header !== 'Delta FastE'  && col.header !== 'Delta 100GE' && col.header !== '100GE Other' && col.header !== '100GE SR4' && col.header !== '10G LR4' && col.header !== '100GE SR10'
+                && col.header !== '100GE LR4' && col.header !== '100GE DD-SR4' && col.header !== '100GE DD-LR4' && col.header !== '10GE'"
+                  [ngClass]="{'green-color': rowData[col.field] == 'Submitted' || rowData[col.field] == 'Processing' || rowData[col.field] == 'Delivery Completed' || rowData[col.field] == 'Planning Completed' || rowData[col.field] == 'Integration Completed' || rowData[col.field] == 'Project Completed', 'red-color': rowData[col.field] == 'Submission Failed'}">
+                  {{rowData[col.field]}}
+                </span>
+                <span *ngIf="rowData[col.field] == 'Saved'" class="green-color">
+                  <img src="assets/images/round-done-button.png" alt="saved" class="text-adj" />
+                  {{rowData[col.field]}}
+                </span>
+                <span title="{{rowData[col.field]}}" *ngIf="col.field === 'dataName'" [ngStyle]="{'color': col.colour}"
+                  [hidden]="!col.visible">{{rowData[col.field]}}
+                </span>
+              </ng-template>
+            </td>
+            <!-- 
+                        for trackprogress -->
+            <td class="ui-resizable-column"
+              *ngIf="col?.pageName === 'trackprogress' && !col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.link && !(col?.properties?.fieldType === 'checkbox') && !(col.header === 'Action')"
+              class="ui-resizable-column"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour }"
+              [hidden]="!col.visible">
+              <span *ngIf="col.field !== 'status' && col.field !== 'dataName' ; else other_content">
+                {{rowData[col.field]}}
+              </span>
+
+              <ng-template #other_content>
+                <span *ngIf="rowData[col.field] !== 'Saved' && col.field !== 'dataName'"
+                  [ngClass]="{'background-green-color': rowData[col.field] == 'Completed' || rowData[col.field] == 'Built Completed' || rowData[col.field] == 'Uploaded' , 'background-red-color': rowData[col.field] == 'Complete Failed' || rowData[col.field] == 'Built Failed' , 'background-yellow-color': rowData[col.field] == 'Processing' }">
+                  {{rowData[col.field]}}
+                </span>
+                <span title="{{rowData[col.field]}}" *ngIf="col.field === 'dataName'" [ngStyle]="{'color': col.colour}"
+                  [hidden]="!col.visible">{{rowData[col.field]}}
+                </span>
+              </ng-template>
+            </td>
+
+            <td class="ui-resizable-column"
+              *ngIf="col?.properties?.editable && col.field !== 'actions' && col?.visible && !col?.properties?.link && !(col?.properties?.fieldType === 'checkbox')  && !(col.header === 'Action')"
+              pEditableColumn class="ui-resizable-column"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight , 'text-align':col?.fixed? 'left': 'center', 'color':col?.colour} ">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input class="editModeInput" type="text" *ngIf="col?.type === 'text'" [(ngModel)]="rowData[col.field]"
+                    (ngModelChange)="editRow(rowData,ri)">
+                  <input class="editModeInput" type="number" *ngIf="col?.type === 'number'"
+                    [(ngModel)]="rowData[col.field]" (ngModelChange)="editRow(rowData,ri)"
+                    (keypress)="keyPressNumber($event)">
+                  <select class="editModeInput" name="{{rowData[col.field]}}" *ngIf="col?.type === 'select'"
+                    [(ngModel)]="rowData[col.field]" (ngModelChange)="editRow(rowData,ri)" id="{{rowData[col.field]}}">
+                    <option value="{{val}}" *ngFor="let val of col.values">{{val}}</option>
+                  </select>
+                  <!-- <p-calendar   [inline]="false"  *ngIf="col?.type === 'calendar'"  [showWeek]="true" readonlyInput="true" 
+                                        [(ngModel)]="rowData[col.field]" dateFormat="dd/mm/yy" appendTo="body" dataType="string" showButtonBar="true"  [minDate]="minimumDate"
+                                          [showIcon]="true" inputId="icon" [disabled]="editordr" class="ng-tns-c13-9 p-calender-editior"></p-calendar> -->
+                  <p-calendar
+                    *ngIf="col?.properties?.pageName === 'PHASEALLMSG' && col?.properties?.fieldTypeCalenderbodyType !== 'calendar'"
+                    [inline]="false" [showWeek]="true" readonlyInput="true" [(ngModel)]="rowData[col.field]"
+                    (ngModelChange)="editRow(rowData,ri)" dateFormat="dd/mm/yy" appendTo="body" dataType="string"
+                    showButtonBar="true" [minDate]="minimumDate" [showIcon]="true" inputId="icon" [disabled]="editordr"
+                    class="ng-tns-c13-9 p-calender-editior checke1">
+                  </p-calendar>
+                  <p-calendar type="null"
+                    *ngIf="col?.type === 'null' && col?.properties?.fieldTypeCalenderbodyType !== 'calendar' "
+                    [inline]="false" [showWeek]="true" readonlyInput="true" [(ngModel)]="rowData[col.field]"
+                    (ngModelChange)="editRow(rowData,ri)" dateFormat="dd/mm/yy" appendTo="body" dataType="string"
+                    showButtonBar="true" [minDate]="minimumDate" [showIcon]="true" inputId="icon" [disabled]="editordr"
+                    class="ng-tns-c13-9 p-calender-editior check2">
+                  </p-calendar>
+                </ng-template>
+                <ng-template pTemplate="output" class="text-normal-value" *ngIf="settings.editkey !== 'yes'">
+                  {{rowData[col.field]}}
+                </ng-template>
+              </p-cellEditor>
+              <p-calendar #myCalender
+                *ngIf="col?.properties?.fieldTypeCalenderbodyType === 'calendar' && settings.editkey === 'yes'"
+                [(ngModel)]="rowData[col.field]" dateFormat="dd/mm/yy" appendTo="body" dataType="string"
+                showButtonBar="true" (ngModelChange)="editRow(rowData,ri)"
+                (onSelect)="setExpiryDateColumn(rowData,rowData[col.field])" [showIcon]="true" inputId="icon"
+                class="ng-tns-c13-9 p-calender-editior body-header" [minDate]="minimumDate"> </p-calendar>
+
+            </td>
+            <td class="ui-resizable-column" style="text-align: center;"
+              *ngIf="col.field === 'actions' && col?.visible || col.header === 'Action'" class="ui-resizable-column"
+              [ngStyle]="{'width': settings.columnWidthDynamic? col?.columnWidth: settings.columnWidth , 'height': settings.columnHeight, 'color':col?.properties?.color}">
+              <input *ngIf="!editing  && rowData.status === 'Saved' && rowData.jobType !== 'Satellite Shelf Plan'"
+                type="image" pInitEditableRow (click)="onEdited(rowData)" src="assets/images/edit_icon.png">
+              <!-- <span *ngIf="!editing  && rowData.status === 'Saved'" id="updatedTable" pSaveEditableRow> |
+                            </span> -->
+              <input
+                *ngIf="!editing  && col?.properties.action && col?.pageName !== 'trackprogress' && rowData.jobType !== 'Satellite Shelf Plan'"
+                type="image" pInitEditableRow (click)="onEdited(rowData)" src="assets/images/edit_icon.png">
+              <span *ngIf="!editing  && col?.properties.action" id="updatedTable" pSaveEditableRow>
+              </span>
+              <input *ngIf="!editing  && rowData.status === 'Saved'" type="image"
+                [ngClass]=" rowData.jobType !== 'Satellite Shelf Plan' ? 'delete-icon':''"
+                (click)="onDelete(rowData,ri)" src="assets/images/delete_icon.png">
+              <input *ngIf="!editing && col?.properties.action && col?.pageName !== 'trackprogress' && rowData.id !== null" type="image" (click)="onDelete(rowData,ri)"
+              [ngClass]=" rowData.jobType !== 'Satellite Shelf Plan' ? 'delete-icon':''" src="assets/images/delete_icon.png">
+              <input *ngIf="editing  && rowData.status === 'Saved' && rowData.jobType !== 'Satellite Shelf Plan'" type="image" pInitEditableRow
+                (click)="onEdited(rowData)" src="assets/images/edit_icon.png" />
+              <!-- <span *ngIf="editing  && rowData.status === 'Saved'" id="updatedTable" pSaveEditableRow> |
+                            </span> -->
+
+              <input *ngIf="editing  && col?.properties.action && rowData.jobType !== 'Satellite Shelf Plan'"
+                type="image" pInitEditableRow (click)="onEdited(rowData)" src="assets/images/edit_icon.png" />
+              <span *ngIf="editing  && col?.properties.action" id="updatedTable" pSaveEditableRow>
+              </span>
+              <input *ngIf="editing  && rowData.status === 'Saved'" type="image" (click)="onDelete(rowData,ri)"
+                [ngClass]=" rowData.jobType !== 'Satellite Shelf Plan' ? 'delete-icon':''"
+                src="assets/images/delete_icon.png">
+
+              <input *ngIf="editing  && col?.properties.action" type="image" (click)="onDelete(rowData,ri)"
+                class="delete-icon" src="assets/images/delete_icon.png">
+
+              <input *ngIf="editing  && col?.properties.actions" type="image" (click)="onDelete(rowData,ri)"
+                class="delete-icon" src="assets/images/delete_icon.png">
+              <input *ngIf="col?.pageName === 'trackprogress' && !editing  && col?.properties.action" type="image"
+                src="assets/images/info.png" class='action'>
+              <!-- type="image" pInitEditableRow (click)="onEdited(rowData)" src="assets/images/info.png" -->
+            </td>
+          </ng-container>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div class="table paddingTop" *ngIf="settings?.data.length > 0 && settings?.paginator">
+      <div class="itemperpage" *ngIf="totalRecord !== 0 ">
+        Item per page
+        <select class="btn" [(ngModel)]="totalCount" (change)="selectChange($event)">
+
+          <option *ngFor="let val of listRow" [value]="val"> {{val}} </option>
+
+        </select>
+        <span class="shiftData">
+          {{numberPage}} - {{pageCount}} of {{totalRecord}}
+        </span>
+      </div>
+      <div *ngIf="totalRecord !== 0 ">
+        <p-paginator [first]="first" [rows]="totalCount" [totalRecords]="totalRecord" (onPageChange)="paginate($event)">
+        </p-paginator>
+      </div>
+    </div>
+    <div class="row table-row">
+      <div class="col-md-12">
+        <div class="table ">
+          <div *ngIf="noRecordError && settings?.data.length===0">
+            <p class="norecord-p">
+              No records found
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <pre *ngIf="settings?.rowGroupData?.groupColName">{{rowGroupMetadata | json}}</pre> -->

@@ -1,0 +1,1062 @@
+[
+    {
+        "id": 1,
+        "sneID": "20919800",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 2,
+        "sneID": "20919380",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 3,
+        "sneID": "10919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 4,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 5,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 6,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 7,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 8,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 9,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 10,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 11,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 12,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 13,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 14,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 15,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 16,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 17,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 18,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 19,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 20,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 21,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 22,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 23,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 24,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 25,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 26,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 27,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 28,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 29,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 30,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 31,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 32,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 33,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 34,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 35,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 36,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 37,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 38,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 39,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 40,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 41,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 42,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 43,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 44,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 45,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 46,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 47,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 48,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 49,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 50,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 51,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 52,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 53,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 54,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 55,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 56,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 57,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 58,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 59,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 60,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 61,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 62,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 63,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 64,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 65,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 66,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 67,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 68,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 69,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 70,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 71,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 72,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 73,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 74,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 75,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 76,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 77,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 78,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 79,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 80,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 81,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 82,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 83,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 84,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 85,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 86,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 87,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 88,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 89,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 90,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "IH/F",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 91,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 92,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 93,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 94,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 95,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 96,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 97,
+        "sneID": "20919887",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 98,
+        "sneID": "20919888",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 99,
+        "sneID": "20919889",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 100,
+        "sneID": "20919880",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 101,
+        "sneID": "20919881",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 102,
+        "sneID": "20919882",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 103,
+        "sneID": "20919883",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 104,
+        "sneID": "20919884",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 105,
+        "sneID": "20919885",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    },
+    {
+        "id": 106,
+        "sneID": "20919886",
+        "locality1141": "FEJ",
+        "trsArea": "AA/K",
+        "rack": "001-511-472-33-22",
+        "name": "AA",
+        "orChassisNo": "001-511-472-33-22",
+        "totalPortSpare": "1240595"
+    }
+]

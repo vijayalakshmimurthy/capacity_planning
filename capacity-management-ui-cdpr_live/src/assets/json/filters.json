@@ -1,0 +1,117 @@
+{
+    "filters": [
+        {
+            "filterKey": "serviceType",
+            "filterName": "Service Type",
+            "type": "select",
+            "visible": true,            
+            "accordian": false,
+            "values": [
+                {
+                    "label": "H.E",
+                    "value": "H.E"
+                },
+                {
+                    "label": "Mobile Backhaul",
+                    "value": "Mobile Backhaul"
+                },
+                {
+                    "label": "ALL Ethernet",
+                    "value": "ALL Ethernet"
+                }
+            ]
+        },
+        {
+            "filterKey": "todPhaseEnabled",
+            "filterName": "Phase Enabled Site",
+            "type": "checkbox",            
+            "accordian": false,
+            "values": [
+                {
+                    "label": "Phase Enabled",
+                    "value": "true",
+                    "color": "checkmark",
+                    "isEnabled": false
+                }
+            ]
+        },
+        {
+            "filterKey": "nodeType",
+            "filterName": "Node Types",
+            "type": "checkbox",
+            "accordian": false,
+            "values": [
+                {
+                    "label": "Metro",
+                    "value": "METRO",
+                    "color": "checkmark",
+                    "isEnabled": false
+                },
+                {
+                    "label": "Tier 1",
+                    "value": "TIER1",
+                    "color": "checkmark",
+                    "isEnabled": false
+                },
+                {
+                    "label": "3rd Party Data Centres",
+                    "value": "DATACENTRES",
+                    "color": "checkmark",
+                    "isEnabled": false
+                }
+            ]
+        },
+        {
+            "filterKey": "capacity",
+            "filterName": "Available Capacity",
+            "type": "checkbox",
+            "accordian": false,
+            "values": [
+                {
+                    "label": "4+",
+                    "value": "4",
+                    "color": "checkmark checkmark_four",
+                    "isEnabled": false
+                },
+                {
+                    "label": "1-3",
+                    "value": "1,2,3",
+                    "color": "checkmark checkmark_one_three",
+                    "isEnabled": false
+                },
+                {
+                    "label": "0",
+                    "value": "0",
+                    "color": "checkmark checkmark_zero",
+                    "isEnabled": false
+                }
+            ]
+        },
+        {
+            "filterKey": "radius",
+            "filterName": "Radius",
+            "type": "checkbox",
+            "accordian": false,
+            "values": [
+                {
+                    "label": "EAD:25km",
+                    "value": 25,
+                    "color": "checkmark checkmark_25000",
+                    "color": "#ce9df5"
+                },
+                {
+                    "label": "OSA-FC: 30km",
+                    "value": 30,
+                    "color": "checkmark checkmark_30000",
+                    "color": "#ad5def"
+                },
+                {
+                    "label": "OSA: 50km",
+                    "value": 50,
+                    "color": "checkmark checkmark_50000",
+                    "color": "#ba76f1"
+                }
+            ]
+        }  
+    ]
+}

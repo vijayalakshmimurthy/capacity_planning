@@ -1,0 +1,115 @@
+.card-dashboard {
+    padding: 20px;
+    background: #fff;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        color: #6400aa;
+        font-size: 20px;
+        font-weight: 400;
+        margin-left: 9px;
+        margin-bottom: 10px;
+    }
+}
+
+.listpadding {
+    margin-left: 30px;
+
+    li {
+        padding: 6px 16px;
+        cursor: pointer;
+        display: inline-block;
+    }
+}
+
+.td-color {
+    color: #6400aa;
+}
+
+.activeClass {
+    color: #fff !important;
+    background: #6400aa;
+    border-radius: 5px;
+}
+
+.chart-container {
+    height: 300px;
+    position: relative;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+.linecharts {
+    position: relative;
+    padding-top: 20px;
+
+    .icon-line {
+        position: absolute;
+        top: -18px;
+        right: 10px;
+        left: 25px;
+    }
+
+    ul {
+        position: absolute;
+        right: 50px;
+        top: -50px;
+
+        .circle-dot {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    }
+
+    .dropdown-menu {
+        top: 3px !important;
+        left: 31px !important;
+    }
+
+    a {
+        cursor: pointer;
+    }
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+}
+
+.bar-type {
+    position: relative;
+    top: -6px;
+    width: 60px;
+
+    span {
+        font-size: 10px;
+        position: absolute;
+        top: 22px;
+        left: -4px;
+        color: #6d00a7;
+    }
+}
+.list-inlinesitename{
+    right: 0;
+    top: -15%;
+    left: 0;
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+}

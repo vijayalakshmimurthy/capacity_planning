@@ -1,0 +1,69 @@
+<div class="container-fluid containerwidth">
+    <div class="filterheading">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 list-inline clickHeader">
+                <h1 class="margin10 header">Service Transparency Tool</h1>
+            </div>
+            <div class="col-md-2 col-sm-2 text-center">
+                <span class="datamsgs" *ngIf="errorMsg != ''">{{errorMsg}}</span>
+                <app-alert></app-alert>
+            </div>
+            <div class="col-md-7 col-sm-7 text-right">
+                <ul class="nav navbar navbar-left d-flex d-inline-flex">
+                    <li class="nav-item d-inline-flex headre_li margin15 searchbox" *ngIf="csvData">
+                        <p-autoComplete [type]="'search'" (onClear)="resetSearch()" [(ngModel)]="searchfield" [suggestions]="filterSiteNameSearch"
+                            (onKeyUp)="onKeyPressSiteCode($event)" field="data" [size]="30" placeholder="Enter Site Name/1141 Code"
+                            (onFocus)="onFocusSiteName($event)" (onSelect)="onSelect($event)"></p-autoComplete>
+                    </li>
+                    <li *ngIf="csvData" class="nav-item d-inline-flex headre_li margin15">
+                        <button type="button" class=" btn btn-success" (click)="onSavePreference()">
+                            <app-svg icon="Group_63-save_icon"></app-svg>
+                            <span> Save Preference </span>
+                        </button>
+                    </li>
+                    <li *ngIf="isRemoveMarker" class="nav-item d-inline-flex headre_li margin15">
+                        <button class="btn btn-modal btn-marker" (click)="removeCustomMarker($event)">Clear Marker
+                        </button>
+                    </li>
+                    <li class="nav-item d-inline-flex headre_li margin15">
+                        <button *ngIf="csvData" class="btn btn-custom" data-hover="dropdown" id="dropdownBasic2" aria-expanded="true" appCSVDownload
+                            [data]="csvData" [fileName]="fileName">
+                            <app-svg icon="Capa_10-export_icon"> </app-svg>
+                            <span> Export </span>
+                        </button>
+                    </li>
+                    <li class="nav-item d-inline-flex headre_li margin15">
+                        <button type="info-button" class="btn btn-custom" (click)="showBasicDialog()">
+                            <app-svg icon="Capa_11-info_icon"></app-svg>
+                            <span> Info </span>
+                        </button>
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="hrclass">
+        <div class="row margin10">
+            <div class="col-md-2 col-sm-2 dropdownCol stt_dropdown dropheight">
+                <p-accordion>
+                    <p-accordionTab header="Filter" [selected]="accordianhandle">
+                        <ng-template [ngIf]="filters.length > 0">
+                            <app-filter [filters]="filters" [viewType]="viewType" [savedFilters]="savedFilters" (requestFilters)="getMarkerDataBasedOnFilters($event)">
+                            </app-filter>
+                        </ng-template>
+                        <app-custom-location *ngIf="csvData" [mapClick]="mapClick" [customLocationDrp]="customLocationDrp" (CustomFilters)="getCustomFilter($event)"
+                            (resetCustomFilters)="removeCustomMarker($event)">
+                        </app-custom-location>
+                    </p-accordionTab>
+                    </p-accordion>
+
+            </div>
+            <div class="col-md-10 img">
+                <app-map-view [mapViewData]="mapViewData" [mapOptions]="mapOptions" [customLatLng]="customLatLng" [radiusCircleObj]="radiusCircleObj"
+                    (addCustomMarker)="getCustomFilter($event)"></app-map-view>
+            </div>
+        </div>
+    </div>
+</div>
+<app-info-modal [displayBasic]="displayBasic" (displayChange)="onDialogClose($event)"></app-info-modal>
